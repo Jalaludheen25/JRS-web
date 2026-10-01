@@ -64,7 +64,7 @@ export function Navbar() {
         />
         <nav aria-label="Primary" className="shell flex h-[76px] items-center justify-between gap-6">
           <Link href="/" className="relative z-10 shrink-0" aria-label="JRS Mechanical Equipment, home">
-            <Image src="/brand/jrs-logo.png" alt="JRS — Quality Spares, Reliable Repairs" width={720} height={358} preload className="h-11 w-auto brightness-0 invert" />
+            <Image src="/brand/jrs-logo-white.png" alt="JRS — Quality Spares, Reliable Repairs" width={1080} height={537} preload className="h-11 w-auto" />
           </Link>
 
           <ul className="hidden items-center gap-9 lg:flex">

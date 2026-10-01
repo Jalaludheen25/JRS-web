@@ -23,7 +23,7 @@ export function Footer() {
       <div className="shell">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Image src="/brand/jrs-logo.png" alt="JRS Mechanical Equipment" width={720} height={358} className="h-20 w-auto brightness-0 invert" />
+            <Image src="/brand/jrs-logo-white.png" alt="JRS Mechanical Equipment" width={1080} height={537} className="h-20 w-auto" />
             <p className="mt-8 max-w-sm text-[15px] leading-relaxed text-steel-300">
               Quality spares and reliable repairs for the marine and power-generation sectors, supplied from Abu Dhabi.
             </p>

@@ -44,7 +44,7 @@ export function organizationSchema() {
         alternateName: ["JRS", site.legalNameAr],
         slogan: site.tagline,
         url: site.url,
-        logo: absolute("/brand/jrs-logo.png"),
+        logo: absolute("/brand/jrs-logo-blue.png"),
         image: absolute("/images/og/jrs-og.jpg"),
         email: site.email,
         telephone: site.phone.e164,
