@@ -46,7 +46,7 @@ export function BearingsFeature() {
         <div className="lg:col-span-4 lg:col-start-9">
           <Eyebrow sheet="06 / 14" className="text-steel-500">Featured product</Eyebrow>
           <h2 id="bearings-title" className="mt-8">
-            <RevealLines className="display block text-[clamp(3rem,6.4vw,6.5rem)] text-abyss" lines={["Engine", "bearings."]} />
+            <RevealLines className="display block text-[clamp(2.75rem,5.2vw,5.5rem)] text-abyss" lines={["Engine", "bearings."]} />
           </h2>
           <FadeUp className="mt-8">
             <p className="text-[17px] leading-relaxed text-graphite/75">

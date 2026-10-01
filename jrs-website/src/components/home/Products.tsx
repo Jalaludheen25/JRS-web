@@ -60,7 +60,7 @@ export function Products() {
                         <Image src={current.image.src} alt={current.image.alt} fill sizes="40vw" className="object-cover mix-blend-multiply" />
                       </motion.div>
                     ) : (
-                      <ControllerSchematic />
+                      <Schematic slug={current.slug} />
                     )}
                   </motion.div>
                 </AnimatePresence>
@@ -137,7 +137,28 @@ function ProductRow({ p, i, active, onActivate }: { p: Product; i: number; activ
   );
 }
 
-/** No photograph exists for genset controllers yet; show a schematic line drawing rather than a misleading image. */
+/** No suitable photograph exists yet; show a schematic line drawing rather than a misleading image. */
+function Schematic({ slug }: { slug: string }) {
+  return slug === "avr" ? <AvrSchematic /> : <ControllerSchematic />;
+}
+
+function AvrSchematic() {
+  return (
+    <svg viewBox="0 0 400 500" className="absolute inset-0 size-full text-graphite/50" fill="none" stroke="currentColor" strokeWidth="1" aria-label="Schematic drawing of a generator automatic voltage regulator board" role="img">
+      <rect x="80" y="110" width="240" height="280" />
+      {Array.from({ length: 9 }, (_, i) => <path key={i} d={`M${92 + i * 24} 110v-34`} />)}
+      <path d="M80 76h240" opacity=".6" />
+      <rect x="100" y="340" width="200" height="30" />
+      {Array.from({ length: 8 }, (_, i) => <circle key={i} cx={115 + i * 24} cy="355" r="6" />)}
+      {[0, 1, 2].map((i) => <g key={i}><circle cx={130 + i * 70} cy="170" r="14" /><path d={`M${130 + i * 70} 158v12`} /></g>)}
+      <rect x="110" y="220" width="80" height="60" />
+      <rect x="215" y="220" width="75" height="90" opacity=".7" />
+      <text x="118" y="256" fontFamily="monospace" fontSize="14" fill="currentColor" stroke="none">AVR</text>
+      <path d="M350 110v280M344 110h12M344 390h12" opacity=".5" />
+    </svg>
+  );
+}
+
 function ControllerSchematic() {
   return (
     <svg viewBox="0 0 400 500" className="absolute inset-0 size-full text-graphite/50" fill="none" stroke="currentColor" strokeWidth="1" aria-label="Schematic drawing of a genset controller front panel" role="img">

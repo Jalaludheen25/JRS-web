@@ -43,7 +43,7 @@ export function Industries() {
               {String(i + 1).padStart(2, "0")} / {String(industries.length).padStart(2, "0")}
             </span>
             <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-              <h3 className="display text-[clamp(3rem,9vw,10rem)] text-white lg:col-span-8">{ind.title}</h3>
+              <h3 className="display text-[clamp(2.75rem,6.6vw,7.5rem)] text-white lg:col-span-8">{ind.title}</h3>
               <div className="lg:col-span-4">
                 <p className="max-w-sm text-[16px] leading-relaxed text-fog/85">{ind.body}</p>
                 <Link href={ind.href} className="label mt-6 inline-flex items-center gap-2 text-white after:absolute after:inset-0">

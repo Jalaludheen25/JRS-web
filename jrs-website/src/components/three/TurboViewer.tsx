@@ -2,35 +2,35 @@
 
 import dynamic from "next/dynamic";
 import { useInView, useReducedMotion, type MotionValue } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
 
 // three.js + R3F are only fetched when this section approaches the viewport on a capable device.
 const TurboWheel = dynamic(() => import("./TurboWheel"), { ssr: false, loading: () => null });
 
-function supportsWebGL() {
-  try {
-    const c = document.createElement("canvas");
-    return !!(c.getContext("webgl2") || c.getContext("webgl"));
-  } catch {
-    return false;
+let capableCache: boolean | undefined;
+function isCapable() {
+  if (capableCache === undefined) {
+    let webgl = false;
+    try {
+      const c = document.createElement("canvas");
+      webgl = !!(c.getContext("webgl2") || c.getContext("webgl"));
+    } catch {}
+    capableCache = webgl && window.matchMedia("(min-width: 768px)").matches;
   }
+  return capableCache;
 }
+const noopSubscribe = () => () => {};
 
 export function TurboViewer({ progress }: { progress?: MotionValue<number> }) {
   const ref = useRef<HTMLDivElement>(null);
   const near = useInView(ref, { margin: "400px 0px 400px 0px" });
   const visible = useInView(ref);
   const reduce = useReducedMotion();
-  const [capable, setCapable] = useState(false);
+  const capable = useSyncExternalStore(noopSubscribe, isCapable, () => false);
   const [mounted3d, setMounted3d] = useState(false);
   const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    setCapable(window.matchMedia("(min-width: 768px)").matches && supportsWebGL());
-  }, []);
-  useEffect(() => {
-    if (near && capable && !reduce) setMounted3d(true);
-  }, [near, capable, reduce]);
+  // Latch: once the canvas has mounted it stays mounted (frameloop pauses off-screen instead).
+  if (near && capable && !reduce && !mounted3d) setMounted3d(true);
 
   return (
     <div ref={ref} className="relative size-full">

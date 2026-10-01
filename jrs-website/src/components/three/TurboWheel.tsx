@@ -1,6 +1,6 @@
 "use client";
 
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, type RootState } from "@react-three/fiber";
 import type { MotionValue } from "motion/react";
 import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
@@ -10,7 +10,7 @@ import { RoomEnvironment } from "three/examples/jsm/environments/RoomEnvironment
 const hub = (t: number) => ({ r: 0.16 + 0.84 * Math.pow(t, 2.2), z: 0.92 * Math.pow(1 - t, 1.5) + 0.04 });
 const shroud = (t: number) => ({ r: 0.58 + 0.42 * Math.pow(t, 2.4), z: 1.0 - 0.8 * Math.pow(t, 1.2) });
 
-function bladeGeometry(base: number, tStart: number) {
+function bladeGeometry(base: number, tStart: number, thickness = 0) {
   const tSeg = 36;
   const sSeg = 8;
   const pos: number[] = [];
@@ -24,7 +24,7 @@ function bladeGeometry(base: number, tStart: number) {
       const r = h.r + (s0.r - h.r) * s;
       const z = h.z + (s0.z - h.z) * s;
       // Inducer wrap towards the inlet, backsweep towards the exit.
-      const theta = base - 1.1 * Math.pow(1 - t, 2) * (0.6 + 0.4 * s) - 0.35 * Math.pow(t, 3);
+      const theta = base + thickness / Math.max(r, 0.2) - 1.1 * Math.pow(1 - t, 2) * (0.6 + 0.4 * s) - 0.35 * Math.pow(t, 3);
       pos.push(r * Math.cos(theta), z, r * Math.sin(theta));
     }
   }
@@ -52,19 +52,13 @@ function hubGeometry() {
   return new THREE.LatheGeometry(pts, 96);
 }
 
-function Environment() {
-  const { gl, scene } = useThree();
-  useEffect(() => {
-    const pmrem = new THREE.PMREMGenerator(gl);
-    const env = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-    scene.environment = env;
-    return () => {
-      scene.environment = null;
-      env.dispose();
-      pmrem.dispose();
-    };
-  }, [gl, scene]);
-  return null;
+/** Studio-style reflections for the metal, generated procedurally (no HDR download). */
+function applyEnvironment({ gl, scene }: RootState) {
+  const pmrem = new THREE.PMREMGenerator(gl);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  scene.environmentIntensity = 0.55;
+  gl.toneMappingExposure = 0.95;
+  pmrem.dispose();
 }
 
 function Wheel({ progress }: { progress?: MotionValue<number> }) {
@@ -75,14 +69,15 @@ function Wheel({ progress }: { progress?: MotionValue<number> }) {
   const { blades, splitters, hubGeo } = useMemo(() => {
     const step = (Math.PI * 2) / BLADES;
     return {
-      blades: Array.from({ length: BLADES }, (_, i) => bladeGeometry(i * step, 0)),
-      splitters: Array.from({ length: BLADES }, (_, i) => bladeGeometry(i * step + step / 2, 0.38)),
+      // Each blade is two offset surfaces so it reads as a solid with thickness, not a sheet.
+      blades: Array.from({ length: BLADES }, (_, i) => [bladeGeometry(i * step, 0), bladeGeometry(i * step, 0, 0.022)]).flat(),
+      splitters: Array.from({ length: BLADES }, (_, i) => [bladeGeometry(i * step + step / 2, 0.38), bladeGeometry(i * step + step / 2, 0.38, 0.018)]).flat(),
       hubGeo: hubGeometry(),
     };
   }, []);
 
-  const bladeMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#d3d9e2", metalness: 1, roughness: 0.3, side: THREE.DoubleSide }), []);
-  const hubMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#9aa4b1", metalness: 1, roughness: 0.38 }), []);
+  const bladeMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#9ca6b3", metalness: 1, roughness: 0.28, side: THREE.DoubleSide }), []);
+  const hubMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#7d8794", metalness: 0.95, roughness: 0.42 }), []);
 
   useEffect(
     () => () => {
@@ -104,7 +99,7 @@ function Wheel({ progress }: { progress?: MotionValue<number> }) {
   });
 
   return (
-    <group ref={group} position={[0, -0.42, 0]}>
+    <group ref={group} position={[0, -0.32, 0]}>
       <group ref={spin}>
         <mesh geometry={hubGeo} material={hubMat} />
         {blades.map((g, i) => (
@@ -129,12 +124,14 @@ export default function TurboWheel({ progress, active, onReady }: { progress?: M
     <Canvas
       dpr={[1, 1.75]}
       frameloop={active ? "always" : "never"}
-      camera={{ position: [0, 0.35, 3.2], fov: 32 }}
+      camera={{ position: [0, 0, 5.2], fov: 30 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-      onCreated={() => onReady?.()}
+      onCreated={(state) => {
+        applyEnvironment(state);
+        onReady?.();
+      }}
       aria-hidden
     >
-      <Environment />
       <ambientLight intensity={0.15} />
       <directionalLight position={[3, 4, 2]} intensity={1.4} />
       <directionalLight position={[-3, -1, -3]} intensity={2.2} color="#7dd8f5" />

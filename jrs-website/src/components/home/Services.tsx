@@ -94,10 +94,10 @@ export function Services() {
           </div>
         </div>
 
-        {/* Mobile / tablet: stacked cards */}
-        <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:hidden">
+        {/* Mobile / tablet: swipeable cards */}
+        <ol className="-mx-[var(--gutter)] mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--gutter)] pb-2 [scrollbar-width:none] lg:hidden">
           {services.map((sv) => (
-            <li key={sv.href}>
+            <li key={sv.href} className="w-[78vw] shrink-0 snap-start sm:w-[44vw]">
               <Link href={sv.href} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-abyss">
                   <Image src={sv.image.src} alt={sv.image.alt} fill sizes="(min-width:640px) 50vw, 100vw" className="object-cover grayscale" />

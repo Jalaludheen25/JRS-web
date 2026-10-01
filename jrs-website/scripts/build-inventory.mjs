@@ -1,3 +1,4 @@
+// Run from the repository root (E:/development/JRS): node jrs-website/scripts/build-inventory.mjs
 // Builds docs/01-url-inventory.md from the crawl of the live WordPress site.
 import fs from 'fs';
 const inv = JSON.parse(fs.readFileSync('docs/source-content/live-site-inventory.json', 'utf8'));

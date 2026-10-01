@@ -44,11 +44,11 @@ export function Hero() {
         className="shell relative z-10 flex h-full flex-col justify-end pb-[clamp(28px,6vh,64px)] pt-28"
         style={reduce ? undefined : { y: copyY, opacity: copyOpacity }}
       >
-        <div className="grid items-end gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-8">
+        <div className="relative">
+          <div>
             <h1 id="hero-title">
               <motion.span
-                className="label mb-6 block text-steel-300"
+                className="label mb-6 block text-fog/90"
                 initial={reduce ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
@@ -58,14 +58,14 @@ export function Hero() {
               <RevealLines
                 immediate
                 delay={0.15}
-                className="display block text-[clamp(3.6rem,13.5vw,13.5rem)] text-white"
-                lines={["Engineered", <>for <span className="accent normal-case text-steel-300">uptime.</span></>]}
+                className="display block text-[clamp(3.4rem,13vw,13rem)] text-white"
+                lines={["Engineered", "for", <span key="u" className="accent text-steel-300">uptime.</span>]}
               />
             </h1>
           </div>
 
           <motion.div
-            className="lg:col-span-4 lg:pb-4"
+            className="mt-10 lg:absolute lg:bottom-3 lg:right-0 lg:mt-0 lg:w-[min(32vw,440px)]"
             initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease, delay: 0.7 }}

@@ -101,7 +101,6 @@ export const products: Product[] = [
     tags: ["Shunt · AREP · PMG", "Brush & brushless"],
     summary:
       "More than 40 types of AVR supplied across self-excited, separately excited, AREP, AUX, harmonic and PMG excitation systems.",
-    image: { src: "/images/products/automatic-voltage-regulators.jpg", alt: "Generator automatic voltage regulator units" },
   },
   {
     slug: "genset-controllers",
@@ -161,16 +160,16 @@ export const capabilities: Capability[] = [
     title: "Power Generation",
     body: "Automatic voltage regulators, genset controllers and AMF modules, with the engine parts that keep generator sets online.",
     href: "/power-generation/",
-    image: { src: "/images/products/automatic-voltage-regulators.jpg", alt: "Generator automatic voltage regulators" },
-    surface: "plate",
+    image: { src: "/images/scenes/electrical-wiring-graded.jpg", alt: "Generator electrical systems and wiring" },
+    surface: "dark",
   },
   {
     index: "06",
     title: "Technical Services",
     body: "Electrical and instrumentation, governors, starter motors, alternators and reconditioning of critical engine parts.",
     href: "/services/",
-    image: { src: "/images/scenes/electrical-wiring-graded.jpg", alt: "Technician working on engine wiring and instrumentation" },
-    surface: "dark",
+    image: { src: "/images/products/cylinder-heads-components.jpg", alt: "Reconditioned valves, valve springs and seats" },
+    surface: "plate",
   },
 ];
 

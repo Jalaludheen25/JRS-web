@@ -14,8 +14,8 @@ export function Statement() {
             lines={[
               <span key="a" className="text-white">Quality</span>,
               <span key="b" className="block pl-[8vw] text-white">spares.</span>,
-              <span key="c" className="outline-type text-steel-300">Reliable</span>,
-              <span key="d" className="outline-type block pl-[16vw] text-steel-300">repairs.</span>,
+              <span key="c" className="outline-type tracking-[-0.03em] text-steel-300">Reliable</span>,
+              <span key="d" className="outline-type block pl-[16vw] tracking-[-0.03em] text-steel-300">repairs.</span>,
             ]}
           />
         </h2>
