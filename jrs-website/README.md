@@ -9,6 +9,7 @@ Rebuild of https://jrs-me.com. Planning documents live in [`../docs`](../docs):
 | [03 — Design system](../docs/03-design-system.md) | "Datum" concept, tokens, type, motion, homepage narrative, imagery gaps |
 | [04 — Fact register](../docs/04-fact-register.md) | Every claim the site may make, with its source; list of things not to claim |
 | [05 — Image credits](../docs/05-image-credits.md) | Source and licence of every image; stock photos are CC0 |
+| [06 — Hero film](../docs/06-hero-film.md) | Homepage video: sources and licences, encodes, loading strategy, readability approach |
 | [`source-content/`](../docs/source-content) | Plain text of every live page, kept as the content source of truth |
 
 ## Stack
@@ -54,6 +55,11 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 | `scripts/extract-content.mjs` | Extract body content from the crawled live pages |
 | `scripts/build-pages.mjs` | Clean extracted content and localise images |
 | `scripts/check-site.mjs` | Crawl the running site: status, H1s, links, thin pages |
+| `scripts/search-commons-video.mjs` | Search Wikimedia Commons for freely licensed video; contact sheets of poster frames |
+| `scripts/fetch-hero-footage.mjs` | Download the hero source clips (CC0 / public domain only) into `docs/source-video/` |
+| `scripts/footage-sheets.mjs`, `scripts/footage-windows.mjs` | Frame sheets for choosing in/out points |
+| `scripts/build-hero-video.mjs` | Cut, grade and loop the hero film; AV1 + H.264 encodes, posters, scene timings, docs/06 (`--preview`, `--doc`) |
+| `scripts/test-hero-video.mjs` | Browser test of the hero film: source per device, playback, pause control, reduced motion |
 | `scripts/extract-pdf-images.mjs` | Extract embedded photos (with transparency) from the brochure PDFs |
 | `scripts/build-image-library.mjs` | Build `public/images/brochure/` and `public/images/stock/`, graded variants and `docs/05-image-credits.md` |
 | `scripts/search-openverse.mjs` | Search CC0 / public-domain photos (Wikimedia, StockSnap) and build review contact sheets |
