@@ -67,7 +67,7 @@ export function Footer() {
           </div>
         </div>
 
-        <p aria-hidden className="display mt-24 select-none text-[clamp(4rem,19vw,20rem)] text-white/[0.04]">
+        <p aria-hidden className="display mt-24 select-none whitespace-nowrap text-[clamp(3rem,10.5vw,12rem)] text-white/[0.04]">
           Engineered for uptime
         </p>
 

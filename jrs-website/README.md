@@ -22,11 +22,13 @@ npm run build && npx next start -p 3100
 node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 using local Chrome
 ```
 
-## Status: homepage concept (phase 1)
+## Status
 
-Built: homepage (14 sections), `/contact/`, global nav/footer/mobile dock, 404, `robots.txt`, `sitemap.xml`, Organization + LocalBusiness JSON-LD, the full 301 map, OG image and icons.
+**All pages are built: 52 pages in the sitemap.** That is the homepage, hubs (about, products, services, industries, brands, insights, contact), 34 legacy URLs at their original addresses, 6 new service pages, 2 new industry pages and 3 category archives. All of them are statically prerendered.
 
-Not built yet: product, service, brand and industry templates, hubs and posts. Homepage links to those URLs return 404 until phase 2 (they are listed in IA §Sitemap). **Do not deploy over the live site until every URL in docs/01 §5 resolves.**
+- **Legacy pages** keep their live-site copy word for word. `scripts/extract-content.mjs` pulls headings, paragraphs and lists from the crawled HTML (`../docs/source-html/`). `scripts/build-pages.mjs` cleans that into `src/content/legacy-pages.json` and downloads the post images to `public/images/legacy/`. Titles and descriptions are in `src/lib/pages.ts`.
+- **New pages** (genset controllers, six services, Industrial, Offshore) are written in `src/content/authored.ts` from the company and product profiles only.
+- **QA:** `node scripts/check-site.mjs` crawls every sitemap URL, internal link and legacy URL, then reports status, H1 count and word count. Last run: 52 pages OK, 0 broken links, 0 broken images, one H1 per page.
 
 ## Decisions needing JRS input
 
@@ -45,4 +47,8 @@ Not built yet: product, service, brand and industry templates, hubs and posts. H
 | `scripts/make-logos.mjs` | Derive transparent logo variants |
 | `scripts/make-og.mjs` | Default Open Graph image |
 | `scripts/build-inventory.mjs` | Regenerate the URL inventory table from the crawl |
-| `scripts/screenshot.mjs` | Section-by-section screenshots for visual QA |
+| `scripts/screenshot.mjs` | Section-by-section homepage screenshots for visual QA |
+| `scripts/screenshot-pages.mjs` | Full-page screenshots of any routes |
+| `scripts/extract-content.mjs` | Extract body content from the crawled live pages |
+| `scripts/build-pages.mjs` | Clean extracted content and localise images |
+| `scripts/check-site.mjs` | Crawl the running site: status, H1s, links, thin pages |

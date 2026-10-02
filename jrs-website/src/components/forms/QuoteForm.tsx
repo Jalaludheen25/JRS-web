@@ -7,7 +7,7 @@ import { products, services } from "@/lib/content";
 
 const initial: QuoteState = { status: "idle" };
 
-export function QuoteForm({ tone = "dark" }: { tone?: "dark" | "blue" }) {
+export function QuoteForm({ tone = "dark", defaultTopic = "" }: { tone?: "dark" | "blue"; defaultTopic?: string }) {
   const [state, action, pending] = useActionState(submitQuote, initial);
   const uid = useId();
   const err = state.fieldErrors ?? {};
@@ -61,7 +61,7 @@ export function QuoteForm({ tone = "dark" }: { tone?: "dark" | "blue" }) {
         <select
           id={`${uid}-topic`}
           name="topic"
-          defaultValue=""
+          defaultValue={defaultTopic}
           className={`${field} mt-1 cursor-pointer appearance-none pt-3 [&>*]:bg-navy-900`}
         >
           <option value="">Select a product or service</option>

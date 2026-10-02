@@ -1,0 +1,275 @@
+[
+ {
+  "name": "company-profile-p01-199",
+  "page": 1,
+  "w": 2000,
+  "h": 1332,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p02-145",
+  "page": 2,
+  "w": 1024,
+  "h": 575,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p02-23",
+  "page": 2,
+  "w": 2000,
+  "h": 1333,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p04-64",
+  "page": 4,
+  "w": 520,
+  "h": 341,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p04-65",
+  "page": 4,
+  "w": 459,
+  "h": 377,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p05-76",
+  "page": 5,
+  "w": 691,
+  "h": 425,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p05-77",
+  "page": 5,
+  "w": 509,
+  "h": 415,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p05-78",
+  "page": 5,
+  "w": 579,
+  "h": 396,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p06-89",
+  "page": 6,
+  "w": 712,
+  "h": 393,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p06-90",
+  "page": 6,
+  "w": 573,
+  "h": 381,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p06-91",
+  "page": 6,
+  "w": 672,
+  "h": 415,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p06-92",
+  "page": 6,
+  "w": 596,
+  "h": 387,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p07-106",
+  "page": 7,
+  "w": 576,
+  "h": 428,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p07-108",
+  "page": 7,
+  "w": 666,
+  "h": 666,
+  "alpha": true
+ },
+ {
+  "name": "company-profile-p07-110",
+  "page": 7,
+  "w": 635,
+  "h": 635,
+  "alpha": true
+ },
+ {
+  "name": "company-profile-p07-112",
+  "page": 7,
+  "w": 508,
+  "h": 524,
+  "alpha": true
+ },
+ {
+  "name": "company-profile-p08-122",
+  "page": 8,
+  "w": 643,
+  "h": 389,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p08-124",
+  "page": 8,
+  "w": 949,
+  "h": 392,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p08-125",
+  "page": 8,
+  "w": 955,
+  "h": 388,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p08-126",
+  "page": 8,
+  "w": 947,
+  "h": 389,
+  "alpha": false
+ },
+ {
+  "name": "company-profile-p09-140",
+  "page": 9,
+  "w": 2560,
+  "h": 1600,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p01-150",
+  "page": 1,
+  "w": 2500,
+  "h": 1875,
+  "alpha": true
+ },
+ {
+  "name": "product-profile-p03-19",
+  "page": 3,
+  "w": 564,
+  "h": 554,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p03-20",
+  "page": 3,
+  "w": 690,
+  "h": 720,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p04-25",
+  "page": 4,
+  "w": 596,
+  "h": 524,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p04-26",
+  "page": 4,
+  "w": 620,
+  "h": 527,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p05-37",
+  "page": 5,
+  "w": 512,
+  "h": 431,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p05-38",
+  "page": 5,
+  "w": 612,
+  "h": 393,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p06-49",
+  "page": 6,
+  "w": 653,
+  "h": 517,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p06-50",
+  "page": 6,
+  "w": 504,
+  "h": 482,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p07-56",
+  "page": 7,
+  "w": 1080,
+  "h": 1080,
+  "alpha": true
+ },
+ {
+  "name": "product-profile-p07-58",
+  "page": 7,
+  "w": 1080,
+  "h": 1080,
+  "alpha": true
+ },
+ {
+  "name": "product-profile-p08-63",
+  "page": 8,
+  "w": 459,
+  "h": 377,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p08-64",
+  "page": 8,
+  "w": 523,
+  "h": 467,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p09-69",
+  "page": 9,
+  "w": 1280,
+  "h": 768,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p09-71",
+  "page": 9,
+  "w": 1356,
+  "h": 1400,
+  "alpha": true
+ },
+ {
+  "name": "product-profile-p10-83",
+  "page": 10,
+  "w": 800,
+  "h": 450,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p11-88",
+  "page": 11,
+  "w": 700,
+  "h": 429,
+  "alpha": false
+ },
+ {
+  "name": "product-profile-p11-89",
+  "page": 11,
+  "w": 1200,
+  "h": 675,
+  "alpha": false
+ }
+]

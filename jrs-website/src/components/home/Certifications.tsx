@@ -2,13 +2,13 @@ import { FadeUp, RevealLines } from "@/components/ui/RevealLines";
 import { Eyebrow } from "@/components/ui/primitives";
 import { certifications } from "@/lib/content";
 
-export function Certifications() {
+export function Certifications({ sheet = "12 / 14" }: { sheet?: string } = {}) {
   return (
     <section aria-labelledby="certs-title" className="section-y relative bg-abyss">
       <div className="shell">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <Eyebrow sheet="12 / 14">Accredited &amp; certified</Eyebrow>
+            <Eyebrow sheet={sheet || undefined}>Accredited &amp; certified</Eyebrow>
             <h2 id="certs-title" className="mt-8">
               <RevealLines className="display block text-[clamp(3rem,7.5vw,8rem)] text-white" lines={["Certified", <span key="c" className="accent text-steel-300">for confidence.</span>]} />
             </h2>

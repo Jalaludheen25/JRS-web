@@ -1,0 +1,268 @@
+[
+ {
+  "name": "company-profile-p01-199",
+  "page": 1,
+  "w": 2000,
+  "h": 1332,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p02-23",
+  "page": 2,
+  "w": 2000,
+  "h": 1333,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p04-64",
+  "page": 4,
+  "w": 520,
+  "h": 341,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p04-65",
+  "page": 4,
+  "w": 459,
+  "h": 377,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p05-76",
+  "page": 5,
+  "w": 691,
+  "h": 425,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p05-77",
+  "page": 5,
+  "w": 509,
+  "h": 415,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p05-78",
+  "page": 5,
+  "w": 579,
+  "h": 396,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p06-89",
+  "page": 6,
+  "w": 712,
+  "h": 393,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p06-90",
+  "page": 6,
+  "w": 573,
+  "h": 381,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p06-91",
+  "page": 6,
+  "w": 672,
+  "h": 415,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p06-92",
+  "page": 6,
+  "w": 596,
+  "h": 387,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p07-106",
+  "page": 7,
+  "w": 576,
+  "h": 428,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p07-108",
+  "page": 7,
+  "w": 666,
+  "h": 666,
+  "smask": true
+ },
+ {
+  "name": "company-profile-p07-110",
+  "page": 7,
+  "w": 635,
+  "h": 635,
+  "smask": true
+ },
+ {
+  "name": "company-profile-p07-112",
+  "page": 7,
+  "w": 508,
+  "h": 524,
+  "smask": true
+ },
+ {
+  "name": "company-profile-p08-122",
+  "page": 8,
+  "w": 643,
+  "h": 389,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p08-124",
+  "page": 8,
+  "w": 949,
+  "h": 392,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p08-125",
+  "page": 8,
+  "w": 955,
+  "h": 388,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p08-126",
+  "page": 8,
+  "w": 947,
+  "h": 389,
+  "smask": false
+ },
+ {
+  "name": "company-profile-p09-140",
+  "page": 9,
+  "w": 2560,
+  "h": 1600,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p01-150",
+  "page": 1,
+  "w": 2500,
+  "h": 1875,
+  "smask": true
+ },
+ {
+  "name": "product-profile-p03-19",
+  "page": 3,
+  "w": 564,
+  "h": 554,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p03-20",
+  "page": 3,
+  "w": 690,
+  "h": 720,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p04-25",
+  "page": 4,
+  "w": 596,
+  "h": 524,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p04-26",
+  "page": 4,
+  "w": 620,
+  "h": 527,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p05-37",
+  "page": 5,
+  "w": 512,
+  "h": 431,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p05-38",
+  "page": 5,
+  "w": 612,
+  "h": 393,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p06-49",
+  "page": 6,
+  "w": 653,
+  "h": 517,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p06-50",
+  "page": 6,
+  "w": 504,
+  "h": 482,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p07-56",
+  "page": 7,
+  "w": 1080,
+  "h": 1080,
+  "smask": true
+ },
+ {
+  "name": "product-profile-p07-58",
+  "page": 7,
+  "w": 1080,
+  "h": 1080,
+  "smask": true
+ },
+ {
+  "name": "product-profile-p08-63",
+  "page": 8,
+  "w": 459,
+  "h": 377,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p08-64",
+  "page": 8,
+  "w": 523,
+  "h": 467,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p09-69",
+  "page": 9,
+  "w": 1280,
+  "h": 768,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p09-71",
+  "page": 9,
+  "w": 1356,
+  "h": 1400,
+  "smask": true
+ },
+ {
+  "name": "product-profile-p10-83",
+  "page": 10,
+  "w": 800,
+  "h": 450,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p11-88",
+  "page": 11,
+  "w": 700,
+  "h": 429,
+  "smask": false
+ },
+ {
+  "name": "product-profile-p11-89",
+  "page": 11,
+  "w": 1200,
+  "h": 675,
+  "smask": false
+ }
+]

@@ -4,7 +4,7 @@ import { RevealLines } from "@/components/ui/RevealLines";
 import { Eyebrow } from "@/components/ui/primitives";
 import { site } from "@/lib/site";
 
-export function ContactCTA() {
+export function ContactCTA({ sheet = "14 / 14" }: { sheet?: string } = {}) {
   const actions = [
     { href: site.phone.tel, label: "Call JRS", value: site.phone.display, icon: Phone, external: false },
     { href: site.whatsapp, label: "WhatsApp JRS", value: "Message us on WhatsApp", icon: MessageCircle, external: true },
@@ -16,7 +16,7 @@ export function ContactCTA() {
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:96px_96px]" />
       <div className="shell relative grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-6">
-          <Eyebrow sheet="14 / 14" className="text-white/75">Request a quote</Eyebrow>
+          <Eyebrow sheet={sheet || undefined} className="text-white/75">Request a quote</Eyebrow>
           <h2 id="contact-title" className="mt-8">
             <RevealLines className="display block text-[clamp(3rem,7.2vw,7.75rem)] text-white" lines={["Let’s keep", "your operations", <span key="m" className="accent">moving.</span>]} />
           </h2>
