@@ -220,7 +220,8 @@ export function HeroMedia({ alt }: { alt: string }) {
   );
 }
 
-/** Scene caption, loop progress and pause control for the hero's bottom bar. Renders nothing until the reel plays. */
+/** Film control pill: pause/play, scene caption and loop progress on a solid (opaque) capsule, so it reads over any
+ * frame without a mask on the film. Renders nothing until the reel plays. */
 export function ReelControls({ className }: { className?: string }) {
   const reelState = useReel();
   if (!reelState?.ready) return null;
@@ -228,7 +229,7 @@ export function ReelControls({ className }: { className?: string }) {
   const caption = reel.scenes[scene]?.caption ?? "";
   return (
     <motion.div
-      className={`flex items-center gap-4 ${className ?? ""}`}
+      className={`flex items-center gap-4 rounded-full bg-abyss py-1.5 pl-1.5 pr-6 [text-shadow:none] ${className ?? ""}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}

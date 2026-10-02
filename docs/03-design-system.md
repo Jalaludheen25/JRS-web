@@ -96,7 +96,7 @@ All fonts are self-hosted via `next/font` (no layout shift, no third-party reque
 
 | Sheet | Section | Surface | Signature moment |
 |---|---|---|---|
-| 01 | Hero: **ENGINEERED FOR UPTIME.** | Full-bleed cinematic film (26 s loop: sea → port → engine → machining → fabrication), unmasked | Headline masks in; scene caption + yellow progress line + pause control in the bottom bar; on scroll the film contracts into a framed "viewport". See [06-hero-film.md](06-hero-film.md) |
+| 01 | Hero: **ENGINEERED FOR UPTIME.** | Full-bleed cinematic film (26 s loop: sea → port → engine → machining → fabrication) in bright natural colour, with nothing over it | Headline masks in; film-control pill (pause, scene caption, yellow progress line); on scroll the film contracts into a framed "viewport". See [06-hero-film.md](06-hero-film.md) |
 | 02 | Brand statement: **QUALITY SPARES. RELIABLE REPAIRS.** | Abyss | Huge type, lines reveal one at a time, second line in outline |
 | 03 | About JRS | Split: image / copy | Clip reveal image, mission excerpt, "Discover JRS" |
 | 04 | Core capabilities ×6 | Abyss, pinned horizontal track | Oversized index numbers, one panel per capability |

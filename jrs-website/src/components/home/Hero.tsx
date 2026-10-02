@@ -36,12 +36,9 @@ export function Hero() {
             <HeroMedia alt={images.homeHero.alt} />
           </motion.div>
         </motion.div>
-        {/* No overlay mask: the film stays fully visible. Only a light gradient at the bottom, which settles the
-            bottom bar and eases the film into the next section. Text legibility comes from .text-legible shadows. */}
-        <div className="absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-abyss/75 via-abyss/25 to-transparent" />
+        {/* Nothing sits over the film: no overlay, gradient, grain or grid. Legibility comes from text shadows
+            (.text-legible) and solid, opaque controls. */}
       </motion.div>
-
-      <TechnicalGrid />
 
       <motion.div
         className="shell text-legible relative z-10 flex h-full flex-col justify-end pb-[clamp(28px,6vh,64px)] pt-28"
@@ -51,7 +48,7 @@ export function Hero() {
           <div>
             <h1 id="hero-title">
               <motion.span
-                className="label mb-6 inline-block bg-abyss/40 px-3 py-1.5 text-white [text-shadow:none] backdrop-blur-md"
+                className="label text-legible-strong mb-6 block text-[12px] font-semibold text-white"
                 initial={reduce ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
@@ -78,67 +75,23 @@ export function Hero() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <MagneticButton href={quoteHref}>Request a quote</MagneticButton>
-              {/* Frosted backing keeps the outline button legible over bright footage without a full-frame overlay. */}
-              <MagneticButton href="#capabilities" variant="ghost" className="bg-abyss/30 backdrop-blur-md">
+              {/* Solid (opaque) secondary button: legible over any frame without putting a mask on the film. */}
+              <MagneticButton href="#capabilities" variant="light">
                 Explore solutions
               </MagneticButton>
             </div>
             <a href={site.phone.tel} className="label text-legible-strong mt-7 inline-flex items-center gap-2 text-white hover:text-accent">
               <Phone className="size-3.5" aria-hidden /> {site.phone.display}
             </a>
-            <ReelControls className="mt-8 border-t border-white/15 pt-5 md:hidden" />
+            <ReelControls className="mt-8 md:hidden" />
           </motion.div>
         </div>
 
-        <div className="mt-10 hidden items-center justify-between border-t border-white/15 pt-5 text-steel-300 md:flex">
-          <p className="label hidden tabular-nums lg:block">01 / 14 — JRS Mechanical Equipment</p>
-          <p className="label hidden tabular-nums lg:block">{site.geo.label}</p>
-          <ReelControls className="w-[22rem]" />
-          <p className="label flex items-center gap-3">
-            Scroll
-            <span aria-hidden className="relative block h-8 w-px overflow-hidden bg-white/15">
-              <span className="animate-scroll-cue absolute inset-0 bg-accent" />
-            </span>
-          </p>
+        <div className="mt-10 hidden justify-end md:flex">
+          <ReelControls className="w-[24rem]" />
         </div>
       </motion.div>
     </section>
     </HeroReel>
-  );
-}
-
-/** Quiet coordinate grid: column rules, crosshairs and a slow scan line. Decorative. */
-function TechnicalGrid() {
-  const reduce = useReducedMotion();
-  const cols = [1, 2, 3, 4, 5];
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 z-[1]">
-      <div className="shell relative h-full">
-        {cols.map((c, i) => (
-          <motion.span
-            key={c}
-            className="absolute top-0 bottom-0 w-px origin-top bg-white/[0.07]"
-            style={{ left: `${(c / 6) * 100}%` }}
-            initial={reduce ? false : { scaleY: 0 }}
-            animate={{ scaleY: 1 }}
-            transition={{ duration: 1.6, ease, delay: 0.1 + i * 0.08 }}
-          />
-        ))}
-        {[22, 64].map((top) =>
-          cols.map((c) => (
-            <span key={`${top}-${c}`} className={`absolute -translate-x-1/2 -translate-y-1/2 ${c === 4 && top === 64 ? "text-accent" : "text-white/30"}`} style={{ left: `${(c / 6) * 100}%`, top: `${top}%` }}>
-              <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" strokeWidth="1">
-                <path d="M5.5 0v11M0 5.5h11" />
-              </svg>
-            </span>
-          )),
-        )}
-        <span className="label text-legible absolute right-[var(--gutter)] top-28 hidden text-right text-white/60 md:block">
-          Sheet 01
-          <br />
-          Datum A
-        </span>
-      </div>
-    </div>
   );
 }
