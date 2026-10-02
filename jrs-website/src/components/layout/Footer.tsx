@@ -52,7 +52,10 @@ export function Footer() {
           <div className="grid gap-12 sm:grid-cols-3 lg:col-span-7 lg:col-start-6">
           {cols.map((col) => (
             <nav key={col.title} aria-label={`Footer ${col.title}`}>
-              <p className="label text-steel-500">{col.title}</p>
+              <p className="label flex items-center gap-2 text-steel-500">
+                <span aria-hidden className="size-1.5 bg-accent" />
+                {col.title}
+              </p>
               <ul className="mt-6 space-y-2.5">
                 {col.links.map((l) => (
                   <li key={l.href + l.label}>
@@ -67,13 +70,13 @@ export function Footer() {
           </div>
         </div>
 
-        <p aria-hidden className="display mt-24 select-none whitespace-nowrap text-[clamp(3rem,10.5vw,12rem)] text-white/[0.04]">
+        <p aria-hidden className="display mt-24 select-none whitespace-nowrap text-[clamp(2rem,7.4vw,8.75rem)] text-white/[0.04]">
           Engineered for uptime
         </p>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-8 text-steel-500 md:flex-row md:items-center md:justify-between">
           <p className="label">© {year} {site.legalName}</p>
-          <p className="label tabular-nums">{site.geo.label} — Abu Dhabi, UAE</p>
+          <p className="label tabular-nums"><span className="text-accent">{site.geo.label}</span> — Abu Dhabi, UAE</p>
         </div>
       </div>
     </footer>

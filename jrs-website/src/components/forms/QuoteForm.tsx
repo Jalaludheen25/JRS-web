@@ -14,7 +14,7 @@ export function QuoteForm({ tone = "dark", defaultTopic = "" }: { tone?: "dark" 
 
   const field =
     "peer w-full border-0 border-b bg-transparent px-0 pb-3 pt-6 text-[16px] text-white placeholder-transparent transition-colors focus:outline-none focus:ring-0 " +
-    (tone === "blue" ? "border-white/35 focus:border-white" : "border-white/20 focus:border-marine-bright");
+    (tone === "blue" ? "border-white/35 focus:border-accent" : "border-white/20 focus:border-accent");
   const label =
     "label pointer-events-none absolute left-0 top-6 origin-left text-white/60 transition-all duration-300 peer-focus:top-0 peer-focus:scale-90 peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:scale-90";
 
@@ -107,13 +107,13 @@ export function QuoteForm({ tone = "dark", defaultTopic = "" }: { tone?: "dark" 
       </div>
 
       <div className="flex flex-col gap-5 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
-        <p id={`${uid}-status`} role="status" aria-live="polite" className={`text-[14px] ${state.status === "success" ? "text-signal" : "text-red-200"}`}>
+        <p id={`${uid}-status`} role="status" aria-live="polite" className={`text-[14px] ${state.status === "success" ? "text-accent" : "text-red-200"}`}>
           {state.message}
         </p>
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex h-14 items-center justify-center gap-3 rounded-full bg-white px-8 text-[13px] font-semibold uppercase tracking-[0.1em] text-abyss transition-colors hover:bg-plate disabled:opacity-60"
+          className="group inline-flex h-14 items-center justify-center gap-3 rounded-full bg-accent px-8 text-[13px] font-semibold uppercase tracking-[0.1em] text-abyss transition-colors hover:bg-accent-bright disabled:opacity-60"
         >
           {pending ? <Loader2 className="size-4 animate-spin" aria-hidden /> : null}
           Send request

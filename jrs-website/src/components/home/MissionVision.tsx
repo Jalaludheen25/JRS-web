@@ -12,7 +12,7 @@ export function MissionVision({ sheet = "13 / 14" }: { sheet?: string } = {}) {
 
         <div className="mt-[clamp(48px,7vw,112px)] grid gap-16 lg:grid-cols-12 lg:gap-6">
           <article className="lg:col-span-6">
-            <p className="accent text-[clamp(1.5rem,2.4vw,2.25rem)] text-steel-300">Our mission</p>
+            <p className="accent text-[clamp(1.5rem,2.4vw,2.25rem)] text-accent">Our mission</p>
             <RevealLines
               className="mt-6 block text-[clamp(1.75rem,3.1vw,3rem)] font-medium leading-[1.12] tracking-[-0.03em] text-white"
               lines={[mission]}
@@ -23,7 +23,7 @@ export function MissionVision({ sheet = "13 / 14" }: { sheet?: string } = {}) {
           </article>
 
           <article className="lg:col-span-5 lg:col-start-8 lg:pt-[18vh]">
-            <p className="accent text-[clamp(1.5rem,2.4vw,2.25rem)] text-steel-300">Our vision</p>
+            <p className="accent text-[clamp(1.5rem,2.4vw,2.25rem)] text-accent">Our vision</p>
             <RevealLines
               className="mt-6 block text-[clamp(1.75rem,3.1vw,3rem)] font-medium leading-[1.12] tracking-[-0.03em] text-white"
               lines={[vision]}

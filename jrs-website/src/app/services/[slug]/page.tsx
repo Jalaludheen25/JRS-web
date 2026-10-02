@@ -71,7 +71,7 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
         title={content.h1}
         lead={content.lead}
         crumbs={[{ name: "Services", path: "/services/" }, { name: service.title, path: `/services/${slug}/` }]}
-        image={{ ...service.image, fit: "cover" }}
+        image={service.image}
       />
       <section className="section-y bg-abyss">
         <div className="shell">

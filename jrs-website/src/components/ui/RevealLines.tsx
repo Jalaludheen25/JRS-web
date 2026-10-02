@@ -72,3 +72,19 @@ export function DrawLine({ className, dark, delay = 0 }: { className?: string; d
     />
   );
 }
+
+/** Yellow highlighter stroke that draws in behind a phrase once it scrolls into view (light surfaces). */
+export function Mark({ children, delay = 0.55 }: { children: ReactNode; delay?: number }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.span
+      className="mark"
+      initial={reduce ? false : { backgroundSize: "0% 100%" }}
+      whileInView={{ backgroundSize: "100% 100%" }}
+      viewport={{ once: true, margin: "0px 0px -15% 0px" }}
+      transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay }}
+    >
+      {children}
+    </motion.span>
+  );
+}

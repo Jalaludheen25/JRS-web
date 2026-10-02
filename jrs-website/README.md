@@ -8,6 +8,7 @@ Rebuild of https://jrs-me.com. Planning documents live in [`../docs`](../docs):
 | [02 — Information architecture](../docs/02-information-architecture.md) | Sitemap, navigation, templates, internal-linking rules |
 | [03 — Design system](../docs/03-design-system.md) | "Datum" concept, tokens, type, motion, homepage narrative, imagery gaps |
 | [04 — Fact register](../docs/04-fact-register.md) | Every claim the site may make, with its source; list of things not to claim |
+| [05 — Image credits](../docs/05-image-credits.md) | Source and licence of every image; stock photos are CC0 |
 | [`source-content/`](../docs/source-content) | Plain text of every live page, kept as the content source of truth |
 
 ## Stack
@@ -28,6 +29,7 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 
 - **Legacy pages** keep their live-site copy word for word. `scripts/extract-content.mjs` pulls headings, paragraphs and lists from the crawled HTML (`../docs/source-html/`). `scripts/build-pages.mjs` cleans that into `src/content/legacy-pages.json` and downloads the post images to `public/images/legacy/`. Titles and descriptions are in `src/lib/pages.ts`.
 - **New pages** (genset controllers, six services, Industrial, Offshore) are written in `src/content/authored.ts` from the company and product profiles only.
+- **Images:** every page hero and homepage section has its own picture, assigned in `src/lib/images.ts`. A card shows the image of the page it links to. `node scripts/audit-images.mjs` enforces this. Sources: the live site, the brochure PDFs and 19 CC0 photos from Wikimedia Commons (docs/05).
 - **QA:** `node scripts/check-site.mjs` crawls every sitemap URL, internal link and legacy URL, then reports status, H1 count and word count. Last run: 52 pages OK, 0 broken links, 0 broken images, one H1 per page.
 
 ## Decisions needing JRS input
@@ -52,3 +54,8 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 | `scripts/extract-content.mjs` | Extract body content from the crawled live pages |
 | `scripts/build-pages.mjs` | Clean extracted content and localise images |
 | `scripts/check-site.mjs` | Crawl the running site: status, H1s, links, thin pages |
+| `scripts/extract-pdf-images.mjs` | Extract embedded photos (with transparency) from the brochure PDFs |
+| `scripts/build-image-library.mjs` | Build `public/images/brochure/` and `public/images/stock/`, graded variants and `docs/05-image-credits.md` |
+| `scripts/search-openverse.mjs` | Search CC0 / public-domain photos (Wikimedia, StockSnap) and build review contact sheets |
+| `scripts/image-dupes.mjs` | Find visually identical images saved under different file names |
+| `scripts/audit-images.mjs` | Browser audit of the running site: every page/section has its own image; card thumbnails match their target page |

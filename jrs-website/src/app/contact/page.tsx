@@ -53,7 +53,7 @@ export default function ContactPage() {
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="group flex h-full flex-col gap-6 p-6 transition-colors hover:bg-white/[0.04]"
               >
-                <Icon className="size-5 text-marine-bright" strokeWidth={1.5} aria-hidden />
+                <Icon className="size-5 text-accent" strokeWidth={1.5} aria-hidden />
                 <span>
                   <span className="label block text-steel-500">{label}</span>
                   <span className="mt-2 block text-[16px] leading-snug text-white">{value}</span>
@@ -67,7 +67,7 @@ export default function ContactPage() {
       <section aria-labelledby="checklist-title" className="section-y bg-plate text-graphite">
         <div className="shell grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="label text-marine">Faster quotations</p>
+            <p className="label text-accent-ink">Faster quotations</p>
             <h2 id="checklist-title" className="heading mt-4 text-[clamp(1.75rem,3vw,2.75rem)] text-abyss">
               What to include in your request
             </h2>
@@ -78,7 +78,7 @@ export default function ContactPage() {
           <ol className="border-t border-graphite/14 lg:col-span-7 lg:col-start-6">
             {checklist.map((c, i) => (
               <li key={c} className="flex gap-5 border-b border-graphite/14 py-5">
-                <span className="label w-6 shrink-0 pt-1 tabular-nums text-marine">{String(i + 1).padStart(2, "0")}</span>
+                <span className="label w-6 shrink-0 pt-1 tabular-nums text-accent-ink">{String(i + 1).padStart(2, "0")}</span>
                 <span className="text-[17px] leading-snug text-abyss">{c}</span>
               </li>
             ))}

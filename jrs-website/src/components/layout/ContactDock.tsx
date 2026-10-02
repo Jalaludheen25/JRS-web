@@ -28,7 +28,7 @@ export function ContactDock() {
       <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className={`${item} border-x border-white/10`} tabIndex={show ? 0 : -1}>
         <MessageCircle className="size-[18px]" strokeWidth={1.6} aria-hidden /> WhatsApp
       </a>
-      <Link href={quoteHref} className={`${item} bg-marine`} tabIndex={show ? 0 : -1}>
+      <Link href={quoteHref} className={`${item} bg-accent font-semibold text-abyss`} tabIndex={show ? 0 : -1}>
         <FileText className="size-[18px]" strokeWidth={1.6} aria-hidden /> Quote
       </Link>
     </motion.nav>

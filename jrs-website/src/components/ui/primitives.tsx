@@ -9,7 +9,7 @@ export function Eyebrow({ sheet, children, className }: { sheet?: string; childr
       {sheet && (
         <>
           <span className="tabular-nums">{sheet}</span>
-          <span aria-hidden className="h-px w-8 bg-current opacity-50" />
+          <span aria-hidden className="h-[2px] w-8 bg-accent" />
         </>
       )}
       <span>{children}</span>
@@ -20,7 +20,7 @@ export function Eyebrow({ sheet, children, className }: { sheet?: string; childr
 export function ArrowLink({ href, children, className }: { href: string; children: ReactNode; className?: string }) {
   return (
     <Link href={href} className={`group inline-flex items-center gap-3 text-[13px] font-medium uppercase tracking-[0.08em] ${className ?? ""}`}>
-      <span className="link-underline pb-1">{children}</span>
+      <span className="link-underline pb-1 [--ul:2px]">{children}</span>
       <ArrowRight className="size-4 transition-transform duration-500 ease-(--ease-expo) group-hover:translate-x-1.5" strokeWidth={1.5} aria-hidden />
     </Link>
   );
@@ -47,7 +47,7 @@ export function Marquee({ items, reverse, duration = 48, className }: { items: s
       {items.map((it) => (
         <li key={it} className="flex items-center">
           <span className="px-[0.45em] whitespace-nowrap">{it}</span>
-          <span aria-hidden className="mx-[0.2em] inline-block size-[0.14em] rotate-45 bg-current opacity-40" />
+          <span aria-hidden className="mx-[0.2em] inline-block size-[0.12em] rotate-45 bg-accent" />
         </li>
       ))}
     </ul>
@@ -69,7 +69,7 @@ export function Marquee({ items, reverse, duration = 48, className }: { items: s
 export function CropMarks({ className }: { className?: string }) {
   const c = "absolute size-4 border-current";
   return (
-    <span aria-hidden className={`pointer-events-none absolute inset-0 ${className ?? "text-white/50"}`}>
+    <span aria-hidden className={`pointer-events-none absolute inset-0 ${className ?? "text-accent/70"}`}>
       <span className={`${c} -left-2 -top-2 border-l border-t`} />
       <span className={`${c} -right-2 -top-2 border-r border-t`} />
       <span className={`${c} -bottom-2 -left-2 border-b border-l`} />

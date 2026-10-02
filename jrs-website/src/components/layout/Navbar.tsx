@@ -14,7 +14,7 @@ const panels: Record<string, { title: string; href: string; items: { label: stri
 };
 
 export function Navbar() {
-  const { scrollY } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
   const [solid, setSolid] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,6 +62,12 @@ export function Navbar() {
             solid || panel ? "border-white/10 bg-abyss/88 backdrop-blur-xl" : "border-transparent bg-transparent"
           }`}
         />
+        {/* Reading progress: a 2px yellow line along the bottom of the solid bar. */}
+        <motion.div
+          aria-hidden
+          className={`absolute inset-x-0 bottom-0 h-[2px] origin-left bg-accent transition-opacity duration-500 ${solid ? "opacity-100" : "opacity-0"}`}
+          style={{ scaleX: scrollYProgress }}
+        />
         <nav aria-label="Primary" className="shell flex h-[76px] items-center justify-between gap-6">
           <Link href="/" className="relative z-10 shrink-0" aria-label="JRS Mechanical Equipment, home">
             <Image src="/brand/jrs-logo-white.png" alt="JRS — Quality Spares, Reliable Repairs" width={1080} height={537} preload className="h-11 w-auto" />
@@ -92,7 +98,7 @@ export function Navbar() {
             </a>
             <Link
               href={quoteHref}
-              className="group hidden h-11 items-center gap-2 rounded-full bg-white px-5 text-[12px] font-semibold uppercase tracking-[0.1em] text-abyss transition-colors hover:bg-plate sm:inline-flex"
+              className="group hidden h-11 items-center gap-2 rounded-full bg-white px-5 text-[12px] font-semibold uppercase tracking-[0.1em] text-abyss transition-colors duration-300 hover:bg-accent sm:inline-flex"
             >
               Request a quote
               <ArrowUpRight className="size-4 transition-transform duration-500 ease-(--ease-expo) group-hover:rotate-45" strokeWidth={1.75} aria-hidden />
@@ -129,7 +135,7 @@ export function Navbar() {
               <div className="shell grid grid-cols-12 gap-6 py-10">
                 <div className="col-span-3">
                   <p className="label text-steel-500">{panel}</p>
-                  <Link href={panels[panel].href} className="heading mt-4 block text-3xl text-white hover:text-marine-bright">
+                  <Link href={panels[panel].href} className="heading mt-4 block text-3xl text-white transition-colors hover:text-accent">
                     {panels[panel].title} →
                   </Link>
                 </div>
@@ -137,7 +143,7 @@ export function Navbar() {
                   {panels[panel].items.map((it, i) => (
                     <li key={it.href} className="border-t border-white/10">
                       <Link href={it.href} className="group flex items-baseline gap-4 py-3.5 text-[15px] text-fog/80 hover:text-white" onClick={() => setPanel(null)}>
-                        <span className="label tabular-nums text-steel-500">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="label tabular-nums text-steel-500 transition-colors group-hover:text-accent">{String(i + 1).padStart(2, "0")}</span>
                         <span className="transition-transform duration-500 ease-(--ease-expo) group-hover:translate-x-1.5">{it.label}</span>
                       </Link>
                     </li>
@@ -176,7 +182,7 @@ export function Navbar() {
                   >
                     <Link href={item.href} onClick={() => setMenuOpen(false)} className="flex items-baseline justify-between py-4">
                       <span className="heading text-[clamp(2rem,9vw,3.25rem)] uppercase">{item.label}</span>
-                      <span className="label text-steel-500">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="label text-accent">{String(i + 1).padStart(2, "0")}</span>
                     </Link>
                   </motion.li>
                 ))}
@@ -185,7 +191,7 @@ export function Navbar() {
                 <a href={site.phone.tel} className="flex h-14 items-center justify-center gap-2 rounded-full border border-white/20 text-sm font-medium">
                   <Phone className="size-4" aria-hidden /> Call JRS
                 </a>
-                <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="flex h-14 items-center justify-center gap-2 rounded-full bg-marine text-sm font-medium">
+                <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="flex h-14 items-center justify-center gap-2 rounded-full bg-accent text-sm font-semibold text-abyss">
                   <MessageCircle className="size-4" aria-hidden /> WhatsApp
                 </a>
               </div>

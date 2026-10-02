@@ -22,14 +22,14 @@ export function Industries() {
           <br />
           demanding
           <br />
-          <span className="accent text-steel-300">operations.</span>
+          <span className="accent text-accent">operations.</span>
         </h2>
       </div>
 
       {industries.map((ind, i) => (
         <article key={ind.title} className="group relative h-[78svh] w-[88vw] shrink-0 snap-start overflow-hidden sm:w-[70vw] lg:h-full lg:w-[82vw]">
           <div className="scene grain absolute inset-0">
-            <Image
+            <Image data-img-role="thumb"
               src={ind.image.src}
               alt={ind.image.alt}
               fill
@@ -39,7 +39,7 @@ export function Industries() {
           </div>
           <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-ink/30" />
           <div className="relative z-10 flex h-full flex-col justify-between border-l border-white/15 p-[clamp(20px,3vw,56px)] pt-36">
-            <span className="label self-end text-white/70">
+            <span className="label self-end text-accent">
               {String(i + 1).padStart(2, "0")} / {String(industries.length).padStart(2, "0")}
             </span>
             <div className="grid gap-8 lg:grid-cols-12 lg:items-end">

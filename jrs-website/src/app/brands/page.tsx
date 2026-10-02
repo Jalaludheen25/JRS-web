@@ -43,15 +43,23 @@ export default function BrandsPage() {
               const img = getPage(b.href.replace(/^\/|\/$/g, ""))?.image;
               return (
                 <li key={b.href} className="bg-plate">
-                  <Link href={b.href} className="group flex h-full flex-col p-5 transition-colors duration-500 hover:bg-white">
+                  <Link href={b.href} className="group relative flex h-full flex-col p-5 transition-colors duration-500 hover:bg-white">
+                    <span aria-hidden className="absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-(--ease-expo) group-hover:scale-x-100" />
                     {img && (
-                      <div className="relative aspect-[4/3] overflow-hidden bg-white">
-                        <Image src={img.src} alt={img.alt} fill sizes="(min-width:768px) 33vw, 100vw" className="object-contain p-4 mix-blend-multiply transition-transform duration-[1.2s] group-hover:scale-[1.05]" />
+                      <div className={`relative aspect-[4/3] overflow-hidden ${img.fit === "contain" ? "bg-white" : "bg-abyss"}`}>
+                        <Image
+                          data-img-role="thumb"
+                          src={img.src}
+                          alt={img.alt}
+                          fill
+                          sizes="(min-width:768px) 33vw, 100vw"
+                          className={`transition-transform duration-[1.2s] group-hover:scale-[1.05] ${img.fit === "contain" ? "object-contain p-4 mix-blend-multiply" : "object-cover"}`}
+                        />
                       </div>
                     )}
                     <p className="heading mt-6 flex items-start justify-between text-[clamp(1.75rem,2.6vw,2.5rem)] text-abyss">
                       {b.name}
-                      <ArrowUpRight className="mt-2 size-5 transition-transform duration-500 group-hover:rotate-45" strokeWidth={1.5} aria-hidden />
+                      <ArrowUpRight className="mt-2 size-5 transition-[transform,color] duration-500 group-hover:rotate-45 group-hover:text-accent-ink" strokeWidth={1.5} aria-hidden />
                     </p>
                     <p className="mt-2 text-[15px] text-graphite/70">{b.name} engine spare parts</p>
                     <p className="label mt-3 text-steel-500">{b.note}</p>

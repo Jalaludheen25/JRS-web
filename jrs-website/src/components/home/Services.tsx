@@ -20,7 +20,7 @@ export function Services() {
           <div className="lg:col-span-7">
             <Eyebrow sheet="09 / 14">Technical services</Eyebrow>
             <h2 id="services-title" className="mt-8">
-              <RevealLines className="display block text-[clamp(2.75rem,7vw,7.5rem)] text-white" lines={["Repair.", "Recondition.", <span key="r" className="accent text-steel-300">Return to service.</span>]} />
+              <RevealLines className="display block text-[clamp(2.75rem,7vw,7.5rem)] text-white" lines={["Repair.", "Recondition.", <span key="r" className="accent text-accent">Return to service.</span>]} />
             </h2>
           </div>
           <FadeUp className="self-end lg:col-span-4 lg:col-start-9">
@@ -42,7 +42,7 @@ export function Services() {
                   className="group flex items-baseline gap-6 py-5"
                   aria-current={i === active ? "true" : undefined}
                 >
-                  <span className={`label tabular-nums transition-colors ${i === active ? "text-signal" : "text-steel-500"}`}>{sv.index}</span>
+                  <span className={`label tabular-nums transition-colors ${i === active ? "text-accent" : "text-steel-500"}`}>{sv.index}</span>
                   <span
                     className={`heading text-[clamp(1.5rem,2.3vw,2.4rem)] transition-[color,transform] duration-700 ease-(--ease-expo) ${
                       i === active ? "translate-x-3 text-white" : "text-white/35 group-hover:text-white/70"
@@ -67,7 +67,7 @@ export function Services() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <Image src={s.image.src} alt={s.image.alt} fill sizes="40vw" className="object-cover grayscale" />
+                    <Image data-img-role="thumb" src={s.image.src} alt={s.image.alt} fill sizes="40vw" className={s.image.fit === "contain" ? "object-contain p-10" : "object-cover grayscale"} />
                   </motion.div>
                 </AnimatePresence>
                 <span className="label absolute left-4 top-4 z-10 text-white/70">Service {s.index} / 08</span>
@@ -100,7 +100,7 @@ export function Services() {
             <li key={sv.href} className="w-[78vw] shrink-0 snap-start sm:w-[44vw]">
               <Link href={sv.href} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-abyss">
-                  <Image src={sv.image.src} alt={sv.image.alt} fill sizes="(min-width:640px) 50vw, 100vw" className="object-cover grayscale" />
+                  <Image data-img-role="thumb" src={sv.image.src} alt={sv.image.alt} fill sizes="(min-width:640px) 50vw, 100vw" className={sv.image.fit === "contain" ? "object-contain p-6" : "object-cover grayscale"} />
                   <span className="label absolute left-3 top-3 text-white/80">{sv.index}</span>
                 </div>
                 <h3 className="heading mt-5 flex items-start justify-between gap-4 text-2xl text-white">

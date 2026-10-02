@@ -74,7 +74,7 @@ export function HorizontalTrack({ children, id, labelledBy, className, overlay }
           {children}
         </motion.div>
         <div aria-hidden className="absolute inset-x-[var(--gutter)] bottom-8 h-px bg-white/12">
-          <motion.div className="h-full origin-left bg-white" style={{ scaleX: scrollYProgress }} />
+          <motion.div className="h-full origin-left bg-accent" style={{ scaleX: scrollYProgress }} />
         </div>
       </div>
     </section>

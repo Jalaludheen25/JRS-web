@@ -4,11 +4,12 @@
 import legacy from "@/content/legacy-pages.json";
 import type { Block } from "@/lib/blocks";
 import { authored } from "@/content/authored";
+import { images, type Img } from "@/lib/images";
 
 export type PageKind = "product" | "service" | "industry" | "brand" | "post";
 export type PostCategory = "cummins" | "fuel-injection" | "marine-engine-spare-parts";
 
-export type Img = { src: string; alt: string; fit?: "cover" | "contain" };
+export type { Img };
 
 export type PageEntry = {
   slug: string;
@@ -23,10 +24,8 @@ export type PageEntry = {
   related?: string[];
 };
 
-export type LegacyContent = { h1: string; lead?: string; date?: string; featured?: { src: string; alt: string; width: number; height: number }; blocks: Block[] };
+export type LegacyContent = { h1: string; lead?: string; date?: string; featured?: { src: string; alt: string; width: number; height: number; fit: "cover" | "contain" }; blocks: Block[] };
 
-const P = (src: string, alt: string): Img => ({ src, alt, fit: "contain" });
-const S = (src: string, alt: string): Img => ({ src, alt, fit: "cover" });
 
 export const pages: PageEntry[] = [
   // ── Products ───────────────────────────────────────────────────────────────
@@ -36,7 +35,7 @@ export const pages: PageEntry[] = [
     label: "Engine Bearings",
     title: "Engine Bearings in Abu Dhabi - JRS",
     description: "Marine engine bearings in Abu Dhabi from JRS: main, thrust and connecting rod bearings built to OEM specifications for load capacity and reliable performance.",
-    image: P("/images/products/engine-bearings.jpg", "Main, thrust and connecting rod engine bearing shells"),
+    image: images.engineBearings,
     related: ["pistons-piston-rings-in-abu-dhabi", "liners-anti-polishing-rings-in-abu-dhabi", "engine-overhaul-service-in-abu-dhabi"],
   },
   {
@@ -45,7 +44,7 @@ export const pages: PageEntry[] = [
     label: "Cylinder Heads & Components",
     title: "Cylinder Heads & Components in Abu Dhabi - JRS",
     description: "Cylinder head components in Abu Dhabi for 2-stroke and 4-stroke marine engines: valve stems, valve seats, valve rotators, springs, guides, collets and gaskets.",
-    image: P("/images/products/cylinder-heads-components.jpg", "Cylinder head components: valves, valve springs and seats"),
+    image: images.cylinderHeads,
     related: ["pistons-piston-rings-in-abu-dhabi", "services/reconditioning-engine-parts", "engine-overhaul-service-in-abu-dhabi"],
   },
   {
@@ -54,7 +53,7 @@ export const pages: PageEntry[] = [
     label: "Fuel Injection Systems",
     title: "Fuel Injection Systems & Components in Abu Dhabi - JRS",
     description: "Fuel injection systems and components in Abu Dhabi: injectors, pumps, nozzles and complete assemblies for marine diesel engines, sourced from trusted OEMs.",
-    image: P("/images/products/fuel-injection-systems.jpg", "Fuel injection pump elements and injector nozzles"),
+    image: images.fuelInjection,
     related: ["fuel-injector-spare-parts-and-repair-in-abu-dhabi", "services/fuel-pump-overhaul", "services/marine-fuel-pump-injector-service"],
   },
   {
@@ -63,7 +62,7 @@ export const pages: PageEntry[] = [
     label: "Pistons & Piston Rings",
     title: "Pistons & Piston Rings for Marine Engines in Abu Dhabi",
     description: "High-quality pistons and piston rings in Abu Dhabi for all marine engines durable, efficient, and sourced from trusted manufacturers.",
-    image: P("/images/products/pistons-piston-rings.jpg", "Marine engine pistons with piston rings"),
+    image: images.pistons,
     related: ["liners-anti-polishing-rings-in-abu-dhabi", "engine-bearings-in-abu-dhabi", "engine-overhaul-service-in-abu-dhabi"],
   },
   {
@@ -72,7 +71,7 @@ export const pages: PageEntry[] = [
     label: "Liners & Anti-Polishing Rings",
     title: "Cylinder Liners and Anti-Polishing Rings for Diesel & Gas Engines",
     description: "High-performance cylinder liners and anti-polishing rings for diesel and gas engines in marine and power generation applications.",
-    image: P("/images/products/liners-anti-polishing-rings.jpg", "Centrifugally cast cylinder liners"),
+    image: images.liners,
     related: ["pistons-piston-rings-in-abu-dhabi", "engine-bearings-in-abu-dhabi", "engine-overhaul-service-in-abu-dhabi"],
   },
   {
@@ -81,7 +80,7 @@ export const pages: PageEntry[] = [
     label: "Filters",
     title: "Marine Filters in Abu Dhabi | Oil, Fuel and Air Filters",
     description: "JRS supplies high-quality marine filters in Abu Dhabi, including oil, fuel, air filters and water separators for reliable engine protection.",
-    image: P("/images/products/marine-filters.jpg", "Marine oil, fuel and air filter elements"),
+    image: images.filters,
     related: ["fuel-injection-systems-components-in-abu-dhabi", "routine-maintenance-diagnostics-in-abu-dhabi", "coolers-heat-exchangers-in-abu-dhabi"],
   },
   {
@@ -90,7 +89,7 @@ export const pages: PageEntry[] = [
     label: "Turbochargers & Cartridges",
     title: "Marine Turbochargers and Cartridges in Abu Dhabi",
     description: "JRS supplies high-quality marine turbochargers & cartridges in Abu Dhabi, including casings, rotors, nozzle rings, seals & bearing assemblies",
-    image: P("/images/products/turbocharger-cartridge.jpg", "Turbocharger cartridge with turbine wheel"),
+    image: images.turbochargers,
     related: ["turbocharger-overhauls-in-abu-dhabi", "coolers-heat-exchangers-in-abu-dhabi", "services/reconditioning-engine-parts"],
   },
   {
@@ -99,7 +98,7 @@ export const pages: PageEntry[] = [
     label: "Coolers & Heat Exchangers",
     title: "Coolers & Heat Exchangers in Abu Dhabi",
     description: "High-quality marine coolers and heat exchangers in Abu Dhabi by ensuring efficient thermal management & reliable engine performance at sea.",
-    image: P("/images/products/coolers-heat-exchangers.jpg", "Shell-and-tube and plate heat exchangers"),
+    image: images.coolers,
     related: ["engine-overhaul-service-in-abu-dhabi", "filters", "turbochargers-cartridges-in-abu-dhabi"],
   },
   {
@@ -108,7 +107,7 @@ export const pages: PageEntry[] = [
     label: "Automatic Voltage Regulators",
     title: "Automatic Voltage Regulator (AVR) Supplier in UAE",
     description: "Automatic Voltage Regulator Supplier in UAE offering reliable AVR solutions for stable voltage control & safe electrical system performance",
-    image: S("/images/scenes/electrical-wiring-graded.jpg", "Generator electrical systems and wiring"),
+    image: images.avr,
     related: ["genset-controllers-amf-in-abu-dhabi", "services/electrical-instrumentation", "power-generation"],
   },
   {
@@ -117,7 +116,7 @@ export const pages: PageEntry[] = [
     label: "Genset Controllers & AMF",
     title: "Genset Controllers & Automatic Mains Failure (AMF) in Abu Dhabi",
     description: "Generator control units from JRS in Abu Dhabi: OEM, universal and aftermarket genset controllers, and AMF modules for genset control, protection and ATS control.",
-    image: S("/images/scenes/diesel-engine-detail-graded.jpg", "Generator engine served by genset control units"),
+    image: images.gensetControllers,
     related: ["automatic-voltage-regulator-supplier-in-uae", "services/electrical-instrumentation", "power-generation"],
   },
 
@@ -128,7 +127,7 @@ export const pages: PageEntry[] = [
     label: "Engine Overhaul",
     title: "Best Marine Engine Overhaul Service in Abu Dhabi",
     description: "Expert engine overhaul service in Abu Dhabi for marine and power systems. JRS restores engines with precision, speed & trusted reliability.",
-    image: S("/images/scenes/diesel-engine-detail-graded.jpg", "Diesel engine front end during overhaul"),
+    image: images.engineOverhaul,
     related: ["engine-bearings-in-abu-dhabi", "pistons-piston-rings-in-abu-dhabi", "turbocharger-overhauls-in-abu-dhabi"],
   },
   {
@@ -137,7 +136,7 @@ export const pages: PageEntry[] = [
     label: "Turbocharger Overhaul",
     title: "Turbocharger Overhauls in Abu Dhabi",
     description: "Expert Turbocharger overhauls in Abu Dhabi for marine and generator engines. Restore performance, cut downtime, and boost efficiency with JRS",
-    image: S("/images/scenes/turbine-rotor-machining.jpg", "Turbine rotor mounted for balancing and machining"),
+    image: images.turbochargerOverhaul,
     related: ["turbochargers-cartridges-in-abu-dhabi", "services/reconditioning-engine-parts", "engine-overhaul-service-in-abu-dhabi"],
   },
   {
@@ -146,7 +145,7 @@ export const pages: PageEntry[] = [
     label: "Outboard Engine Repair",
     title: "Outboard Engine Repair and Overhaul in Abu Dhabi",
     description: "Expert outboard engine repair & overhaul in Abu Dhabi by JRS. We service Yamaha, Suzuki, Mercury & more for reliable marine performance.",
-    image: S("/images/scenes/port-vessel-aerial-graded.jpg", "Vessels moving through a busy port"),
+    image: images.outboardRepair,
     related: ["boats-maintenance-and-services", "routine-maintenance-diagnostics-in-abu-dhabi", "performance-tuning-optimization"],
   },
   {
@@ -155,7 +154,7 @@ export const pages: PageEntry[] = [
     label: "Routine Maintenance & Diagnostics",
     title: "Routine Maintenance & Diagnostics in Abu Dhabi",
     description: "Trust JRS for Routine Maintenance & Diagnostics in Abu Dhabi. Expert marine engine care, performance checks & prevention of costly breakdowns",
-    image: S("/images/scenes/diesel-engine-detail-graded.jpg", "Marine diesel engine ready for inspection"),
+    image: images.routineMaintenance,
     related: ["filters", "performance-tuning-optimization", "engine-overhaul-service-in-abu-dhabi"],
   },
   {
@@ -164,7 +163,7 @@ export const pages: PageEntry[] = [
     label: "Boats Maintenance",
     title: "Boats Maintenance and Services in Abu Dhabi",
     description: "Expert boats maintenance and services in Abu Dhabi by JRS. Keep your vessel safe, efficient, and ready for smooth sailing all year round.",
-    image: S("/images/scenes/vessel-aerial-2-graded.jpg", "Vessel alongside in port"),
+    image: images.boatsMaintenance,
     related: ["outboard-engine-repair-overhaul-in-abu-dhabi", "routine-maintenance-diagnostics-in-abu-dhabi", "marine-products-and-services"],
   },
   {
@@ -173,7 +172,7 @@ export const pages: PageEntry[] = [
     label: "Ultrasonic Cleaning",
     title: "Ultrasonic Cleaning for Parts in Abu Dhabi - JRS",
     description: "Ultrasonic cleaning for marine engine parts in Abu Dhabi: injectors, filters, heat exchangers and precision components cleaned thoroughly without damage.",
-    image: S("/images/scenes/engine-parts-dark-graded.jpg", "Precision engine components"),
+    image: images.ultrasonicCleaning,
     related: ["services/fuel-pump-overhaul", "fuel-injection-systems-components-in-abu-dhabi", "routine-maintenance-diagnostics-in-abu-dhabi"],
   },
   {
@@ -182,7 +181,7 @@ export const pages: PageEntry[] = [
     label: "Performance Tuning",
     title: "Marine Engine Performance Tuning & Optimization in Abu Dhabi",
     description: "Enhance marine engine power and efficiency with our Performance Tuning & Optimization in Abu Dhabi, precision tuning for lasting performance.",
-    image: S("/images/scenes/turbine-rotor-machining.jpg", "Precision-machined rotating equipment"),
+    image: images.performanceTuning,
     related: ["routine-maintenance-diagnostics-in-abu-dhabi", "fuel-injection-systems-components-in-abu-dhabi", "turbocharger-overhauls-in-abu-dhabi"],
   },
 
@@ -193,7 +192,7 @@ export const pages: PageEntry[] = [
     label: "Marine",
     title: "Top Quality Marine Products And Services Abu Dhabi",
     description: "We provide top Marine Products and Services like marine engine overhauls and marine turbocharger overhauls, for peak performance & efficiency",
-    image: S("/images/scenes/vessel-aerial-2-graded.jpg", "Container vessel berthed under ship-to-shore cranes"),
+    image: images.marine,
   },
   {
     slug: "power-generation",
@@ -201,7 +200,7 @@ export const pages: PageEntry[] = [
     label: "Power Generation",
     title: "Products and Services for Power Generation Industry in UAE",
     description: "Explore our products and services for the power generation industry in UAE. We supply reliable spare parts & equipment for power applications",
-    image: S("/images/scenes/electrical-wiring-graded.jpg", "Generator electrical systems"),
+    image: images.powerGeneration,
   },
 
   // ── Brands ─────────────────────────────────────────────────────────────────
@@ -211,7 +210,7 @@ export const pages: PageEntry[] = [
     label: "Cummins",
     title: "Cummins Engine Spare Parts in UAE, Saudi, Oman & other GCC",
     description: "JRS supplies Cummins engine spare parts across UAE, Saudi, Oman & GCC. Built for durability, fuel efficiency, and reliable performance.",
-    image: P("/images/legacy/cummins-engine-spare-parts-in-uae-1.jpg", "Cummins engine spare parts"),
+    image: images.cummins,
   },
   {
     slug: "wartsila-marine-engine-spare-parts-supplier",
@@ -219,7 +218,7 @@ export const pages: PageEntry[] = [
     label: "Wärtsilä",
     title: "Wartsila Marine Engine Spare Parts - UAE, Oman, Bahrain & Qatar",
     description: "Trusted supplier of Wartsila marine engine spare parts across UAE, Oman, Bahrain, Qatar & Kuwait, Saudi. OEM-equivalent components.",
-    image: P("/images/legacy/warstila-oem-quality-spare-parts.jpg", "OEM-quality spare parts for Wärtsilä marine engines"),
+    image: images.wartsila,
   },
   {
     slug: "yanmar-marine-engine-spare-parts-supplier",
@@ -227,7 +226,7 @@ export const pages: PageEntry[] = [
     label: "Yanmar",
     title: "Yanmar Marine Engine Spare Parts Supplier Across GCC",
     description: "Trusted supplier of OEM-quality Yanmar marine engine spare parts across the UAE, Saudi Arabia, Qatar, Oman, Bahrain, and Kuwait.",
-    image: P("/images/legacy/yanmar-marine-engine-parts.jpg", "Yanmar marine engine"),
+    image: images.yanmar,
   },
 
   // ── Insights (posts) ───────────────────────────────────────────────────────
@@ -272,5 +271,5 @@ export function getContent(key: string): LegacyContent | undefined {
 
 export function postImage(slug: string): Img | undefined {
   const f = getLegacyContent(slug)?.featured;
-  return f && { src: f.src, alt: f.alt, fit: "contain" };
+  return f && { src: f.src, alt: f.alt, fit: f.fit };
 }

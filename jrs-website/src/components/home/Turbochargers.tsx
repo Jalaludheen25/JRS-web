@@ -29,7 +29,7 @@ export function Turbochargers() {
             <h2 id="turbo-title" className="mt-8">
               <RevealLines
                 className="display block text-[clamp(3.5rem,9vw,9.5rem)] text-white"
-                lines={["Power,", <span key="u" className="accent text-steel-300">under pressure.</span>]}
+                lines={["Power,", <span key="u" className="accent text-accent">under pressure.</span>]}
               />
             </h2>
             <FadeUp className="mt-10 max-w-md">
@@ -45,7 +45,7 @@ export function Turbochargers() {
 
           <div className="lg:col-span-7">
             <div className="relative aspect-square w-full">
-              <CropMarks className="text-white/30" />
+              <CropMarks className="text-accent/60" />
               <div aria-hidden className="absolute inset-0 border border-white/[0.06]" />
               <TurboViewer progress={scrollYProgress} />
               <p className="label absolute bottom-4 left-4 text-steel-500">Fig. 07 — Compressor wheel · schematic</p>
@@ -62,7 +62,7 @@ export function Turbochargers() {
           <ul className="mt-6 grid grid-cols-2 border-t border-white/12 sm:grid-cols-3 lg:grid-cols-5">
             {turbochargerMakes.map((m, i) => (
               <li key={m} className="border-b border-white/12 py-6 pr-4 lg:border-b-0 lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0">
-                <span className="label text-steel-500">{String(i + 1).padStart(2, "0")}</span>
+                <span className="label text-accent">{String(i + 1).padStart(2, "0")}</span>
                 <span className="heading mt-3 block text-[clamp(1.5rem,2.4vw,2.25rem)] text-white">{m}</span>
               </li>
             ))}
@@ -73,7 +73,7 @@ export function Turbochargers() {
           {supply.map(([k, v]) => (
             <div key={k}>
               <dt className="flex items-center gap-2 text-[15px] font-medium text-white">
-                <span aria-hidden className="size-1.5 bg-signal" />
+                <span aria-hidden className="size-1.5 bg-accent" />
                 {k}
               </dt>
               <dd className="mt-3 text-[14px] leading-relaxed text-steel-300">{v}</dd>

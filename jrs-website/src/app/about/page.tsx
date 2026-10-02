@@ -7,6 +7,7 @@ import { ImageReveal } from "@/components/ui/ImageReveal";
 import { CropMarks, TechnicalSpec } from "@/components/ui/primitives";
 import type { Block } from "@/lib/blocks";
 import { site } from "@/lib/site";
+import { images } from "@/lib/images";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -37,13 +38,13 @@ export default function AboutPage() {
         title="Delivering Trust with Every Marine and Power Generation Spare Part"
         lead="At JRS Mechanical Equipment, we are dedicated to providing high-quality marine and power generation spare parts along with reliable repair solutions that ensure uninterrupted operations."
         crumbs={[{ name: "About Us", path: "/about/" }]}
-        image={{ src: "/images/scenes/port-vessel-aerial-graded.jpg", alt: "Container vessel leaving port with a tug alongside", fit: "cover" }}
+        image={images.aboutHero}
       />
 
       <section className="section-y bg-abyss">
         <div className="shell grid gap-14 lg:grid-cols-12 lg:gap-6">
           <div className="relative lg:col-span-5">
-            <ImageReveal src="/images/scenes/vessel-aerial-2-graded.jpg" alt="Container vessel berthed under ship-to-shore cranes" sizes="(min-width:1024px) 40vw, 100vw" className="aspect-[4/5] w-full" />
+            <ImageReveal src={images.aboutStory.src} alt={images.aboutStory.alt} sizes="(min-width:1024px) 40vw, 100vw" className="aspect-[4/5] w-full" />
             <CropMarks />
           </div>
           <div className="lg:col-span-6 lg:col-start-7">

@@ -17,10 +17,12 @@ export function RelatedLinks({ title, eyebrow, items, tone = "dark" }: { title: 
         <ul className={`mt-12 grid border-l border-t sm:grid-cols-2 ${cols[Math.max(3, Math.min(items.length, 4))]} ${dark ? "border-white/10" : "border-graphite/12"}`}>
           {items.map((it) => (
             <li key={it.href} className={`border-b border-r ${dark ? "border-white/10" : "border-graphite/12"}`}>
-              <Link href={it.href} className={`group flex h-full flex-col p-5 transition-colors duration-500 ${dark ? "hover:bg-navy-900" : "hover:bg-white"}`}>
+              <Link href={it.href} className={`group relative flex h-full flex-col p-5 transition-colors duration-500 ${dark ? "hover:bg-navy-900" : "hover:bg-white"}`}>
+                <span aria-hidden className="absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-(--ease-expo) group-hover:scale-x-100" />
                 {it.image && (
                   <div className={`relative aspect-[4/3] overflow-hidden ${it.image.fit === "contain" ? "bg-white" : "bg-navy-900"}`}>
                     <Image
+                      data-img-role="thumb"
                       src={it.image.src}
                       alt=""
                       fill
@@ -32,7 +34,7 @@ export function RelatedLinks({ title, eyebrow, items, tone = "dark" }: { title: 
                 <p className={`label mt-5 ${dark ? "text-steel-500" : "text-steel-500"}`}>{it.kind}</p>
                 <p className={`heading mt-2 flex items-start justify-between gap-4 text-[clamp(1.25rem,1.8vw,1.6rem)] ${dark ? "text-white" : "text-abyss"}`}>
                   {it.label}
-                  <ArrowUpRight className="mt-1 size-5 shrink-0 transition-transform duration-500 group-hover:rotate-45" strokeWidth={1.5} aria-hidden />
+                  <ArrowUpRight className={`mt-1 size-5 shrink-0 transition-[transform,color] duration-500 group-hover:rotate-45 ${dark ? "group-hover:text-accent" : "group-hover:text-accent-ink"}`} strokeWidth={1.5} aria-hidden />
                 </p>
                 {it.summary && <p className={`mt-3 line-clamp-3 text-[14px] leading-relaxed ${dark ? "text-fog/65" : "text-graphite/65"}`}>{it.summary}</p>}
               </Link>

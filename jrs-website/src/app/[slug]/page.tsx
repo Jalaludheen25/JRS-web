@@ -153,7 +153,7 @@ function Post({ page, content, crumbs }: { page: PageEntry; content: NonNullable
             {cat && (
               <>
                 <span aria-hidden>·</span>
-                <Link href={`/category/${page.category}/`} className="link-underline text-marine">
+                <Link href={`/category/${page.category}/`} className="link-underline text-accent-ink">
                   {cat.label}
                 </Link>
               </>
@@ -167,7 +167,14 @@ function Post({ page, content, crumbs }: { page: PageEntry; content: NonNullable
         {content.featured && (
           <div className="shell">
             <div className="relative mx-auto aspect-[16/9] max-w-[1100px] overflow-hidden bg-white">
-              <Image src={content.featured.src} alt={content.featured.alt} fill preload sizes="(min-width:1100px) 1100px, 100vw" className="object-contain p-6 mix-blend-multiply" />
+              <Image
+                src={content.featured.src}
+                alt={content.featured.alt}
+                fill
+                preload
+                sizes="(min-width:1100px) 1100px, 100vw"
+                className={content.featured.fit === "contain" ? "object-contain p-6 mix-blend-multiply" : "object-cover"}
+              />
             </div>
           </div>
         )}

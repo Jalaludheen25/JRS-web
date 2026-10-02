@@ -5,6 +5,7 @@ import { PageHero } from "@/components/page/PageHero";
 import { QuoteBand } from "@/components/page/QuoteBand";
 import { industries } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
+import { images } from "@/lib/images";
 
 export const metadata = pageMetadata({
   title: "Industries We Serve – Marine, Power Generation, Industrial & Offshore | JRS",
@@ -22,7 +23,7 @@ export default function IndustriesPage() {
         title="Built for demanding operations."
         lead="Marine is our core sector. We also support power generation, industrial and offshore operations with engine spare parts and dependable repair solutions."
         crumbs={[{ name: "Industries", path: "/industries/" }]}
-        image={{ src: "/images/scenes/open-sea-panorama-graded.jpg", alt: "Container vessel under way towards a port", fit: "cover" }}
+        image={images.industriesHub}
       />
       <section aria-labelledby="industries-intro" className="section-y bg-plate text-graphite">
         <div className="shell grid gap-10 lg:grid-cols-12">
@@ -46,11 +47,11 @@ export default function IndustriesPage() {
         {industries.map((ind, i) => (
           <article key={ind.title} className="group relative min-h-[80svh] overflow-hidden border-t border-white/10">
             <div className="scene grain absolute inset-0">
-              <Image src={ind.image.src} alt={ind.image.alt} fill sizes="100vw" className="object-cover transition-transform duration-[2s] ease-(--ease-expo) group-hover:scale-[1.03]" />
+              <Image data-img-role="thumb" src={ind.image.src} alt={ind.image.alt} fill sizes="100vw" className="object-cover transition-transform duration-[2s] ease-(--ease-expo) group-hover:scale-[1.03]" />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/20" />
             <div className="shell relative z-10 flex min-h-[80svh] flex-col justify-end pb-16 pt-32">
-              <span className="label text-white/70">
+              <span className="label text-accent">
                 {String(i + 1).padStart(2, "0")} / {String(industries.length).padStart(2, "0")}
               </span>
               <div className="mt-6 grid gap-8 lg:grid-cols-12 lg:items-end">

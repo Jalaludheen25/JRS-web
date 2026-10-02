@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { FadeUp, RevealLines } from "@/components/ui/RevealLines";
+import { FadeUp, Mark, RevealLines } from "@/components/ui/RevealLines";
 import { Eyebrow, Marquee } from "@/components/ui/primitives";
 import { brandPages, partsMakes, reconditioningMakes, referenceDisclaimer } from "@/lib/content";
 
@@ -12,7 +12,7 @@ export function Brands() {
         <div className="lg:col-span-7">
           <Eyebrow sheet="11 / 14" className="text-steel-500">Engine makes</Eyebrow>
           <h2 id="brands-title" className="mt-8">
-            <RevealLines className="display block text-[clamp(2.75rem,7vw,7.5rem)] text-abyss" lines={["Parts for the", <span key="e" className="accent text-marine">engines you run.</span>]} />
+            <RevealLines className="display block text-[clamp(2.75rem,7vw,7.5rem)] text-abyss" lines={["Parts for the", <span key="e" className="accent text-abyss"><Mark>engines you run.</Mark></span>]} />
           </h2>
         </div>
         <FadeUp className="self-end lg:col-span-4 lg:col-start-9">
@@ -33,10 +33,11 @@ export function Brands() {
         <ul className="grid gap-px bg-graphite/14 sm:grid-cols-3 lg:col-span-8">
           {brandPages.map((b) => (
             <li key={b.href} className="bg-plate">
-              <Link href={b.href} className="group flex h-full flex-col justify-between gap-10 p-6 transition-colors duration-500 hover:bg-white">
+              <Link href={b.href} className="group relative flex h-full flex-col justify-between gap-10 p-6 transition-colors duration-500 hover:bg-white">
+                <span aria-hidden className="absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-(--ease-expo) group-hover:scale-x-100" />
                 <span className="flex items-start justify-between">
                   <span className="heading text-3xl text-abyss">{b.name}</span>
-                  <ArrowUpRight className="size-5 text-graphite/50 transition-transform duration-500 group-hover:rotate-45 group-hover:text-marine" strokeWidth={1.5} aria-hidden />
+                  <ArrowUpRight className="size-5 text-graphite/50 transition-transform duration-500 group-hover:rotate-45 group-hover:text-accent-ink" strokeWidth={1.5} aria-hidden />
                 </span>
                 <span>
                   <span className="block text-[14px] text-graphite/70">{b.name} engine spare parts</span>

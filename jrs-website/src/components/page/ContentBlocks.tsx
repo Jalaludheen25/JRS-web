@@ -5,8 +5,8 @@ type Tone = "light" | "dark";
 
 const c = (tone: Tone) =>
   tone === "light"
-    ? { text: "text-graphite/80", strong: "text-abyss", line: "border-graphite/14", label: "text-marine", muted: "text-steel-500", card: "bg-white" }
-    : { text: "text-fog/80", strong: "text-white", line: "border-white/12", label: "text-marine-bright", muted: "text-steel-500", card: "bg-white/[0.03]" };
+    ? { text: "text-graphite/80", strong: "text-abyss", line: "border-graphite/14", label: "text-accent-ink", muted: "text-steel-500", card: "bg-white" }
+    : { text: "text-fog/80", strong: "text-white", line: "border-white/12", label: "text-accent", muted: "text-steel-500", card: "bg-white/[0.03]" };
 
 function List({ items, ordered, tone }: { items: string[]; ordered?: boolean; tone: Tone }) {
   const t = c(tone);

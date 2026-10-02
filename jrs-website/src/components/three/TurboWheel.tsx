@@ -134,7 +134,8 @@ export default function TurboWheel({ progress, active, onReady }: { progress?: M
     >
       <ambientLight intensity={0.15} />
       <directionalLight position={[3, 4, 2]} intensity={1.4} />
-      <directionalLight position={[-3, -1, -3]} intensity={2.2} color="#7dd8f5" />
+      {/* Warm rim light picks out the blade edges in the site accent colour. */}
+      <directionalLight position={[-3, -1, -3]} intensity={1.6} color="#f2c230" />
       <Wheel progress={progress} />
     </Canvas>
   );

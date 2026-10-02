@@ -20,7 +20,24 @@ const SKIP_ROUTES = new Set(["/", "/about/", "/contact/", "/products/", "/blogs/
 // Card headings on the industry hub pages; those grids are rebuilt from content.ts.
 const CARD_HEADINGS = new Set(["Products", "Services", "Engine Bearings", "Cylinder Heads & Components", "Fuel Injection Systems", "Pistons & Piston Rings", "Liners & Anti Polishing Rings", "Filters", "Turbochargers & Cartridges", "Coolers & Heat Exchangers", "Engine Overhauls", "Turbocharger Overhauls"]);
 
-const DATE_RE = /^(January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2}, \d{4}$/;
+// Posts whose live featured image duplicates another post's picture (verified with scripts/image-dupes.mjs
+// and by eye). The first post to use a picture keeps it; later ones get a distinct, relevant photo.
+const FEATURED_OVERRIDES = {
+  "/cummins-engine-spare-parts-in-uae/": { src: "/images/stock/diesel-generator-engine.jpg", alt: "Diesel generator engine for industrial and backup power" },
+  "/cummins-engine-spare-parts-supplier-saudi-arabia/": { src: "/images/stock/offshore-supply-vessel.jpg", alt: "Offshore supply vessel at sea" },
+  "/cummins-spare-parts-in-kuwait/": { src: "/images/stock/tug-towing-container-ship.jpg", alt: "Tug assisting a container ship in port" },
+  "/yanmar-marine-engine-spare-parts-for-marine-operations/": { src: "/images/stock/offshore-platform-crew-transfer.jpg", alt: "Supply vessel alongside an offshore platform" },
+};
+
+// "contain" for cut-outs and renders on a white background, "cover" for full-frame photographs.
+async function detectFit(file) {
+  const { data, info } = await sharp(file).resize(40, 40, { fit: "fill" }).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+  const px = (x, y) => data.slice((y * info.width + x) * 3, (y * info.width + x) * 3 + 3);
+  const corners = [px(1, 1), px(38, 1), px(1, 38), px(38, 38)];
+  return corners.every((c) => c.every((v) => v > 225)) ? "contain" : "cover";
+}
+
+const DATE_RE =/^(January|February|March|April|May|June|July|August|September|October|November|December) \d{1,2}, \d{4}$/;
 
 async function localImage(src) {
   const name = path.basename(new URL(src).pathname).replace(/\.(png|jpe?g|webp)$/i, ".jpg").toLowerCase();
@@ -63,6 +80,14 @@ for (const [route, { blocks: raw }] of Object.entries(data)) {
     featured = { ...(await localImage(blocks[0].src)), alt: blocks[0].alt || h1 };
     blocks = blocks.slice(1);
   }
+  // Several live posts share the same picture under different file names (e.g. the four Cummins
+  // parts collages). Give those posts their own image so the Insights grid never repeats itself.
+  if (FEATURED_OVERRIDES[route]) {
+    const o = FEATURED_OVERRIDES[route];
+    const meta = await sharp(path.join("public", o.src)).metadata();
+    featured = { src: o.src, width: meta.width, height: meta.height, alt: o.alt };
+  }
+  if (featured) featured.fit = await detectFit(path.join("public", featured.src));
 
   // Industry hubs: drop the product/service card grid (rebuilt from structured data).
   blocks = blocks.filter((b) => !(b.type === "img" || (/^h[1-6]$/.test(b.type) && CARD_HEADINGS.has(b.text))));

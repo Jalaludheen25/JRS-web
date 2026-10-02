@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { products, type Product } from "@/lib/content";
-import { DrawLine, FadeUp, RevealLines } from "@/components/ui/RevealLines";
+import { DrawLine, FadeUp, Mark, RevealLines } from "@/components/ui/RevealLines";
 import { ArrowLink, CropMarks, Eyebrow } from "@/components/ui/primitives";
 
 export function Products() {
@@ -22,7 +22,7 @@ export function Products() {
             <h2 id="products-title" className="mt-8">
               <RevealLines
                 className="display block text-[clamp(2.75rem,7.5vw,8rem)] text-abyss"
-                lines={["Precision", "components.", <span key="c" className="accent text-marine">Critical performance.</span>]}
+                lines={["Precision", "components.", <span key="c" className="accent text-abyss"><Mark>Critical performance.</Mark></span>]}
               />
             </h2>
           </div>
@@ -55,16 +55,19 @@ export function Products() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    {current.image ? (
-                      <motion.div className="absolute inset-0" initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}>
-                        <Image src={current.image.src} alt={current.image.alt} fill sizes="40vw" className="object-cover mix-blend-multiply" />
-                      </motion.div>
-                    ) : (
-                      <Schematic slug={current.slug} />
-                    )}
+                    <motion.div className="absolute inset-0" initial={{ scale: 1.12 }} animate={{ scale: 1 }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}>
+                      {/* Cut-out PNGs (brochure) sit inside the plate; full-frame renders fill it. */}
+                      <Image data-img-role="thumb"
+                        src={current.image.src}
+                        alt={current.image.alt}
+                        fill
+                        sizes="40vw"
+                        className={current.image.src.endsWith(".png") ? "object-contain p-10" : "object-cover mix-blend-multiply"}
+                      />
+                    </motion.div>
                   </motion.div>
                 </AnimatePresence>
-                <CropMarks className="text-graphite/40" />
+                <CropMarks className="text-accent-deep" />
                 <div className="absolute left-5 top-5 label text-graphite/60">Fig. 05.{String(active + 1).padStart(2, "0")}</div>
               </div>
               <div className="mt-6 grid grid-cols-[1fr_auto] items-end gap-6">
@@ -75,7 +78,7 @@ export function Products() {
                 <Link
                   href={current.href}
                   aria-label={`View ${current.name}`}
-                  className="grid size-14 place-items-center rounded-full bg-abyss text-white transition-colors hover:bg-marine"
+                  className="grid size-14 place-items-center rounded-full bg-abyss text-accent transition-colors hover:bg-accent hover:text-abyss"
                 >
                   <ArrowUpRight className="size-5" strokeWidth={1.5} aria-hidden />
                 </Link>
@@ -108,7 +111,11 @@ function ProductRow({ p, i, active, onActivate }: { p: Product; i: number; activ
           aria-hidden
           className={`absolute inset-y-0 -left-4 -right-4 origin-bottom bg-white transition-transform duration-700 ease-(--ease-expo) ${active ? "scale-y-100" : "scale-y-0"} max-lg:hidden`}
         />
-        <span className="label relative tabular-nums text-steel-500">{String(i + 1).padStart(2, "0")}</span>
+        <span
+          aria-hidden
+          className={`absolute inset-y-4 -left-4 w-[3px] origin-top bg-accent transition-transform duration-700 ease-(--ease-expo) ${active ? "scale-y-100" : "scale-y-0"} max-lg:hidden`}
+        />
+        <span className={`label relative tabular-nums transition-colors ${active ? "text-accent-ink" : "text-steel-500"}`}>{String(i + 1).padStart(2, "0")}</span>
         <span className="relative">
           <span
             className={`heading block text-[clamp(1.5rem,2.6vw,2.6rem)] transition-[color,transform] duration-700 ease-(--ease-expo) ${
@@ -121,56 +128,16 @@ function ProductRow({ p, i, active, onActivate }: { p: Product; i: number; activ
         </span>
         <span className="relative flex items-center gap-4">
           <span className="label hidden text-steel-500 xl:block">{p.tags.join(" · ")}</span>
-          {p.image && (
-            <span className="relative block size-16 overflow-hidden bg-plate-deep lg:hidden">
-              <Image src={p.image.src} alt="" fill sizes="64px" className="object-cover mix-blend-multiply" />
-            </span>
-          )}
+          <span className="relative block size-16 overflow-hidden bg-plate-deep lg:hidden">
+            <Image data-img-role="thumb" src={p.image.src} alt="" fill sizes="64px" className={p.image.src.endsWith(".png") ? "object-contain p-1.5" : "object-cover mix-blend-multiply"} />
+          </span>
           <ArrowUpRight
-            className={`size-5 transition-all duration-500 ease-(--ease-expo) max-lg:hidden ${active ? "rotate-45 text-marine opacity-100" : "opacity-30"}`}
+            className={`size-5 transition-all duration-500 ease-(--ease-expo) max-lg:hidden ${active ? "rotate-45 text-accent-ink opacity-100" : "opacity-30"}`}
             strokeWidth={1.5}
             aria-hidden
           />
         </span>
       </Link>
     </li>
-  );
-}
-
-/** No suitable photograph exists yet; show a schematic line drawing rather than a misleading image. */
-function Schematic({ slug }: { slug: string }) {
-  return slug === "avr" ? <AvrSchematic /> : <ControllerSchematic />;
-}
-
-function AvrSchematic() {
-  return (
-    <svg viewBox="0 0 400 500" className="absolute inset-0 size-full text-graphite/50" fill="none" stroke="currentColor" strokeWidth="1" aria-label="Schematic drawing of a generator automatic voltage regulator board" role="img">
-      <rect x="80" y="110" width="240" height="280" />
-      {Array.from({ length: 9 }, (_, i) => <path key={i} d={`M${92 + i * 24} 110v-34`} />)}
-      <path d="M80 76h240" opacity=".6" />
-      <rect x="100" y="340" width="200" height="30" />
-      {Array.from({ length: 8 }, (_, i) => <circle key={i} cx={115 + i * 24} cy="355" r="6" />)}
-      {[0, 1, 2].map((i) => <g key={i}><circle cx={130 + i * 70} cy="170" r="14" /><path d={`M${130 + i * 70} 158v12`} /></g>)}
-      <rect x="110" y="220" width="80" height="60" />
-      <rect x="215" y="220" width="75" height="90" opacity=".7" />
-      <text x="118" y="256" fontFamily="monospace" fontSize="14" fill="currentColor" stroke="none">AVR</text>
-      <path d="M350 110v280M344 110h12M344 390h12" opacity=".5" />
-    </svg>
-  );
-}
-
-function ControllerSchematic() {
-  return (
-    <svg viewBox="0 0 400 500" className="absolute inset-0 size-full text-graphite/50" fill="none" stroke="currentColor" strokeWidth="1" aria-label="Schematic drawing of a genset controller front panel" role="img">
-      <rect x="70" y="90" width="260" height="320" />
-      <rect x="100" y="125" width="200" height="90" />
-      <path d="M115 190h40m10 0h30m10 0h40" opacity=".6" />
-      <text x="115" y="160" fontFamily="monospace" fontSize="22" fill="currentColor" stroke="none">AUTO · AMF</text>
-      {[0, 1, 2, 3].map((r) => [0, 1, 2].map((c) => <circle key={`${r}${c}`} cx={130 + c * 70} cy={260 + r * 36} r="10" />))}
-      <rect x="110" y="380" width="70" height="18" />
-      <rect x="220" y="380" width="70" height="18" />
-      <path d="M40 90v320M34 90h12M34 410h12" opacity=".5" />
-      <text x="20" y="255" fontFamily="monospace" fontSize="10" fill="currentColor" stroke="none" transform="rotate(-90 20 255)">FRONT PANEL</text>
-    </svg>
   );
 }

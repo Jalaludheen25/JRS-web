@@ -4,6 +4,7 @@ import { QuoteBand } from "@/components/page/QuoteBand";
 import { overhaulCapabilities } from "@/lib/content";
 import { resolveLink, type LinkCard } from "@/lib/links";
 import { pageMetadata } from "@/lib/seo";
+import { images } from "@/lib/images";
 
 export const metadata = pageMetadata({
   title: "Marine Engine Repair & Overhaul Services in Abu Dhabi | JRS",
@@ -44,7 +45,7 @@ export default function ServicesPage() {
         title="Repair. Recondition. Return to service."
         lead="Comprehensive engine overhaul and technical services for marine and power-generation machinery, with a focus on safety, precision and global responsiveness."
         crumbs={[{ name: "Services", path: "/services/" }]}
-        image={{ src: "/images/scenes/turbine-rotor-machining.jpg", alt: "Turbine rotor on a machining and balancing rig", fit: "cover" }}
+        image={images.servicesHub}
       />
 
       {groups.map((g, i) => (
@@ -62,7 +63,7 @@ export default function ServicesPage() {
           <ol className="grid sm:grid-cols-2 sm:gap-x-10 lg:col-span-7 lg:col-start-6">
             {overhaulCapabilities.map((c, i) => (
               <li key={c} className="flex gap-5 border-b border-white/10 py-5">
-                <span className="label w-6 shrink-0 pt-1 tabular-nums text-marine-bright">{String(i + 1).padStart(2, "0")}</span>
+                <span className="label w-6 shrink-0 pt-1 tabular-nums text-accent">{String(i + 1).padStart(2, "0")}</span>
                 <span className="text-[16px] leading-snug text-fog/90">{c}</span>
               </li>
             ))}

@@ -3,20 +3,21 @@ import { DrawLine, FadeUp, RevealLines } from "@/components/ui/RevealLines";
 import { Eyebrow } from "@/components/ui/primitives";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { overhaulCapabilities } from "@/lib/content";
+import { images } from "@/lib/images";
 
 export function Overhaul() {
   return (
     <section aria-labelledby="overhaul-title" className="relative overflow-hidden bg-ink">
       {/* Cinematic plate */}
       <div className="scene grain relative h-[92svh] min-h-[560px]">
-        <ParallaxImage src="/images/scenes/turbine-rotor-machining.jpg" alt="Turbine rotor mounted on a machining and balancing rig" amount={10} />
+        <ParallaxImage src={images.homeOverhaul.src} alt={images.homeOverhaul.alt} amount={10} />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/40" />
         <div className="shell relative z-10 flex h-full flex-col justify-between pb-16 pt-28">
           <Eyebrow sheet="08 / 14">Engine overhaul</Eyebrow>
           <h2 id="overhaul-title">
             <RevealLines
               className="display block text-[clamp(3.25rem,10vw,11rem)] text-white"
-              lines={["When performance", <span key="c" className="accent text-steel-300">cannot wait.</span>]}
+              lines={["When performance", <span key="c" className="accent text-accent">cannot wait.</span>]}
             />
           </h2>
         </div>
@@ -42,7 +43,7 @@ export function Overhaul() {
             <ol className="grid sm:grid-cols-2 sm:gap-x-10">
               {overhaulCapabilities.map((c, i) => (
                 <li key={c} className="flex gap-5 border-b border-white/10 py-5">
-                  <span className="label w-6 shrink-0 pt-1 tabular-nums text-marine-bright">{String(i + 1).padStart(2, "0")}</span>
+                  <span className="label w-6 shrink-0 pt-1 tabular-nums text-accent">{String(i + 1).padStart(2, "0")}</span>
                   <span className="text-[16px] leading-snug text-fog/90">{c}</span>
                 </li>
               ))}

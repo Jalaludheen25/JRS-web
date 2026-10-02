@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { FadeUp, RevealLines } from "@/components/ui/RevealLines";
 import { ArrowLink, Eyebrow } from "@/components/ui/primitives";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { images } from "@/lib/images";
 
 const types = [
   { n: "A", name: "Main bearings" },
@@ -24,11 +25,11 @@ export function BearingsFeature() {
   return (
     <section ref={ref} aria-labelledby="bearings-title" className="relative overflow-hidden bg-plate pb-[var(--section-y)] text-graphite">
       <div className="shell grid items-center gap-12 lg:grid-cols-12">
-        <div className="relative lg:col-span-7">
-          <motion.div className="relative aspect-[3/2] w-[112%] -translate-x-[6%]" style={reduce ? undefined : { x, rotate }}>
+        <div className="relative mb-16 lg:col-span-7 lg:mb-0">
+          <motion.div className="relative aspect-[3/2] w-full lg:w-[112%] lg:-translate-x-[6%]" style={reduce ? undefined : { x, rotate }}>
             <Image
-              src="/images/products/engine-bearings.jpg"
-              alt="Marine engine bearings: main, thrust and connecting-rod bearing shells"
+              src={images.homeBearings.src}
+              alt={images.homeBearings.alt}
               fill
               sizes="(min-width:1024px) 62vw, 100vw"
               className="object-contain mix-blend-multiply"
@@ -40,7 +41,7 @@ export function BearingsFeature() {
             <motion.path d="M2 5 H98" stroke="currentColor" strokeWidth="0.15" vectorEffect="non-scaling-stroke" style={reduce ? undefined : { pathLength: dim }} />
             <path d="M2 1 V9 M98 1 V9" stroke="currentColor" strokeWidth="1" vectorEffect="non-scaling-stroke" />
           </svg>
-          <p className="label absolute -bottom-14 left-1/2 -translate-x-1/2 text-steel-500">Manufactured to OEM specifications</p>
+          <p className="label absolute -bottom-14 left-1/2 -translate-x-1/2 whitespace-nowrap text-steel-500">Manufactured to OEM specifications</p>
         </div>
 
         <div className="lg:col-span-4 lg:col-start-9">
@@ -58,7 +59,7 @@ export function BearingsFeature() {
             {types.map((t, i) => (
               <li key={t.n} className="border-t border-graphite/14">
                 <FadeUp delay={0.08 * i} className="flex items-baseline gap-5 py-4">
-                  <span className="label text-marine">{t.n}</span>
+                  <span className="label text-accent-ink">{t.n}</span>
                   <span className="heading text-2xl text-abyss">{t.name}</span>
                 </FadeUp>
               </li>

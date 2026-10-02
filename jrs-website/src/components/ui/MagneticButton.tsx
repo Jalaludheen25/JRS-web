@@ -7,10 +7,16 @@ import { ArrowUpRight } from "lucide-react";
 
 type Variant = "solid" | "ghost" | "light";
 
+// Primary actions are yellow; the yellow is reserved for the one main action per view.
 const styles: Record<Variant, string> = {
-  solid: "bg-marine text-white hover:bg-marine-bright",
-  ghost: "border border-white/25 text-fog hover:border-white/60 hover:bg-white/5",
-  light: "bg-white text-abyss hover:bg-plate",
+  solid: "bg-accent font-semibold text-abyss hover:bg-accent-bright",
+  ghost: "border border-white/25 font-medium text-fog hover:border-accent hover:text-accent",
+  light: "bg-white font-medium text-abyss hover:bg-accent",
+};
+const iconWell: Record<Variant, string> = {
+  solid: "bg-abyss text-accent",
+  ghost: "bg-white/10",
+  light: "bg-abyss/8",
 };
 
 type Props = {
@@ -48,10 +54,10 @@ export function MagneticButton({ href, children, variant = "solid", className, e
       style={{ x: sx, y: sy }}
       onPointerMove={onMove}
       onPointerLeave={reset}
-      className={`group inline-flex h-12 items-center gap-3 rounded-full pl-6 pr-2 text-[13px] font-medium tracking-[0.04em] uppercase transition-colors duration-300 ${styles[variant]} ${className ?? ""}`}
+      className={`group inline-flex h-12 items-center gap-3 rounded-full pl-6 pr-2 text-[13px] tracking-[0.04em] uppercase transition-colors duration-300 ${styles[variant]} ${className ?? ""}`}
     >
       <span>{children}</span>
-      <span className="grid size-8 place-items-center overflow-hidden rounded-full bg-white/12">
+      <span className={`grid size-8 place-items-center overflow-hidden rounded-full ${iconWell[variant]}`}>
         <span className="relative block size-4">
           <span className="absolute inset-0 transition-transform duration-500 ease-(--ease-expo) group-hover:translate-x-4 group-hover:-translate-y-4">
             {icon ?? <ArrowUpRight className="size-4" strokeWidth={1.75} aria-hidden />}

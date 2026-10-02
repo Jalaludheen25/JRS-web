@@ -282,7 +282,8 @@
    "src": "/images/legacy/chatgpt-image-feb-14-2026-05_18_06-pm.jpg",
    "width": 1536,
    "height": 1024,
-   "alt": "Cummins Engine Spare Parts for Marine and Industrial Applications"
+   "alt": "Cummins Engine Spare Parts for Marine and Industrial Applications",
+   "fit": "contain"
   },
   "blocks": [
    {
@@ -449,10 +450,11 @@
   "h1": "Cummins Engine Spare Parts in UAE",
   "date": "June 4, 2026",
   "featured": {
-   "src": "/images/legacy/cummins-engine-spare-parts-in-uae-1.jpg",
-   "width": 1433,
-   "height": 1098,
-   "alt": "cummins engine spare parts in uae"
+   "src": "/images/stock/diesel-generator-engine.jpg",
+   "width": 2400,
+   "height": 1800,
+   "alt": "Diesel generator engine for industrial and backup power",
+   "fit": "cover"
   },
   "blocks": [
    {
@@ -609,10 +611,11 @@
   "h1": "Cummins Engine Spare Parts Supplier in Saudi Arabia for Reliable Engine Performance",
   "date": "June 16, 2026",
   "featured": {
-   "src": "/images/legacy/cummins-engine-spare-parts-in-saudi-arabia.jpg",
-   "width": 1536,
-   "height": 1024,
-   "alt": "cummins engine spare parts in saudi arabia"
+   "src": "/images/stock/offshore-supply-vessel.jpg",
+   "width": 2400,
+   "height": 1703,
+   "alt": "Offshore supply vessel at sea",
+   "fit": "cover"
   },
   "blocks": [
    {
@@ -849,10 +852,11 @@
   "h1": "The Importance of Cummins Spare Parts for Industries in Kuwait",
   "date": "June 24, 2026",
   "featured": {
-   "src": "/images/legacy/cummins-spare-parts-supplier-in-kuwait.jpg",
-   "width": 1536,
-   "height": 1024,
-   "alt": "cummins spare parts supplier in kuwait"
+   "src": "/images/stock/tug-towing-container-ship.jpg",
+   "width": 2400,
+   "height": 1800,
+   "alt": "Tug assisting a container ship in port",
+   "fit": "cover"
   },
   "blocks": [
    {
@@ -1104,7 +1108,8 @@
    "src": "/images/legacy/closeup-car-fuel-rail-with-injectors-supplying-gasoline-eight-cylinder-engine-white-isolated-background-spare-parts-catalog-scaled.jpg",
    "width": 1800,
    "height": 1200,
-   "alt": "fuel injectors"
+   "alt": "fuel injectors",
+   "fit": "cover"
   },
   "blocks": [
    {
@@ -1481,7 +1486,8 @@
    "src": "/images/legacy/man-connecting-engine-wiring_100kb.jpg",
    "width": 1800,
    "height": 1350,
-   "alt": "Fuel Injector Spare Parts and Repair in abu dhabi"
+   "alt": "Fuel Injector Spare Parts and Repair in abu dhabi",
+   "fit": "cover"
   },
   "blocks": [
    {
@@ -1744,7 +1750,8 @@
    "src": "/images/legacy/compressed_100kb.jpg",
    "width": 1536,
    "height": 1024,
-   "alt": "L’Orange Injectors and Pumps Repair"
+   "alt": "L’Orange Injectors and Pumps Repair",
+   "fit": "cover"
   },
   "blocks": [
    {
@@ -1868,7 +1875,8 @@
    "src": "/images/legacy/yanmar-spare-parts-saudi-arabia-e1781845223695.jpg",
    "width": 1078,
    "height": 706,
-   "alt": "Yanmar Spare Parts Saudi Arabia"
+   "alt": "Yanmar Spare Parts Saudi Arabia",
+   "fit": "contain"
   },
   "blocks": [
    {
@@ -2565,7 +2573,8 @@
    "src": "/images/legacy/warstila-oem-quality-spare-parts.jpg",
    "width": 1800,
    "height": 1200,
-   "alt": "wartsila oem quality spare parts"
+   "alt": "wartsila oem quality spare parts",
+   "fit": "contain"
   },
   "blocks": [
    {
@@ -2804,10 +2813,11 @@
   "h1": "Yanmar Marine Engine Spare Parts for Marine Operations",
   "date": "June 1, 2026",
   "featured": {
-   "src": "/images/legacy/yanmar-marine-engine-spare-parts-for-marine-operations.jpg",
-   "width": 1433,
-   "height": 1098,
-   "alt": "Yanmar Marine Engine Spare Parts for Marine Operations"
+   "src": "/images/stock/offshore-platform-crew-transfer.jpg",
+   "width": 2400,
+   "height": 1800,
+   "alt": "Supply vessel alongside an offshore platform",
+   "fit": "cover"
   },
   "blocks": [
    {
@@ -2949,7 +2959,8 @@
    "src": "/images/legacy/yanmar-marine-engine-parts.jpg",
    "width": 1536,
    "height": 1024,
-   "alt": "Yanmar Marine Engine Spare Parts Supplier in UAE"
+   "alt": "Yanmar Marine Engine Spare Parts Supplier in UAE",
+   "fit": "contain"
   },
   "blocks": [
    {

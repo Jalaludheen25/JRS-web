@@ -53,7 +53,7 @@ export default async function IndustryPage({ params }: PageProps<"/industries/[s
         title={content.h1}
         lead={content.lead}
         crumbs={[{ name: "Industries", path: "/industries/" }, { name: ind.title, path: `/industries/${slug}/` }]}
-        image={{ ...ind.image, fit: "cover" }}
+        image={ind.image}
       />
       <section className="section-y bg-abyss">
         <div className="shell">

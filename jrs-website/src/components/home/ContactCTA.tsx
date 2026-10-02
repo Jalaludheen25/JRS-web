@@ -12,13 +12,14 @@ export function ContactCTA({ sheet = "14 / 14" }: { sheet?: string } = {}) {
   ];
 
   return (
-    <section id="quote" aria-labelledby="contact-title" className="section-y relative overflow-hidden bg-marine">
-      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.12] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:96px_96px]" />
+    <section id="quote" aria-labelledby="contact-title" className="section-y relative overflow-hidden bg-navy-900">
+      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.05] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:96px_96px]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_70%_at_85%_20%,rgb(33_71_160/0.35),transparent_70%)]" />
       <div className="shell relative grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-6">
           <Eyebrow sheet={sheet || undefined} className="text-white/75">Request a quote</Eyebrow>
           <h2 id="contact-title" className="mt-8">
-            <RevealLines className="display block text-[clamp(3rem,7.2vw,7.75rem)] text-white" lines={["Let’s keep", "your operations", <span key="m" className="accent">moving.</span>]} />
+            <RevealLines className="display block text-[clamp(3rem,7.2vw,7.75rem)] text-white" lines={["Let’s keep", "your operations", <span key="m" className="accent text-accent">moving.</span>]} />
           </h2>
 
           <ul className="mt-14 border-t border-white/25">
@@ -30,7 +31,7 @@ export function ContactCTA({ sheet = "14 / 14" }: { sheet?: string } = {}) {
                   className="group flex items-center justify-between gap-6 py-5"
                 >
                   <span className="flex items-center gap-4">
-                    <Icon className="size-5 text-white/80" strokeWidth={1.5} aria-hidden />
+                    <Icon className="size-5 text-accent" strokeWidth={1.5} aria-hidden />
                     <span className="label text-white/75">{label}</span>
                   </span>
                   <span className="heading text-right text-[clamp(1.1rem,2vw,1.75rem)] text-white transition-transform duration-500 ease-(--ease-expo) group-hover:-translate-x-2">{value}</span>
@@ -45,7 +46,7 @@ export function ContactCTA({ sheet = "14 / 14" }: { sheet?: string } = {}) {
         </div>
 
         <div className="lg:col-span-5 lg:col-start-8">
-          <div className="border border-white/25 bg-abyss/25 p-[clamp(20px,3vw,44px)] backdrop-blur-sm">
+          <div className="border border-white/15 border-t-2 border-t-accent bg-abyss/40 p-[clamp(20px,3vw,44px)] backdrop-blur-sm">
             <p className="label text-white/75">Quotation request</p>
             <p className="mt-3 text-[15px] text-white/80">Send part numbers or a description, and the JRS team will confirm availability and specifications.</p>
             <div className="mt-8">

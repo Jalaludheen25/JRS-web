@@ -7,8 +7,13 @@
   --color-navy-900: #0a1428;
   --color-navy-800: #10203f;
   --color-marine: #2147a0;
-  --color-marine-bright: #4a78e0;
-  --color-signal: #7dd8f5;
+  /* Accent: warm signal yellow. Rules in docs/03-design-system.md § Accent.
+     On dark surfaces it may be text (11.8:1 on abyss). On light surfaces it is only a fill, bar or highlight;
+     small text there uses accent-ink (4.75:1 on plate). */
+  --color-accent: #f2c230;
+  --color-accent-bright: #ffd457;
+  --color-accent-deep: #d9a514;
+  --color-accent-ink: #8a6400;
   --color-plate: #eef1f5;
   --color-plate-deep: #e2e6ec;
   --color-fog: #e8ecf2;
@@ -49,13 +54,15 @@ body {
 }
 
 ::selection {
-  background: var(--color-marine);
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--color-abyss);
 }
 
+/* Yellow ring with a dark inner ring: visible on navy, on the light plate and on yellow buttons. */
 :focus-visible {
-  outline: 2px solid var(--color-marine-bright);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--color-abyss);
 }
 
 /* Lenis */
@@ -150,16 +157,28 @@ html.lenis body {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
+  /* Hover underline draws in yellow. --ul sets the thickness (1px default, 2px for prominent links). */
   .link-underline {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-size: 0% 1px;
+    background-image: linear-gradient(var(--color-accent), var(--color-accent));
+    background-size: 0% var(--ul, 1px);
     background-repeat: no-repeat;
     background-position: 0 100%;
     transition: background-size 0.5s var(--ease-expo);
   }
   .link-underline:hover,
   .link-underline:focus-visible {
-    background-size: 100% 1px;
+    background-size: 100% var(--ul, 1px);
+  }
+
+  /* Highlighter stroke behind a phrase: how headings carry the yellow accent on light surfaces,
+     where yellow text would be unreadable. Animated in by <Mark>. */
+  .mark {
+    background-image: linear-gradient(transparent 70%, rgb(242 194 48 / 0.85) 70%, rgb(242 194 48 / 0.85) 88%, transparent 88%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    padding-inline: 0.04em;
   }
 }
 

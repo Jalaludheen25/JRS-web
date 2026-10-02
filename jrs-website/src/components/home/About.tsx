@@ -1,6 +1,7 @@
 import { ImageReveal } from "@/components/ui/ImageReveal";
 import { FadeUp, RevealLines } from "@/components/ui/RevealLines";
 import { ArrowLink, CropMarks, Eyebrow, TechnicalSpec } from "@/components/ui/primitives";
+import { images } from "@/lib/images";
 
 export function About() {
   return (
@@ -9,8 +10,8 @@ export function About() {
         <div className="relative lg:col-span-6">
           <div className="relative lg:sticky lg:top-28">
             <ImageReveal
-              src="/images/scenes/vessel-aerial-2-graded.jpg"
-              alt="Container vessel berthed under ship-to-shore cranes"
+              src={images.homeAbout.src}
+              alt={images.homeAbout.alt}
               sizes="(min-width:1024px) 48vw, 100vw"
               className="aspect-[4/5] w-full lg:aspect-[5/6]"
               parallax={10}
@@ -25,7 +26,7 @@ export function About() {
           <h2 id="about-title" className="mt-8">
             <RevealLines
               className="heading block text-[clamp(2.25rem,4.4vw,4.25rem)] text-white"
-              lines={["A trusted partner", "for marine and", <span key="p" className="accent text-steel-300">power generation.</span>]}
+              lines={["A trusted partner", "for marine and", <span key="p" className="accent text-accent">power generation.</span>]}
             />
           </h2>
           <FadeUp className="mt-10 space-y-6 text-[17px] leading-relaxed text-fog/80">

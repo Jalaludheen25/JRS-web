@@ -13,9 +13,9 @@ export function Statement() {
             stagger={0.12}
             lines={[
               <span key="a" className="text-white">Quality</span>,
-              <span key="b" className="block pl-[8vw] text-white">spares.</span>,
+              <span key="b" className="block pl-[8vw] text-white">spares<span className="text-accent">.</span></span>,
               <span key="c" className="outline-type tracking-[-0.03em] text-steel-300">Reliable</span>,
-              <span key="d" className="outline-type block pl-[16vw] tracking-[-0.03em] text-steel-300">repairs.</span>,
+              <span key="d" className="outline-type block pl-[16vw] tracking-[-0.03em] text-steel-300">repairs<span className="text-accent [-webkit-text-fill-color:currentColor] [-webkit-text-stroke-width:0]">.</span></span>,
             ]}
           />
         </h2>

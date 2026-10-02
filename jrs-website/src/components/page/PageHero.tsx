@@ -25,6 +25,43 @@ export function PageHero({ eyebrow, title, lead, crumbs, image, variant, meta, c
   const size =
     title.length > 70 ? "text-[clamp(2.1rem,4.4vw,4.4rem)]" : title.length > 40 ? "text-[clamp(2.5rem,5.6vw,6rem)]" : "text-[clamp(2.9rem,7vw,7.5rem)]";
 
+  // Small source photos and cut-outs are shown framed beside the title instead of stretched full-bleed.
+  if (variant === "scene" && image && (image.framed || image.fit === "contain")) {
+    return (
+      <section className="relative overflow-hidden bg-abyss pt-[76px]">
+        <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:96px_96px]" />
+        <div className="shell relative grid gap-12 pb-16 pt-14 lg:grid-cols-12 lg:items-center lg:gap-6 lg:pb-24">
+          <div className="lg:col-span-7">
+            <Breadcrumbs items={crumbs} />
+            <p className="label mt-10 flex items-center gap-3 text-steel-300">
+              <span aria-hidden className="h-[2px] w-8 bg-accent" />
+              {eyebrow}
+            </p>
+            <h1 className="mt-5">
+              <RevealLines immediate className={`display block max-w-[18ch] normal-case ${size} text-white`} lines={[title]} />
+            </h1>
+            {lead && <p className="mt-8 max-w-2xl text-[clamp(1.05rem,1.5vw,1.3rem)] leading-relaxed text-fog/85">{lead}</p>}
+            {meta}
+            {cta && <HeroActions className="mt-10" />}
+          </div>
+          <div className="relative lg:col-span-5">
+            <div className={`relative aspect-[4/3] w-full overflow-hidden ${image.fit === "contain" ? "bg-navy-900" : "scene grain bg-navy-900"}`}>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                preload
+                sizes="(min-width:1024px) 40vw, 100vw"
+                className={image.fit === "contain" ? "object-contain p-8" : "object-cover"}
+              />
+            </div>
+            <CropMarks className="text-accent/70" />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   if (variant === "scene") {
     return (
       <section className="relative flex min-h-[86svh] items-end overflow-hidden bg-abyss">
@@ -36,7 +73,10 @@ export function PageHero({ eyebrow, title, lead, crumbs, image, variant, meta, c
         <div className="absolute inset-0 bg-gradient-to-t from-abyss via-abyss/55 to-abyss/30" />
         <div className="shell relative z-10 w-full pb-16 pt-36">
           <Breadcrumbs items={crumbs} />
-          <p className="label mt-10 text-steel-300">{eyebrow}</p>
+          <p className="label mt-10 flex items-center gap-3 text-steel-300">
+            <span aria-hidden className="h-[2px] w-8 bg-accent" />
+            {eyebrow}
+          </p>
           <h1 className="mt-5">
             {/* max-width in ch must sit on the element that carries the display font size */}
             <RevealLines immediate className={`display block max-w-[18ch] normal-case ${size} text-white`} lines={[title]} />
@@ -58,7 +98,10 @@ export function PageHero({ eyebrow, title, lead, crumbs, image, variant, meta, c
       <div className="shell grid gap-12 pb-16 pt-14 lg:grid-cols-12 lg:items-center lg:gap-6 lg:pb-24">
         <div className={image ? "lg:col-span-7" : "lg:col-span-10"}>
           <Breadcrumbs items={crumbs} tone="light" />
-          <p className="label mt-10 text-marine">{eyebrow}</p>
+          <p className="label mt-10 flex items-center gap-3 text-marine">
+            <span aria-hidden className="h-[2px] w-8 bg-accent" />
+            {eyebrow}
+          </p>
           <h1 className="mt-5">
             <RevealLines immediate className={`display block normal-case ${size} text-abyss`} lines={[title]} />
           </h1>
@@ -78,7 +121,7 @@ export function PageHero({ eyebrow, title, lead, crumbs, image, variant, meta, c
                 className={image.fit === "cover" ? "object-cover" : "object-contain p-6 mix-blend-multiply"}
               />
             </div>
-            <CropMarks className="text-graphite/35" />
+            <CropMarks className="text-accent-deep" />
           </div>
         )}
       </div>

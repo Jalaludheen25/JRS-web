@@ -7,6 +7,7 @@ import { Phone } from "lucide-react";
 import { RevealLines } from "@/components/ui/RevealLines";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { quoteHref, site } from "@/lib/site";
+import { images } from "@/lib/images";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -25,8 +26,8 @@ export function Hero() {
       <motion.div className="scene grain absolute inset-0 overflow-hidden" style={reduce ? undefined : { clipPath: clip }}>
         <motion.div className="absolute inset-0" style={reduce ? undefined : { scale }}>
           <Image
-            src="/images/scenes/open-sea-panorama-graded.jpg"
-            alt="Container vessel under way towards a port, seen from above"
+            src={images.homeHero.src}
+            alt={images.homeHero.alt}
             fill
             preload
             sizes="100vw"
@@ -59,7 +60,7 @@ export function Hero() {
                 immediate
                 delay={0.15}
                 className="display block text-[clamp(3.4rem,13vw,13rem)] text-white"
-                lines={["Engineered", "for", <span key="u" className="accent text-steel-300">uptime.</span>]}
+                lines={["Engineered", "for", <span key="u" className="accent text-accent">uptime.</span>]}
               />
             </h1>
           </div>
@@ -90,7 +91,7 @@ export function Hero() {
           <p className="label flex items-center gap-3">
             Scroll
             <span aria-hidden className="relative block h-8 w-px overflow-hidden bg-white/15">
-              <span className="animate-scroll-cue absolute inset-0 bg-white" />
+              <span className="animate-scroll-cue absolute inset-0 bg-accent" />
             </span>
           </p>
         </div>
@@ -118,7 +119,7 @@ function TechnicalGrid() {
         ))}
         {[22, 64].map((top) =>
           cols.map((c) => (
-            <span key={`${top}-${c}`} className="absolute -translate-x-1/2 -translate-y-1/2 text-white/30" style={{ left: `${(c / 6) * 100}%`, top: `${top}%` }}>
+            <span key={`${top}-${c}`} className={`absolute -translate-x-1/2 -translate-y-1/2 ${c === 4 && top === 64 ? "text-accent" : "text-white/30"}`} style={{ left: `${(c / 6) * 100}%`, top: `${top}%` }}>
               <svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="currentColor" strokeWidth="1">
                 <path d="M5.5 0v11M0 5.5h11" />
               </svg>

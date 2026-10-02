@@ -22,9 +22,11 @@ What it avoids: neon, glass cards, gradient blobs, rounded "SaaS" cards, stock h
 | `ink` | `#03050A` | Footer, deepest layer |
 | `navy-900` | `#0A1428` | Raised dark panels |
 | `navy-800` | `#10203F` | Hover / active dark |
-| `marine` | `#2147A0` | Brand blue (from logo `#21409A`): CTAs, focus |
-| `marine-bright` | `#4A78E0` | Links and active states on dark |
-| `signal` | `#7DD8F5` | **Rare** accent: live readouts, one data point per screen |
+| `marine` | `#2147A0` | Brand blue (from logo `#21409A`): eyebrow labels on plate, the blue glow behind the contact band |
+| `accent` | `#F2C230` | **Signal yellow**, the site accent (rules below) |
+| `accent-bright` | `#FFD457` | Hover state of yellow buttons |
+| `accent-deep` | `#D9A514` | Crop marks and decorative lines on the light plate |
+| `accent-ink` | `#8A6400` | Brass: small accent text (index numbers, category labels) on light surfaces |
 | `plate` | `#EEF1F5` | Light product surface |
 | `plate-deep` | `#E2E6EC` | Product image wells |
 | `steel-300` | `#B6BFCB` | Secondary text on dark |
@@ -33,7 +35,23 @@ What it avoids: neon, glass cards, gradient blobs, rounded "SaaS" cards, stock h
 | `line` | `rgb(255 255 255 / .12)` | Hairlines on dark |
 | `line-dark` | `rgb(10 20 40 / .14)` | Hairlines on plate |
 
-Contrast: body text on `abyss` uses `#E8ECF2` (≈ 15:1); `steel-300` on `abyss` ≈ 9:1; `graphite` on `plate` ≈ 14:1. Signal cyan is never used for text below 18px.
+Contrast: body text on `abyss` uses `#E8ECF2` (≈ 15:1); `steel-300` on `abyss` ≈ 9:1; `graphite` on `plate` ≈ 14:1.
+
+### Accent: signal yellow
+
+Navy with signal yellow is the language of marine safety markings and engine-room signage. Here it is used sparingly, like brass on a ship's instrument panel.
+
+| Where | How |
+|---|---|
+| **Headings** | On dark surfaces the italic serif accent phrase of a display headline is yellow ("*uptime.*", "*under pressure.*"). On light surfaces yellow text would be unreadable (1.5:1), so the phrase stays dark and gets a slim yellow highlighter stroke (`<Mark>`) that draws in on scroll. The statement section uses yellow full stops. |
+| **Buttons** | The **one primary action per view** is a yellow pill with dark text (11.8:1) and a dark arrow well. The nav "Request a quote" pill is white and turns yellow on hover, so there is no constant yellow block on every screen. The mobile dock's Quote button and the form's Send button are yellow. |
+| **Borders & lines** | Eyebrow dash, crop marks, the top edge of quote-form cards, the left edge of the distributor panel, 3px hover bars on cards, the active product-row bar, horizontal-track progress, a 2px reading-progress line under the solid navbar. |
+| **Small details** | Index numbers (yellow on dark, brass `accent-ink` on light), marquee separators, footer column markers, the hero's single "datum" crosshair, the footer coordinates, active filter pill, contact icons, text selection, focus ring. |
+
+Rules:
+- One yellow headline phrase and one yellow button per screen at most. Everything else yellow is a line or small mark.
+- Never use yellow text on `plate` or white. Use `accent-ink` for small text, or a fill, bar or highlight.
+- Focus ring: 2px yellow outline with a 3px abyss inner ring, visible on navy, on the plate and on yellow buttons.
 
 ## Typography
 
