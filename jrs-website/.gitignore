@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Hero film build intermediates (scripts/build-hero-video.mjs) — large and reproducible
+/.cache/

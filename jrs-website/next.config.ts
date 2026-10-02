@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     qualities: [70, 80, 90],
   },
+  async headers() {
+    // Hero film: cache for a week (filenames are not hashed, so not "immutable"); revalidate in the background.
+    return [{ source: "/video/:path*", headers: [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }] }];
+  },
   async redirects() {
     return [
       { source: "/home/", destination: "/", permanent: true },

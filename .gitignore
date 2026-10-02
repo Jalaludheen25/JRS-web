@@ -1,0 +1,6 @@
+# Video build source files (large raw clips > 50MB)
+docs/source-video/
+*.mkv
+.edit.mjs
+.hv.jpg
+.mask.png

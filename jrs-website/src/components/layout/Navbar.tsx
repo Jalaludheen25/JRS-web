@@ -70,17 +70,17 @@ export function Navbar() {
         />
         <nav aria-label="Primary" className="shell flex h-[76px] items-center justify-between gap-6">
           <Link href="/" className="relative z-10 shrink-0" aria-label="JRS Mechanical Equipment, home">
-            <Image src="/brand/jrs-logo-white.png" alt="JRS — Quality Spares, Reliable Repairs" width={1080} height={537} preload className="h-11 w-auto" />
+            <Image src="/brand/jrs-logo-white.png" alt="JRS — Quality Spares, Reliable Repairs" width={1080} height={537} preload className={`h-11 w-auto transition-[filter] duration-500 ${solid || panel ? "" : "drop-shadow-[0_1px_6px_rgb(3_5_10/0.55)]"}`} />
           </Link>
 
-          <ul className="hidden items-center gap-9 lg:flex">
+          <ul className={`hidden items-center gap-9 lg:flex ${solid || panel ? "" : "text-legible-strong"}`}>
             {primaryNav.map((item) => {
               const hasPanel = item.label in panels;
               return (
                 <li key={item.href} onMouseEnter={() => openPanel(hasPanel ? item.label : null)}>
                   <Link
                     href={item.href}
-                    className="link-underline py-2 text-[13px] font-medium uppercase tracking-[0.08em] text-fog/85 transition-colors hover:text-white"
+                    className={`link-underline py-2 text-[13px] font-medium uppercase tracking-[0.08em] transition-colors hover:text-white ${solid || panel ? "text-fog/85" : "font-semibold text-white"}`}
                     aria-expanded={hasPanel ? panel === item.label : undefined}
                     aria-controls={hasPanel ? panelId : undefined}
                     onFocus={() => openPanel(hasPanel ? item.label : null)}
@@ -93,7 +93,7 @@ export function Navbar() {
           </ul>
 
           <div className="flex items-center gap-3">
-            <a href={site.phone.tel} className="label hidden text-fog/70 transition-colors hover:text-white xl:block">
+            <a href={site.phone.tel} className={`label hidden transition-colors hover:text-white xl:block ${solid || panel ? "text-fog/70" : "text-legible-strong text-white"}`}>
               {site.phone.display}
             </a>
             <Link

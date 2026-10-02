@@ -67,7 +67,8 @@ export const images = {
   industriesHub: scene("/images/brochure/container-ship-at-berth-dusk-graded.jpg", "Container ship at berth under gantry cranes at dusk"),
 
   // ── Homepage sections ────────────────────────────────────────────────────────
-  homeHero: scene("/images/scenes/open-sea-panorama-graded.jpg", "Container vessel under way towards a port, seen from above"),
+  // Poster of the hero film (scripts/build-hero-video.mjs): first frame of the reel, art-directed in HeroMedia.
+  homeHero: scene("/images/hero/hero-poster.jpg", "Container ship heading out to open sea"),
   homeAbout: scene("/images/scenes/vessel-aerial-2-graded.jpg", "Container vessel berthed under ship-to-shore cranes"),
   // The large 1536px render carries the homepage feature; the smaller brochure shot is the product page identity.
   homeBearings: plate("/images/products/engine-bearings.jpg", "Marine engine bearings: main, thrust and connecting rod bearing shells"),
