@@ -22,7 +22,9 @@ What it avoids: neon, glass cards, gradient blobs, rounded "SaaS" cards, stock h
 | `ink` | `#03050A` | Footer, deepest layer |
 | `navy-900` | `#0A1428` | Raised dark panels |
 | `navy-800` | `#10203F` | Hover / active dark |
-| `marine` | `#2147A0` | Brand blue (from logo `#21409A`): eyebrow labels on plate, the blue glow behind the contact band |
+| `marine` | `#2147A0` | Brand blue (from logo `#21409A`): eyebrow labels on plate |
+| `heritage` | `#1E4495` | **Previous jrs-me.com royal blue** (its most-used colour): footer top rule, the glow in the contact / quote bands |
+| `heritage-deep` | `#021343` | **Previous site's deep navy**: contact / quote band and footer backgrounds, the light hero overlay tint |
 | `accent` | `#F2C230` | **Signal yellow**, the site accent (rules below) |
 | `accent-bright` | `#FFD457` | Hover state of yellow buttons |
 | `accent-deep` | `#D9A514` | Crop marks and decorative lines on the light plate |
@@ -35,7 +37,9 @@ What it avoids: neon, glass cards, gradient blobs, rounded "SaaS" cards, stock h
 | `line` | `rgb(255 255 255 / .12)` | Hairlines on dark |
 | `line-dark` | `rgb(10 20 40 / .14)` | Hairlines on plate |
 
-Contrast: body text on `abyss` uses `#E8ECF2` (≈ 15:1); `steel-300` on `abyss` ≈ 9:1; `graphite` on `plate` ≈ 14:1.
+Contrast: body text on `abyss` uses `#E8ECF2` (≈ 15:1); `steel-300` on `abyss` ≈ 9:1; `graphite` on `plate` ≈ 14:1. On `heritage-deep`: white 17.9:1, `steel-300` 9.6:1, `steel-500` 4.8:1, accent 10.7:1.
+
+Heritage colours are used in only three places (contact/quote bands, footer, hero overlay tint), so the old site's blue reads as continuity, not a second theme.
 
 ### Accent: signal yellow
 
@@ -96,7 +100,7 @@ All fonts are self-hosted via `next/font` (no layout shift, no third-party reque
 
 | Sheet | Section | Surface | Signature moment |
 |---|---|---|---|
-| 01 | Hero: **ENGINEERED FOR UPTIME.** | Full-bleed cinematic film (26 s loop: sea → port → engine → machining → fabrication) in bright natural colour, with nothing over it | Headline masks in; film-control pill (pause, scene caption, yellow progress line); on scroll the film contracts into a framed "viewport". See [06-hero-film.md](06-hero-film.md) |
+| 01 | Hero: **ENGINEERED FOR UPTIME.** | Full-bleed cinematic film (26 s loop: sea → port → engine → machining → fabrication) in bright natural colour under a light heritage-navy overlay | Headline masks in; film-control pill (pause, scene caption, yellow progress line); on scroll the film contracts into a framed "viewport". See [06-hero-film.md](06-hero-film.md) |
 | 02 | Brand statement: **QUALITY SPARES. RELIABLE REPAIRS.** | Abyss | Huge type, lines reveal one at a time, second line in outline |
 | 03 | About JRS | Split: image / copy | Clip reveal image, mission excerpt, "Discover JRS" |
 | 04 | Core capabilities ×6 | Abyss, pinned horizontal track | Oversized index numbers, one panel per capability |

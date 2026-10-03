@@ -25,6 +25,7 @@ export function RevealLines({ lines, className, lineClassName, delay = 0, stagge
       {lines.map((line, i) => (
         <span key={i} className="block overflow-hidden pb-[0.06em] -mb-[0.06em]">
           <motion.span
+            data-reveal=""
             className={`block will-change-transform ${lineClassName ?? ""}`}
             initial={reduce ? false : { y: "110%" }}
             animate={show ? { y: "0%" } : undefined}
@@ -46,6 +47,7 @@ export function FadeUp({ children, className, delay = 0 }: { children: ReactNode
   return (
     <motion.div
       ref={ref}
+      data-reveal=""
       className={className}
       initial={reduce ? false : { opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : undefined}
@@ -65,6 +67,7 @@ export function DrawLine({ className, dark, delay = 0 }: { className?: string; d
     <motion.div
       ref={ref}
       aria-hidden
+      data-reveal=""
       className={`${dark ? "hairline-dark" : "hairline"} origin-left ${className ?? ""}`}
       initial={reduce ? false : { scaleX: 0 }}
       animate={inView ? { scaleX: 1 } : undefined}
@@ -78,6 +81,7 @@ export function Mark({ children, delay = 0.55 }: { children: ReactNode; delay?: 
   const reduce = useReducedMotion();
   return (
     <motion.span
+      data-reveal=""
       className="mark"
       initial={reduce ? false : { backgroundSize: "0% 100%" }}
       whileInView={{ backgroundSize: "100% 100%" }}

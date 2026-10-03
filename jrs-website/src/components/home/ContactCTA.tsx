@@ -12,9 +12,10 @@ export function ContactCTA({ sheet = "14 / 14" }: { sheet?: string } = {}) {
   ];
 
   return (
-    <section id="quote" aria-labelledby="contact-title" className="section-y relative overflow-hidden bg-navy-900">
+    <section id="quote" aria-labelledby="contact-title" className="section-y relative overflow-hidden bg-heritage-deep">
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.05] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:96px_96px]" />
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_70%_at_85%_20%,rgb(33_71_160/0.35),transparent_70%)]" />
+      {/* Heritage band: the previous site's royal blue rising out of its deep navy. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(75%_90%_at_88%_0%,rgb(30_68_149/0.75),transparent_70%)]" />
       <div className="shell relative grid gap-16 lg:grid-cols-12">
         <div className="lg:col-span-6">
           <Eyebrow sheet={sheet || undefined} className="text-white/75">Request a quote</Eyebrow>

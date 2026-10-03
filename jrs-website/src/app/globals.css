@@ -7,6 +7,9 @@
   --color-navy-900: #0a1428;
   --color-navy-800: #10203f;
   --color-marine: #2147a0;
+  /* Heritage: the previous jrs-me.com theme colours, used sparingly (contact bands, footer, hero tint). */
+  --color-heritage: #1e4495;
+  --color-heritage-deep: #021343;
   /* Accent: warm signal yellow. Rules in docs/03-design-system.md § Accent.
      On dark surfaces it may be text (11.8:1 on abyss). On light surfaces it is only a fill, bar or highlight;
      small text there uses accent-ink (4.75:1 on plate). */
@@ -195,6 +198,21 @@ html.lenis body {
     box-decoration-break: clone;
     padding-inline: 0.04em;
   }
+}
+
+/* Reveal safety net (src/lib/reveal-guard.ts): scroll-reveal starting states (opacity 0, masked lines,
+   clipped images, collapsed hairlines) only apply while html.reveal is set by the inline guard and the app has
+   not fallen back. Without JavaScript, or if it fails, every [data-reveal] element renders in its final state. */
+html:not(.reveal) [data-reveal],
+html.reveal-fallback [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+  pointer-events: auto !important;
+}
+html:not(.reveal) .mark[data-reveal],
+html.reveal-fallback .mark[data-reveal] {
+  background-size: 100% 100% !important;
 }
 
 @keyframes marquee {

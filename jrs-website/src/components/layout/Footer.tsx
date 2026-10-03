@@ -19,7 +19,7 @@ const cols = [
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative overflow-hidden bg-ink pb-28 pt-24 text-fog lg:pb-10">
+    <footer className="relative overflow-hidden border-t-[3px] border-heritage bg-heritage-deep pb-28 pt-24 text-fog lg:pb-10">
       <div className="shell">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-4">
@@ -70,8 +70,10 @@ export function Footer() {
           </div>
         </div>
 
-        <p aria-hidden className="display mt-24 select-none whitespace-nowrap text-[clamp(2rem,7.4vw,8.75rem)] text-white/[0.04]">
-          Engineered for uptime
+        {/* Brand line, set at full strength like the hero headline. */}
+        <p className="display mt-24 text-[clamp(2.75rem,11vw,5rem)] text-white sm:text-[clamp(3rem,8.6vw,10rem)] lg:whitespace-nowrap">
+          Engineered <br className="sm:hidden" />
+          for <span className="accent text-accent">uptime.</span>
         </p>
 
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-8 text-steel-500 md:flex-row md:items-center md:justify-between">

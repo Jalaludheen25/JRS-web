@@ -8,6 +8,7 @@ import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { JsonLd } from "@/components/ui/primitives";
 import { organizationSchema } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { REVEAL_GUARD } from "@/lib/reveal-guard";
 
 const geist = Geist({ variable: "--font-geist", subsets: ["latin"], display: "swap" });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
@@ -28,7 +29,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`}>
+    // suppressHydrationWarning: the reveal guard adds classes to <html> before React hydrates.
+    <html lang="en" className={`${geist.variable} ${geistMono.variable} ${instrument.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: REVEAL_GUARD }} />
+      </head>
       <body>
         <a href="#main" className="label fixed left-4 top-4 z-[100] -translate-y-24 rounded-full bg-white px-4 py-3 text-abyss focus:translate-y-0">
           Skip to content

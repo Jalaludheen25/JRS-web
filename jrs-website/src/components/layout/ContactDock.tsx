@@ -16,6 +16,7 @@ export function ContactDock() {
   return (
     <motion.nav
       aria-label="Quick contact"
+      data-reveal=""
       className="fixed inset-x-3 bottom-3 z-40 flex overflow-hidden rounded-2xl border border-white/10 bg-navy-900/92 shadow-2xl shadow-black/40 backdrop-blur-xl lg:hidden"
       initial={false}
       animate={{ y: show ? 0 : 120, opacity: show ? 1 : 0 }}

@@ -28,6 +28,7 @@ export function Hero() {
         <motion.div className="absolute inset-0" style={reduce ? undefined : { scale }}>
           {/* Slow "settle" on arrival: the film eases back from a slight push-in. */}
           <motion.div
+            data-reveal=""
             className="absolute inset-0"
             initial={reduce ? false : { scale: 1.07 }}
             animate={{ scale: 1 }}
@@ -36,8 +37,9 @@ export function Hero() {
             <HeroMedia alt={images.homeHero.alt} />
           </motion.div>
         </motion.div>
-        {/* Nothing sits over the film: no overlay, gradient, grain or grid. Legibility comes from text shadows
-            (.text-legible) and solid, opaque controls. */}
+        {/* Light overlay: a thin wash of the heritage navy (#021343), slightly stronger at the top (navigation)
+            and bottom (headline and copy), almost clear through the middle so the film stays bright. */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(2_19_67/0.34)_0%,rgb(2_19_67/0.08)_32%,rgb(2_19_67/0.1)_55%,rgb(2_19_67/0.46)_100%)]" />
       </motion.div>
 
       <motion.div
@@ -48,6 +50,7 @@ export function Hero() {
           <div>
             <h1 id="hero-title">
               <motion.span
+                data-reveal=""
                 className="label text-legible-strong mb-6 block text-[12px] font-semibold text-white"
                 initial={reduce ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -65,6 +68,7 @@ export function Hero() {
           </div>
 
           <motion.div
+            data-reveal=""
             className="mt-10 lg:absolute lg:bottom-3 lg:right-0 lg:mt-0 lg:w-[min(32vw,440px)]"
             initial={reduce ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

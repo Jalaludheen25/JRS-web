@@ -31,6 +31,7 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 - **Legacy pages** keep their live-site copy word for word. `scripts/extract-content.mjs` pulls headings, paragraphs and lists from the crawled HTML (`../docs/source-html/`). `scripts/build-pages.mjs` cleans that into `src/content/legacy-pages.json` and downloads the post images to `public/images/legacy/`. Titles and descriptions are in `src/lib/pages.ts`.
 - **New pages** (genset controllers, six services, Industrial, Offshore) are written in `src/content/authored.ts` from the company and product profiles only.
 - **Images:** every page hero and homepage section has its own picture, assigned in `src/lib/images.ts`. A card shows the image of the page it links to. `node scripts/audit-images.mjs` enforces this. Sources: the live site, the brochure PDFs and 19 CC0 photos from Wikimedia Commons (docs/05).
+- **Browser support:** `browserslist` in package.json compiles for Chrome/Edge/Firefox 100+, Safari/iOS 15.4+ and Samsung Internet 18+ (Next 16 alone targets Safari 16.4+). Scroll-reveal content is protected by a safety net (`src/lib/reveal-guard.ts` and the CSS in globals.css): with no JavaScript, or if scripts fail or stall, every section renders in its final state. Verify with `node scripts/cross-browser.mjs` and `node scripts/test-reveal-guard.mjs`.
 - **QA:** `node scripts/check-site.mjs` crawls every sitemap URL, internal link and legacy URL, then reports status, H1 count and word count. Last run: 52 pages OK, 0 broken links, 0 broken images, one H1 per page.
 
 ## Decisions needing JRS input
@@ -59,6 +60,8 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 | `scripts/fetch-hero-footage.mjs` | Download the hero source clips (CC0 / public domain only) into `docs/source-video/` |
 | `scripts/footage-sheets.mjs`, `scripts/footage-windows.mjs` | Frame sheets for choosing in/out points |
 | `scripts/build-hero-video.mjs` | Cut, grade and loop the hero film; AV1 + H.264 encodes, posters, scene timings, docs/06 (`--preview`, `--doc`) |
+| `scripts/cross-browser.mjs` | Chromium, WebKit (Safari engine), Firefox and no-JS: scrolls every section into view and reports text that stays invisible, plus JS errors |
+| `scripts/test-reveal-guard.mjs` | Reveal safety net: normal start, no JS, failed scripts and hung scripts |
 | `scripts/test-hero-video.mjs` | Browser test of the hero film: source per device, playback, pause control, reduced motion |
 | `scripts/extract-pdf-images.mjs` | Extract embedded photos (with transparency) from the brochure PDFs |
 | `scripts/build-image-library.mjs` | Build `public/images/brochure/` and `public/images/stock/`, graded variants and `docs/05-image-credits.md` |

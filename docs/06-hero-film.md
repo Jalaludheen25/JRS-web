@@ -8,8 +8,8 @@ same bright, natural-colour grade (slightly lifted contrast, saturation and midt
 
 ## Readability without an overlay
 
-Nothing sits over the film: no overlay, gradient, vignette, grain or grid lines, and no transparent or frosted layers.
-Text stays legible through:
+Only a light overlay sits over the film: a thin heritage-navy (#021343) wash, ~34% at the top, ~8–10% through the
+middle and ~46% at the bottom. There is no vignette, grain, grid or frosted layer. Text stays legible through:
 - `.text-legible` / `.text-legible-strong` (globals.css): a tight contact shadow plus a soft halo on the headline, label, copy, phone link and transparent navigation;
 - solid, opaque controls: the yellow "Request a quote" and white "Explore solutions" buttons, plus the film-control pill (pause/play, scene caption, progress).
 

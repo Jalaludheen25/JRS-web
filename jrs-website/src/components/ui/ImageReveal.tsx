@@ -33,12 +33,14 @@ export function ImageReveal({ src, alt, sizes, className, imageClassName, parall
   return (
     <motion.div
       ref={ref}
+      data-reveal=""
       className={`relative overflow-hidden ${className ?? ""}`}
       initial={reduce ? false : { clipPath: clipFrom[from] }}
       animate={inView ? { clipPath: "inset(0% 0% 0% 0%)" } : undefined}
       transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
     >
       <motion.div
+        data-reveal=""
         className="absolute -inset-y-[10%] inset-x-0"
         style={reduce || !parallax ? undefined : { y }}
         initial={reduce ? false : { scale: 1.18 }}
