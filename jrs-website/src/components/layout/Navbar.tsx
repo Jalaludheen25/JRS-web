@@ -16,17 +16,14 @@ const panels: Record<string, { title: string; href: string; items: { label: stri
 export function Navbar() {
   const { scrollY, scrollYProgress } = useScroll();
   const [solid, setSolid] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [panel, setPanel] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout>>(undefined);
   const panelId = useId();
 
-  useMotionValueEvent(scrollY, "change", (y) => {
-    const prev = scrollY.getPrevious() ?? 0;
-    setSolid(y > 40);
-    setHidden(y > 600 && y > prev && !menuOpen && !panel);
-  });
+  // Stable header: always in place (no hide-on-scroll). It turns solid as soon as the page moves, so hero content
+  // scrolling beneath it never shows through.
+  useMotionValueEvent(scrollY, "change", (y) => setSolid(y > 8));
 
   useEffect(() => {
     document.documentElement.style.overflow = menuOpen ? "hidden" : "";
@@ -51,15 +48,10 @@ export function Navbar() {
 
   return (
     <>
-      <motion.header
-        className="fixed inset-x-0 top-0 z-50"
-        animate={{ y: hidden ? "-100%" : "0%" }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        onMouseLeave={scheduleClose}
-      >
+      <header className="fixed inset-x-0 top-0 z-50" onMouseLeave={scheduleClose}>
         <div
-          className={`absolute inset-0 -z-10 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ${
-            solid || panel ? "border-white/10 bg-abyss/88 backdrop-blur-xl" : "border-transparent bg-transparent"
+          className={`absolute inset-0 -z-10 border-b transition-[background-color,border-color] duration-200 ${
+            solid || panel || menuOpen ? "border-white/10 bg-abyss" : "border-transparent bg-transparent"
           }`}
         />
         {/* Reading progress: a 2px yellow line along the bottom of the solid bar. */}
@@ -153,7 +145,7 @@ export function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.header>
+      </header>
 
       {/* Mobile full-screen menu */}
       <AnimatePresence>

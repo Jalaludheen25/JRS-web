@@ -6,12 +6,18 @@ A 10-scene, 26.0-second seamless loop. The story runs open sea → port → deck
 crankshaft → precision machining → CNC milling → fabrication, then dissolves back to the open sea. Every shot gets the
 same bright, natural-colour grade (slightly lifted contrast, saturation and midtones, light sharpening). No audio.
 
-## Readability without an overlay
+## Readability: subtle overlay, no darkening
 
-Only a light overlay sits over the film: a thin heritage-navy (#021343) wash, ~34% at the top, ~8–10% through the
-middle and ~46% at the bottom. There is no vignette, grain, grid or frosted layer. Text stays legible through:
+Only a subtle overlay sits over the film (`[data-hero-overlay]` in Hero.tsx): a heritage-navy (#021343) wash, ~38% at
+the top, ~14–16% through the middle and ~55% at the bottom, plus a soft radial behind the copy at bottom left (~32%).
+There is no vignette, grain, grid or frosted layer. Text stays legible through:
 - `.text-legible` / `.text-legible-strong` (globals.css): a tight contact shadow plus a soft halo on the headline, label, copy, phone link and transparent navigation;
 - solid, opaque controls: the yellow "Request a quote" and white "Explore solutions" buttons, plus the film-control pill (pause/play, scene caption, progress).
+
+Header separation: the header is fixed and never hides. It is transparent only at the very top and turns fully opaque
+(`bg-abyss`) once the page scrolls 8px. The hero has a minimum height of 100svh (not a fixed height), so on short
+screens it grows with its content instead of pushing it up under the header; the copy keeps 104px of top clearance (header
+bar 76px) and drifts down and fades as the page scrolls. Verify with `node scripts/test-hero-header.mjs`.
 
 ## Sources
 

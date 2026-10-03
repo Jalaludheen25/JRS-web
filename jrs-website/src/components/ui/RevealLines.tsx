@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, useReducedMotion } from "motion/react";
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, type ReactNode } from "react";
 
 type Props = {
   lines: ReactNode[];
@@ -19,17 +19,20 @@ export function RevealLines({ lines, className, lineClassName, delay = 0, stagge
   const inView = useInView(ref, { once: true, margin: "0px 0px -12% 0px" });
   const reduce = useReducedMotion();
   const show = immediate || inView;
+  // The line masks are released once the reveal has finished, so text shadows (hero) are not cut into boxes.
+  const [revealed, setRevealed] = useState(false);
 
   return (
     <span ref={ref} className={className}>
       {lines.map((line, i) => (
-        <span key={i} className="block overflow-hidden pb-[0.06em] -mb-[0.06em]">
+        <span key={i} data-reveal-mask="" className={`block pb-[0.06em] -mb-[0.06em] ${revealed || reduce ? "" : "overflow-hidden"}`}>
           <motion.span
             data-reveal=""
             className={`block will-change-transform ${lineClassName ?? ""}`}
             initial={reduce ? false : { y: "110%" }}
             animate={show ? { y: "0%" } : undefined}
             transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: delay + i * stagger }}
+            onAnimationComplete={i === lines.length - 1 ? () => setRevealed(true) : undefined}
           >
             {line}
           </motion.span>

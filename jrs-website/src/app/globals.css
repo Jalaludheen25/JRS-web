@@ -175,6 +175,17 @@ html.lenis body {
       0 0 28px rgb(3 5 10 / 0.5);
   }
 
+  /* Hero headline: 13vw up to 13rem. Below ~390px it scales down so "ENGINEERED" always fits the screen width,
+     and on short landscape phones it is capped by height so the headline does not fill the whole view. */
+  .hero-title {
+    font-size: clamp(2.5rem, max(13vw, min(3.4rem, 14vw)), 13rem);
+  }
+  @media (orientation: landscape) and (max-height: 500px) {
+    .hero-title {
+      font-size: min(13vw, 22vh);
+    }
+  }
+
   /* Hover underline draws in yellow. --ul sets the thickness (1px default, 2px for prominent links). */
   .link-underline {
     background-image: linear-gradient(var(--color-accent), var(--color-accent));
@@ -209,6 +220,10 @@ html.reveal-fallback [data-reveal] {
   transform: none !important;
   clip-path: none !important;
   pointer-events: auto !important;
+}
+html:not(.reveal) [data-reveal-mask],
+html.reveal-fallback [data-reveal-mask] {
+  overflow: visible !important;
 }
 html:not(.reveal) .mark[data-reveal],
 html.reveal-fallback .mark[data-reveal] {

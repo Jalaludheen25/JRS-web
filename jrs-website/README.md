@@ -62,6 +62,7 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 | `scripts/build-hero-video.mjs` | Cut, grade and loop the hero film; AV1 + H.264 encodes, posters, scene timings, docs/06 (`--preview`, `--doc`) |
 | `scripts/cross-browser.mjs` | Chromium, WebKit (Safari engine), Firefox and no-JS: scrolls every section into view and reports text that stays invisible, plus JS errors |
 | `scripts/test-reveal-guard.mjs` | Reveal safety net: normal start, no JS, failed scripts and hung scripts |
+| `scripts/test-hero-header.mjs` | Hero ↔ header separation at 9 phone/tablet/desktop sizes in Chromium, WebKit and Firefox: no hero text inside the header at rest or while scrolling, header stays fixed, overlay present, headline fits the screen |
 | `scripts/test-hero-video.mjs` | Browser test of the hero film: source per device, playback, pause control, reduced motion |
 | `scripts/extract-pdf-images.mjs` | Extract embedded photos (with transparency) from the brochure PDFs |
 | `scripts/build-image-library.mjs` | Build `public/images/brochure/` and `public/images/stock/`, graded variants and `docs/05-image-credits.md` |
