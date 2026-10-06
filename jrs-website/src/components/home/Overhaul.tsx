@@ -13,7 +13,7 @@ export function Overhaul() {
         <ParallaxImage src={images.homeOverhaul.src} alt={images.homeOverhaul.alt} amount={10} />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/40" />
         <div className="shell relative z-10 flex h-full flex-col justify-between pb-16 pt-28">
-          <Eyebrow sheet="08 / 16">Engine overhaul</Eyebrow>
+          <Eyebrow sheet="08 / 15">Engine overhaul</Eyebrow>
           <h2 id="overhaul-title">
             <RevealLines
               className="display block text-[clamp(3.25rem,10vw,11rem)] text-white"

@@ -31,7 +31,7 @@ What it avoids: neon, glass cards, gradient blobs, rounded "SaaS" cards, stock h
 | `accent-ink` | `#8A6400` | Brass: small accent text (index numbers, category labels) on light surfaces |
 | `plate` | `#EEF1F5` | Light product surface |
 | `plate-deep` | `#E2E6EC` | Product image wells |
-| `mist` / `mist-deep` | `#F5F8FC` / `#E4EBF5` | **Light + blue surface** (`.surface-mist`: mist gradient with soft heritage-blue light): supported companies, spare parts, certification and location sections |
+| `mist` / `mist-deep` | `#F5F8FC` / `#E4EBF5` | **Light + blue surface** (`.surface-mist`: mist gradient with soft heritage-blue light): supported companies, spare parts and certification sections, and the footer location band |
 | `steel-300` | `#B6BFCB` | Secondary text on dark |
 | `steel-500` | `#7A8594` | Metadata |
 | `graphite` | `#1A1F28` | Body text on plate |
@@ -117,8 +117,9 @@ All fonts are self-hosted via `next/font` (no layout shift, no third-party reque
 | 12 | **REPLACEMENT *engine spare parts.*** | Mist | The previous site's 11 spare-parts tiles as a catalogue grid, each linked to its product page; "not listed?" quote tile |
 | 13 | Accredited & certified: **CERTIFIED *for confidence.*** | Mist | ISO 9001 / 14001 / 45001 and ICV badge cards + Interstate-McBee distributor card with its logo |
 | 14 | Mission / vision | Abyss | Editorial two-column statement, set like a magazine pull quote |
-| 15 | Contact: **LET'S KEEP YOUR OPERATIONS MOVING.** | Heritage navy | Call / WhatsApp / quote |
-| 16 | Location: **FIND US IN *Abu Dhabi.*** | Mist | Address, call / email, directions; Google Maps embed of the JRS business listing (also on /contact/), plus the footer |
+| 15 | Contact: **LET'S KEEP YOUR OPERATIONS MOVING.** | Heritage navy | Call / WhatsApp / quote, then the footer |
+
+**Footer (every page):** opens with a light + blue band carrying the location card, a rounded white card (28px radius, soft navy shadow, heritage hairline border) that floats across the edge into the navy footer: the Google Maps embed of the JRS business listing (pin coordinates chip) beside "Find us in *Abu Dhabi.*", the address, call / email tiles and **Get directions** / Open in Maps. Stacks map-first on mobile. This replaces the separate homepage and contact-page location section, so the map appears once per page.
 
 ## Imagery inventory & gaps
 

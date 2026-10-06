@@ -18,7 +18,7 @@
   --color-accent-deep: #d9a514;
   --color-accent-ink: #8a6400;
   --color-plate: #eef1f5;
-  /* Mist: the light surface washed with heritage blue (supported companies, spare parts, certification, location). */
+  /* Mist: the light surface washed with heritage blue (supported companies, spare parts, certification, footer location band). */
   --color-mist: #f5f8fc;
   --color-mist-deep: #e4ebf5;
   --color-plate-deep: #e2e6ec;
@@ -179,8 +179,8 @@ html.lenis body {
   }
 
   /* Light + blue surface: the light plate washed with the heritage blue, soft light from the top right and a
-     cooler pool at the bottom left. Shared by the supported-companies, spare-parts, certification and location
-     sections so they read as one family; consecutive mist sections are divided by a blue hairline. */
+     cooler pool at the bottom left. Shared by the supported-companies, spare-parts and certification sections and the
+     footer location band so they read as one family; consecutive mist sections are divided by a blue hairline. */
   .surface-mist {
     background-color: var(--color-mist);
     background-image:

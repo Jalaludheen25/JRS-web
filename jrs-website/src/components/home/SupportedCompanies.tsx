@@ -7,7 +7,7 @@ import { makeLogos, partsMakes, reconditioningMakes, referenceDisclaimer } from 
 import { quoteHref } from "@/lib/site";
 
 /** Engine makes JRS supplies replacement parts for: the previous site's logo wall, on the light + blue surface. */
-export function SupportedCompanies({ sheet = "11 / 16" }: { sheet?: string } = {}) {
+export function SupportedCompanies({ sheet = "11 / 15" }: { sheet?: string } = {}) {
   const reconOnly = reconditioningMakes.filter((m) => !partsMakes.includes(m) && m !== "Detroit");
   return (
     <section aria-labelledby="makes-title" className="section-y surface-mist relative overflow-hidden">

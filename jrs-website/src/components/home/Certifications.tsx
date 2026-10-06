@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/ui/primitives";
 import { certifications } from "@/lib/content";
 
 /** Certification and accreditation badges (previous site / company profile p.8) on the light + blue surface. */
-export function Certifications({ sheet = "13 / 16" }: { sheet?: string } = {}) {
+export function Certifications({ sheet = "13 / 15" }: { sheet?: string } = {}) {
   return (
     <section aria-labelledby="certs-title" className="section-y surface-mist relative overflow-hidden">
       <div className="shell">

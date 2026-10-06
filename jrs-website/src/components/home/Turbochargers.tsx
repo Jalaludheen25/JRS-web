@@ -26,7 +26,7 @@ export function Turbochargers() {
       <div className="shell relative">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
           <div className="lg:col-span-5">
-            <Eyebrow sheet="07 / 16">Turbochargers &amp; cartridges</Eyebrow>
+            <Eyebrow sheet="07 / 15">Turbochargers &amp; cartridges</Eyebrow>
             <h2 id="turbo-title" className="mt-8">
               <RevealLines
                 className="display block text-[clamp(3.5rem,9vw,9.5rem)] text-white"

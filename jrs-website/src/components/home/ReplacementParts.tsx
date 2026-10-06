@@ -7,7 +7,7 @@ import { replacementParts } from "@/lib/content";
 import { quoteHref } from "@/lib/site";
 
 /** The previous site's "Replacement engine spare parts" strip as a catalogue grid, each tile linked to its range. */
-export function ReplacementParts({ sheet = "12 / 16" }: { sheet?: string } = {}) {
+export function ReplacementParts({ sheet = "12 / 15" }: { sheet?: string } = {}) {
   return (
     <section aria-labelledby="parts-title" className="section-y surface-mist relative overflow-hidden">
       <div className="shell">

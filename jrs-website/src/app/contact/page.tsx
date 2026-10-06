@@ -1,6 +1,5 @@
 import { MapPin, Mail, Phone, MessageCircle } from "lucide-react";
 import { ContactCTA } from "@/components/home/ContactCTA";
-import { Location } from "@/components/home/Location";
 import { Breadcrumbs } from "@/components/page/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/primitives";
 import { RevealLines } from "@/components/ui/RevealLines";
@@ -86,7 +85,6 @@ export default function ContactPage() {
       </section>
 
       <ContactCTA sheet="" />
-      <Location sheet="" />
     </>
   );
 }

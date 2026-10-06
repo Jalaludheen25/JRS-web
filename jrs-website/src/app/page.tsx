@@ -13,7 +13,6 @@ import { ReplacementParts } from "@/components/home/ReplacementParts";
 import { Certifications } from "@/components/home/Certifications";
 import { MissionVision } from "@/components/home/MissionVision";
 import { ContactCTA } from "@/components/home/ContactCTA";
-import { Location } from "@/components/home/Location";
 import { pageMetadata } from "@/lib/seo";
 
 // Title and description kept from the live page: the homepage ranks #1 for "marine engine bearings abu dhabi"
@@ -43,7 +42,6 @@ export default function HomePage() {
       <Certifications />
       <MissionVision />
       <ContactCTA />
-      <Location />
     </>
   );
 }

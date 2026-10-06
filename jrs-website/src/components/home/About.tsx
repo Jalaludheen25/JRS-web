@@ -22,7 +22,7 @@ export function About() {
         </div>
 
         <div className="lg:col-span-5 lg:col-start-8 lg:pt-[12vh]">
-          <Eyebrow sheet="03 / 16">About JRS</Eyebrow>
+          <Eyebrow sheet="03 / 15">About JRS</Eyebrow>
           <h2 id="about-title" className="mt-8">
             <RevealLines
               className="heading block text-[clamp(2.25rem,4.4vw,4.25rem)] text-white"

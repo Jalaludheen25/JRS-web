@@ -10,7 +10,7 @@ export function Capabilities() {
     <HorizontalTrack id="capabilities" labelledBy="capabilities-title" className="bg-abyss">
       {/* Intro panel */}
       <div className="flex w-[88vw] shrink-0 snap-start flex-col justify-between px-[var(--gutter)] py-24 sm:w-[64vw] lg:h-full lg:w-[42vw] lg:py-32">
-        <Eyebrow sheet="04 / 16">Core capabilities</Eyebrow>
+        <Eyebrow sheet="04 / 15">Core capabilities</Eyebrow>
         <div>
           <h2 id="capabilities-title" className="display text-[clamp(3rem,7vw,7.5rem)] text-white">
             Six ways
