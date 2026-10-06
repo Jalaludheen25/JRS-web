@@ -51,7 +51,7 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 | `scripts/make-logos.mjs` | Derive transparent logo variants |
 | `scripts/make-og.mjs` | Default Open Graph image (brand-blue logo on a white plate) |
 | `scripts/make-icons.mjs` | Favicon and Apple touch icon (brand-blue logo on white) |
-| `scripts/build-logo-assets.mjs` | Engine-maker logos, certification badges, Interstate-McBee logo and spare-parts tiles from the previous site (`docs/source-logos/`): background removal, trimming, matched optical sizes |
+| `scripts/build-logo-assets.mjs` | Engine-maker and turbocharger-make logos, certification badges, Interstate-McBee logo and spare-parts tiles (`docs/source-logos/`): background removal, SVG rasterising, trimming, matched optical sizes |
 | `scripts/build-inventory.mjs` | Regenerate the URL inventory table from the crawl |
 | `scripts/screenshot.mjs` | Section-by-section homepage screenshots for visual QA |
 | `scripts/screenshot-pages.mjs` | Full-page screenshots of any routes |

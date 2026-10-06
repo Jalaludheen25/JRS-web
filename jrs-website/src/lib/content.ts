@@ -295,6 +295,15 @@ export const partsMakes = ["Caterpillar", "Cummins", "Detroit Diesel", "Perkins"
 // Engines supported for reconditioning (Product Profile p.10).
 export const reconditioningMakes = ["MAN", "Mitsubishi", "Wärtsilä", "MaK", "Deutz", "Akasaka", "Caterpillar", "Yanmar", "Daihatsu", "Hanshin", "Wichmann", "Rolls-Royce Bergen", "Detroit", "Niigata"];
 export const turbochargerMakes = ["ABB – IHI", "MAN", "Napier", "Mitsubishi", "KBB"];
+// Logo per turbocharger make (sources: docs/source-logos/sources.json → turbo; built by scripts/build-logo-assets.mjs).
+const turboLogo: Record<string, { slug: string; alt: string }> = {
+  "ABB – IHI": { slug: "abb-ihi", alt: "ABB and IHI logos" },
+  MAN: { slug: "man", alt: "MAN logo" },
+  Napier: { slug: "napier", alt: "Napier Turbochargers logo" },
+  Mitsubishi: { slug: "mitsubishi", alt: "Mitsubishi logo" },
+  KBB: { slug: "kbb", alt: "KBB logo" },
+};
+export const turbochargerLogos = turbochargerMakes.map((name) => ({ name, src: `/images/turbo-makes/${turboLogo[name].slug}.png`, alt: turboLogo[name].alt }));
 
 export const brandPages = [
   { name: "Cummins", href: "/cummins-engine-spare-parts/", note: "UAE · Saudi Arabia · Oman · GCC" },

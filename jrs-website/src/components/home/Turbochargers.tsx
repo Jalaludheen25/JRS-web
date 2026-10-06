@@ -1,11 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import { useScroll } from "motion/react";
 import { useRef } from "react";
 import { TurboViewer } from "@/components/three/TurboViewer";
-import { FadeUp, RevealLines } from "@/components/ui/RevealLines";
+import { FadeUp, RevealItem, RevealLines } from "@/components/ui/RevealLines";
 import { ArrowLink, CropMarks, Eyebrow } from "@/components/ui/primitives";
-import { turbochargerMakes } from "@/lib/content";
+import { referenceDisclaimer, turbochargerLogos } from "@/lib/content";
 
 const supply = [
   ["Genuine components", "Genuine spares for marine turbochargers, sourced from trusted manufacturers."],
@@ -56,17 +57,37 @@ export function Turbochargers() {
           </div>
         </div>
 
-        {/* Makes supported */}
-        <div className="mt-[clamp(64px,8vw,128px)]">
-          <p className="label text-steel-500">Turbocharger makes supported</p>
-          <ul className="mt-6 grid grid-cols-2 border-t border-white/12 sm:grid-cols-3 lg:grid-cols-5">
-            {turbochargerMakes.map((m, i) => (
-              <li key={m} className="border-b border-white/12 py-6 pr-4 lg:border-b-0 lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0">
-                <span className="label text-accent">{String(i + 1).padStart(2, "0")}</span>
-                <span className="heading mt-3 block text-[clamp(1.5rem,2.4vw,2.25rem)] text-white">{m}</span>
-              </li>
+        {/* Makes supported: logo grid on a heritage-blue gradient panel (ABB – IHI spans two columns on small screens). */}
+        <div className="relative mt-[clamp(64px,8vw,128px)] overflow-hidden bg-[linear-gradient(135deg,var(--color-heritage)_0%,var(--color-heritage-deep)_78%)] p-4 ring-1 ring-white/10 sm:p-8 lg:p-10">
+          <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(55%_90%_at_92%_0%,rgb(255_255_255/0.14),transparent_70%)]" />
+          <div className="relative flex flex-wrap items-end justify-between gap-x-10 gap-y-3">
+            <h3 className="label flex items-center gap-3 text-white/80">
+              <span aria-hidden className="h-[2px] w-8 bg-accent" />
+              Turbocharger makes supported
+            </h3>
+            <p className="max-w-lg text-[15px] leading-relaxed text-white/80">Spare parts compatible with all major marine turbocharger brands.</p>
+          </div>
+          <ul className="relative mt-6 grid grid-cols-2 gap-2.5 sm:mt-8 sm:grid-cols-3 sm:gap-3 lg:grid-cols-5">
+            {turbochargerLogos.map((m, i) => (
+              <RevealItem key={m.name} index={i} className={i === 0 ? "col-span-2 lg:col-span-1" : undefined}>
+                <div className="group relative flex h-32 items-center justify-center bg-white px-2 pb-6 sm:px-4 shadow-[0_18px_36px_-24px_rgb(0_0_0/0.65)] transition-[translate,box-shadow] duration-500 ease-(--ease-expo) hover:-translate-y-1 hover:shadow-[0_28px_50px_-24px_rgb(0_0_0/0.75)] sm:h-36 lg:h-40">
+                  <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 bg-accent transition-transform duration-500 ease-(--ease-expo) group-hover:scale-x-100" />
+                  <span className="label absolute left-3 top-3 tabular-nums text-steel-500">{String(i + 1).padStart(2, "0")}</span>
+                  <Image
+                    data-img-role="logo"
+                    src={m.src}
+                    alt={m.alt}
+                    width={480}
+                    height={240}
+                    sizes="(min-width: 1024px) 16vw, (min-width: 640px) 26vw, 60vw"
+                    className="h-auto w-[94%] max-w-[230px] transition-transform duration-700 ease-(--ease-expo) group-hover:scale-[1.07]"
+                  />
+                  <span className="label absolute inset-x-3 bottom-3 text-center text-graphite/55 transition-colors duration-500 group-hover:text-heritage">{m.name}</span>
+                </div>
+              </RevealItem>
             ))}
           </ul>
+          <p className="relative mt-5 max-w-3xl text-[12px] leading-relaxed text-white/55">{referenceDisclaimer}</p>
         </div>
 
         <dl className="mt-16 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">

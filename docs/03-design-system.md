@@ -109,7 +109,7 @@ All fonts are self-hosted via `next/font` (no layout shift, no third-party reque
 | 04 | Core capabilities ×6 | Abyss, pinned horizontal track | Oversized index numbers, one panel per capability |
 | 05 | Products: **PRECISION COMPONENTS. CRITICAL PERFORMANCE.** | Plate | Editorial index: hovering a row reveals its product image and spec on a sticky plate |
 | 06 | Engine bearings feature | Plate → white | Product parallax with dimension lines; three bearing types as a spec list |
-| 07 | Turbochargers: **POWER, *under pressure*.** | Abyss | 3D compressor wheel; brand list ABB–IHI / MAN / Napier / Mitsubishi / KBB |
+| 07 | Turbochargers: **POWER, *under pressure*.** | Abyss | 3D compressor wheel; "Turbocharger makes supported" logo grid (ABB – IHI, MAN, Napier, Mitsubishi, KBB) on a heritage-blue gradient panel: white tiles that lift on hover with a yellow top bar, reference-only disclaimer |
 | 08 | Engine overhaul: **WHEN PERFORMANCE CANNOT WAIT.** | Abyss, full-bleed rotor image | 12 capabilities as a numbered two-column checklist |
 | 09 | Technical services ×8 | Navy | Sticky list (left), with image and description swapping (right) |
 | 10 | Industries: **BUILT FOR DEMANDING OPERATIONS.** | Full-screen panels | Horizontal panels: Marine / Power Gen / Industrial / Offshore |

@@ -8,6 +8,8 @@
 //  parts/  product tiles → public/images/parts/<slug>.png: the label pill baked into each image is cut off (the site
 //          sets the label as real text), background removed, product centred on a 640×480 canvas.
 //  Interstate-McBee logo → public/images/certifications/interstate-mcbee.png, from company-profile.pdf page 8.
+//  turbo/  turbocharger-make logos → public/images/turbo-makes/<slug>.png on the same 480×240 canvas; "ABB – IHI" (one
+//          entry in the company profile) becomes one lockup of both marks. SVG sources are rasterised sharply first.
 //
 // Run from jrs-website/: node scripts/build-logo-assets.mjs [outDirForContactSheet]
 import fs from "fs";
@@ -152,6 +154,51 @@ for (const file of fs.readdirSync(path.join(SRC, "parts")).filter((f) => f.endsW
   const W = 640, H = 480;
   const scale = Math.min(560 / info.width, 400 / info.height, 1.6);
   await save(await place(buf, info.width * scale, info.height * scale, W, H), path.join(OUT, "parts", file));
+}
+
+// ── turbocharger makes ──────────────────────────────────────────────────────────────────────────
+// SVG → high-resolution PNG (about 1400px wide), with optional colour swaps for marks drawn white for dark headers.
+async function rasterSvg(file, swaps = []) {
+  let svg = fs.readFileSync(file, "utf8");
+  for (const [from, to] of swaps) svg = svg.split(from).join(to);
+  const { width } = await sharp(Buffer.from(svg)).metadata();
+  return sharp(Buffer.from(svg), { density: Math.min(2400, (72 * 1400) / width) }).png().toBuffer();
+}
+async function normalised(buf, weight, W = 480, H = 240) {
+  const { data, info } = await trimmed(clearBackground(await load(buf)));
+  const area = W * H * 0.3 * weight, aspect = info.width / info.height;
+  let w = Math.sqrt(area * aspect), h = Math.sqrt(area / aspect);
+  const fit = Math.min(1, 420 / w, 176 / h);
+  return place(data, w * fit, h * fit, W, H);
+}
+{
+  const T = path.join(SRC, "turbo");
+  const marks = {
+    man: [await sharp(path.join(SRC, "makes", "man.png")).png().toBuffer(), 1.12],
+    napier: [await rasterSvg(path.join(T, "napier.svg"), [['fill="#fff"', 'fill="#cd2f28"']]), 1.32],
+    mitsubishi: [await rasterSvg(path.join(T, "mitsubishi.svg")), 0.72],
+    kbb: [await rasterSvg(path.join(T, "kbb-dark.svg")), 1.0],
+  };
+  for (const [slug, [buf, weight]] of Object.entries(marks)) await save(await normalised(buf, weight), path.join(OUT, "turbo-makes", `${slug}.png`));
+
+  // ABB – IHI: both marks at the same cap height, side by side with a hairline between them.
+  const parts = [];
+  for (const f of ["abb.svg", "ihi.svg"]) {
+    const { data, info } = await trimmed(await load(await rasterSvg(path.join(T, f))));
+    const h = 66, w = Math.round((info.width / info.height) * h);
+    parts.push({ input: await sharp(data).resize(w, h, { kernel: "lanczos3" }).toBuffer(), w, h });
+  }
+  const gap = 34, line = 1, total = parts[0].w + gap * 2 + line + parts[1].w, x0 = Math.round((480 - total) / 2), y0 = Math.round((240 - 66) / 2);
+  await save(
+    sharp({ create: { width: 480, height: 240, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
+      .composite([
+        { input: parts[0].input, left: x0, top: y0 },
+        { input: { create: { width: line, height: 84, channels: 4, background: { r: 30, g: 68, b: 149, alpha: 0.35 } } }, left: x0 + parts[0].w + gap, top: y0 - 9 },
+        { input: parts[1].input, left: x0 + parts[0].w + gap * 2 + line, top: y0 },
+      ])
+      .png({ compressionLevel: 9 }),
+    path.join(OUT, "turbo-makes", "abb-ihi.png"),
+  );
 }
 
 // Optional contact sheet on a light tile background to eyeball the results.

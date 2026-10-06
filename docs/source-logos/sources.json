@@ -34,5 +34,14 @@
     "valve-stems.png": "https://jrs-me.com/wp-content/uploads/2025/05/9-1.png",
     "valve-rotators.png": "https://jrs-me.com/wp-content/uploads/2025/05/10-1.png",
     "liners.png": "https://jrs-me.com/wp-content/uploads/2025/05/11-1.png"
+  },
+  "turbo": {
+    "section": "Homepage \"Turbocharger makes supported\" (makes as listed on the previous site and in the company profile p.6: ABB – IHI, MAN, Napier, Mitsubishi, KBB). The previous site listed these makes as text only, so logos come from the old site where it had one (MAN) and otherwise from the manufacturers or Wikimedia Commons. Always shown with the reference-only disclaimer.",
+    "man (reuses makes/man.png)": "https://jrs-me.com/wp-content/uploads/2025/05/872b3e20-1b52-4265-9e4d-e55955de33d9-Photoroom-1.png (previous site)",
+    "abb.svg": "https://commons.wikimedia.org/wiki/File:ABB_logo.svg (Public domain; trademarked)",
+    "ihi.svg": "https://commons.wikimedia.org/wiki/File:IHI_logo.svg (Public domain; trademarked)",
+    "mitsubishi.svg": "https://commons.wikimedia.org/wiki/File:Mitsubishi_logo.svg (Public domain; trademarked)",
+    "napier.svg": "Header logo (inline SVG, white) of https://www.napier-turbochargers.com/, downloaded 2026-10-06; recoloured to Napier red #cd2f28 (sampled from the same header) for light tiles",
+    "kbb-dark.svg": "https://kbb-turbo.com/fileadmin/ns_theme_kbbturbo/images/kbb-tubro-logo-dark.svg (KBB official dark logo)"
   }
 }
