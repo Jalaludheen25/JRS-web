@@ -1,6 +1,12 @@
-// Builds the default 1200x630 Open Graph image from the graded hero photo and the logo.
+// Builds the default 1200x630 Open Graph image from the graded hero photo and the brand-blue logo on a white plate.
 import sharp from 'sharp';
-const logo = await sharp('public/brand/jrs-logo-white.png').resize({ width: 300 }).toBuffer();
+const mark = await sharp('public/brand/jrs-logo-blue.png').resize({ width: 260 }).toBuffer();
+const logo = await sharp({ create: { width: 300, height: 170, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } } })
+  .composite([
+    { input: Buffer.from('<svg width="300" height="170"><rect width="300" height="170" rx="22" fill="#fff"/></svg>') },
+    { input: mark, left: 20, top: 21 },
+  ])
+  .png().toBuffer();
 const text = Buffer.from(`<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
 <rect width="1200" height="630" fill="url(#g)"/><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#060a14" stop-opacity=".95"/><stop offset=".7" stop-color="#060a14" stop-opacity=".2"/></linearGradient></defs>
 <rect x="66" y="372" width="56" height="4" fill="#f2c230"/>

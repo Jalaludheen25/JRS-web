@@ -2,7 +2,7 @@ import { DrawLine, FadeUp, RevealLines } from "@/components/ui/RevealLines";
 import { Eyebrow } from "@/components/ui/primitives";
 import { mission, missionSupport, vision, visionSupport } from "@/lib/content";
 
-export function MissionVision({ sheet = "13 / 14" }: { sheet?: string } = {}) {
+export function MissionVision({ sheet = "14 / 16" }: { sheet?: string } = {}) {
   return (
     <section aria-labelledby="purpose-title" className="section-y relative bg-abyss pt-0">
       <div className="shell">

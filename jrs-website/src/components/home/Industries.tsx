@@ -12,7 +12,7 @@ export function Industries() {
       className="bg-ink"
       overlay={
         <div className="shell pointer-events-none absolute inset-x-0 top-0 z-20 pt-24 lg:pt-28">
-          <Eyebrow sheet="10 / 14" className="text-white/70">Industries</Eyebrow>
+          <Eyebrow sheet="10 / 16" className="text-white/70">Industries</Eyebrow>
         </div>
       }
     >

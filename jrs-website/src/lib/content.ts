@@ -302,14 +302,46 @@ export const brandPages = [
   { name: "Yanmar", href: "/yanmar-marine-engine-spare-parts-supplier/", note: "UAE · Saudi Arabia · Oman · GCC" },
 ];
 
+// Logos for the "Supported companies" grid: the previous site's replacement-parts logo wall, in its order
+// (source files and URLs: docs/source-logos/sources.json; processed by scripts/build-logo-assets.mjs).
+// Makes with a dedicated page link to it. Always shown with referenceDisclaimer.
+export type MakeLogo = { name: string; src: string; href?: string };
+const makeSlug: Record<string, string> = { "Wärtsilä": "wartsila", "Detroit Diesel": "detroit-diesel" };
+export const makeLogos: MakeLogo[] = partsMakes.map((name) => ({
+  name,
+  src: `/images/makes/${makeSlug[name] ?? name.toLowerCase()}.png`,
+  href: brandPages.find((b) => b.name === name)?.href,
+}));
+
+// "Replacement engine spare parts" tiles: the previous site's product strip (same order), each linked to the product
+// page that covers it. Separators have no page of their own, so that tile asks for availability instead.
+export type PartTile = { name: string; src: string; alt: string; href?: string };
+const pistonsHref = "/pistons-piston-rings-in-abu-dhabi/";
+const headsHref = "/cylinder-heads-components-in-abu-dhabi/";
+export const replacementParts: PartTile[] = [
+  { name: "Pistons", src: "/images/parts/pistons.png", alt: "Marine diesel engine piston", href: pistonsHref },
+  { name: "Fuel injection systems", src: "/images/parts/fuel-injection-systems.png", alt: "Diesel fuel injection pump", href: "/fuel-injection-systems-components-in-abu-dhabi/" },
+  { name: "Piston rings", src: "/images/parts/piston-rings.png", alt: "Set of piston rings", href: pistonsHref },
+  { name: "Piston pins", src: "/images/parts/piston-pins.png", alt: "Hollow steel piston pin", href: pistonsHref },
+  { name: "Bearings", src: "/images/parts/bearings.png", alt: "Engine bearing shells", href: "/engine-bearings-in-abu-dhabi/" },
+  { name: "Cylinder heads", src: "/images/parts/cylinder-heads.png", alt: "Diesel engine cylinder head", href: headsHref },
+  { name: "Filter elements", src: "/images/parts/filter-elements.png", alt: "Pleated filter element", href: "/filters/" },
+  { name: "Separators", src: "/images/parts/separators.png", alt: "Centrifugal separator" },
+  { name: "Valve stems", src: "/images/parts/valve-stems.png", alt: "Engine valves with long stems", href: headsHref },
+  { name: "Valve rotators", src: "/images/parts/valve-rotators.png", alt: "Valve rotator", href: headsHref },
+  { name: "Liners", src: "/images/parts/liners.png", alt: "Cylinder liners in three sizes", href: "/liners-anti-polishing-rings-in-abu-dhabi/" },
+];
+
 export const referenceDisclaimer =
   "All manufacturers' names, part numbers, symbols and descriptions are used for reference purposes only and do not imply that any product offered by JRS is the product of these manufacturers.";
 
+// Badges as shown on the previous site and in the company profile (p.8). Fact register: show the official badge
+// images only; never restate the accreditation number printed on them.
 export const certifications = [
-  { code: "ISO 9001:2015", label: "Quality management systems" },
-  { code: "ISO 14001:2015", label: "Environmental management systems" },
-  { code: "ISO 45001:2018", label: "Occupational health & safety" },
-  { code: "ICV", label: "In-Country Value programme" },
+  { code: "ISO 9001:2015", label: "Quality management systems", badge: { src: "/images/certifications/iso-9001-2015.png", width: 773, height: 300 } },
+  { code: "ISO 14001:2015", label: "Environmental management systems", badge: { src: "/images/certifications/iso-14001-2015.png", width: 771, height: 300 } },
+  { code: "ISO 45001:2018", label: "Occupational health & safety", badge: { src: "/images/certifications/iso-45001-2018.png", width: 775, height: 300 } },
+  { code: "ICV", label: "In-Country Value programme", badge: { src: "/images/certifications/icv.png", width: 337, height: 300 } },
 ];
 
 export const mission =

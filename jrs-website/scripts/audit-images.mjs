@@ -5,6 +5,9 @@
 //   2. Thumbnails (cards linking to a page) show the image of the page they link to.
 //   3. No picture is shown twice on the same page.
 //   4. No two different files are visually the same picture (perceptual hash).
+// Roles (data-img-role): "thumb" = card image linking to a page; "logo" = brand marks and certification badges, which
+// may repeat across pages (rules 1, 2 and 4 do not apply); "catalogue" = the spare-parts catalogue tiles, which follow
+// rule 1 but are exempt from the thumbnail and look-alike rules (they are small product cut-outs, not page images).
 // Usage: node scripts/audit-images.mjs [baseUrl]
 import { chromium } from "playwright-core";
 import sharp from "sharp";
@@ -63,7 +66,7 @@ const heroOf = new Map();
 for (const [src, list] of uses) for (const u of list) if (u.role === "hero") heroOf.set(u.page, [...(heroOf.get(u.page) ?? []), src]);
 
 for (const [src, list] of uses) {
-  const heroes = list.filter((u) => u.role === "hero");
+  const heroes = list.filter((u) => u.role === "hero" || u.role === "catalogue");
   if (heroes.length > 1) problems.push(`hero/section image used on ${heroes.length} pages: ${src}  (${heroes.map((h) => h.page).join(", ")})`);
   for (const t of list.filter((u) => u.role === "thumb")) {
     const target = t.link && heroOf.has(t.link) ? t.link : null;
@@ -80,7 +83,7 @@ async function dhash(file) {
   return bits;
 }
 const hashes = [];
-for (const src of uses.keys()) hashes.push({ src, h: await dhash(path.join("public", src)) });
+for (const [src, list] of uses) if (list.some((u) => u.role === "hero" || u.role === "thumb")) hashes.push({ src, h: await dhash(path.join("public", src)) });
 for (let i = 0; i < hashes.length; i++)
   for (let j = i + 1; j < hashes.length; j++) {
     let v = hashes[i].h ^ hashes[j].h, d = 0;

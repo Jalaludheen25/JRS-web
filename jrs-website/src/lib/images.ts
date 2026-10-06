@@ -68,7 +68,7 @@ export const images = {
 
   // ── Homepage sections ────────────────────────────────────────────────────────
   // Poster of the hero film (scripts/build-hero-video.mjs): first frame of the reel, art-directed in HeroMedia.
-  homeHero: scene("/images/hero/hero-poster.jpg", "Container ship heading out to open sea"),
+  homeHero: scene("/images/hero/hero-poster.jpg", "Aerial view of a container terminal, with ship-to-shore cranes working a vessel"),
   homeAbout: scene("/images/scenes/vessel-aerial-2-graded.jpg", "Container vessel berthed under ship-to-shore cranes"),
   // The large 1536px render carries the homepage feature; the smaller brochure shot is the product page identity.
   homeBearings: plate("/images/products/engine-bearings.jpg", "Marine engine bearings: main, thrust and connecting rod bearing shells"),

@@ -21,8 +21,21 @@ export const site = {
     country: "United Arab Emirates",
     countryCode: "AE",
   },
-  geo: { lat: 24.4539, lng: 54.3773, label: "24.4539° N · 54.3773° E" },
+  // JRS's Google Business Profile listing ("JRS Mechanical Equipment L.L.C -S.P.C", Hanging Garden Tower - 2nd Floor),
+  // the map the previous site embedded on its contact page. Coordinates are that listing's pin.
+  maps: { query: "JRS Mechanical Equipment L.L.C -S.P.C" },
+  geo: { lat: 24.4907, lng: 54.3645, label: "24.4907° N · 54.3645° E" },
 } as const;
+
+const mapsQuery = encodeURIComponent(site.maps.query);
+export const maps = {
+  /** Keyless Google Maps embed (iframe src), centred on the business listing. */
+  embed: `https://maps.google.com/maps?q=${mapsQuery}&t=m&z=16&output=embed&iwloc=near`,
+  /** Opens the listing in Google Maps (app on phones). */
+  open: `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`,
+  /** Turn-by-turn directions to the listing. */
+  directions: `https://www.google.com/maps/dir/?api=1&destination=${mapsQuery}`,
+};
 
 export type NavItem = { label: string; href: string };
 

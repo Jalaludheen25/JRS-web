@@ -18,9 +18,10 @@ export function Hero() {
   // The full-bleed film contracts into a framed viewport as the user scrolls away.
   const clip = useTransform(scrollYProgress, [0, 1], ["inset(0% 0% 0% 0%)", "inset(9% 5% 18% 5%)"]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.08, 1.22]);
-  // Copy drifts slightly *down* and fades as the page scrolls away, so it never rises into the fixed header.
+  // Copy drifts slightly *down* (never up into the header) and fades as the page scrolls away; once scrolled, the
+  // header is opaque, so anything passing beneath it is hidden.
   const copyY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const copyOpacity = useTransform(scrollYProgress, [0, 0.45], [1, 0]);
+  const copyOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
     <HeroReel>

@@ -11,6 +11,7 @@ Every factual claim on the new site must trace to a row here. Sources:
 | Tagline: "Quality Spares, Reliable Repairs" | CP logo |
 | Based in Abu Dhabi, UAE | CP, PP, WEB |
 | Address: Hanging Garden Tower, 2nd Floor, Office No. 36, Al Nahlah St, Abu Dhabi, UAE | CP, PP |
+| Map location: Google Business Profile listing "JRS Mechanical Equipment L.L.C -S.P.C" (Hanging Garden Tower - 2nd Floor), pin 24.4907° N, 54.3645° E; used for the map embed, directions links and the schema `geo` | WEB (contact page map embed), Google Maps. ⚠️ The listing gives the street as Hamdan Bin Mohammed St; CP/PP say Al Nahlah St. The site shows the CP/PP address. Confirm with JRS. |
 | Email: info@jrs-me.com | CP, PP, WEB |
 | **Phone: +971 55 770 4485** (`tel:+971557704485`, `https://wa.me/971557704485`) | CLIENT. Replaces +971 50 245 0986 (WEB) |
 | The landline 02 235 8105 appears in the PDFs | CP, PP. **Not used**: the brief says to use the new number everywhere. Confirm with JRS. |

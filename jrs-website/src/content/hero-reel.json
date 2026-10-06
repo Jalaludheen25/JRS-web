@@ -1,44 +1,40 @@
 {
- "duration": 26,
+ "duration": 22.9,
  "scenes": [
   {
    "start": 0,
-   "caption": "Vessel under way"
-  },
-  {
-   "start": 2.65,
    "caption": "Container terminal"
   },
   {
-   "start": 4.55,
+   "start": 1.45,
    "caption": "Port & harbour"
   },
   {
-   "start": 6.45,
+   "start": 3.35,
    "caption": "Port logistics"
   },
   {
-   "start": 8.35,
+   "start": 5.25,
    "caption": "Deck machinery"
   },
   {
-   "start": 11.25,
+   "start": 8.15,
    "caption": "Marine engine"
   },
   {
-   "start": 14.15,
+   "start": 11.05,
    "caption": "Crankshaft & connecting rods"
   },
   {
-   "start": 17.05,
+   "start": 13.95,
    "caption": "Precision machining"
   },
   {
-   "start": 19.95,
+   "start": 16.85,
    "caption": "CNC milling"
   },
   {
-   "start": 22.85,
+   "start": 19.75,
    "caption": "Fabrication & repair"
   }
  ]

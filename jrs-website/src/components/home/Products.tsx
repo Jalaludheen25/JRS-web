@@ -18,7 +18,7 @@ export function Products() {
       <div className="shell">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <Eyebrow sheet="05 / 14" className="text-steel-500">Products</Eyebrow>
+            <Eyebrow sheet="05 / 16" className="text-steel-500">Products</Eyebrow>
             <h2 id="products-title" className="mt-8">
               <RevealLines
                 className="display block text-[clamp(2.75rem,7.5vw,8rem)] text-abyss"

@@ -95,3 +95,20 @@ export function Mark({ children, delay = 0.55 }: { children: ReactNode; delay?: 
     </motion.span>
   );
 }
+
+/** Grid/list item that rises in as it scrolls into view, staggered across a row by `index`. */
+export function RevealItem({ children, className, index = 0 }: { children: ReactNode; className?: string; index?: number }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.li
+      data-reveal=""
+      className={className}
+      initial={reduce ? false : { opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "0px 0px -8% 0px" }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: (index % 6) * 0.06 }}
+    >
+      {children}
+    </motion.li>
+  );
+}

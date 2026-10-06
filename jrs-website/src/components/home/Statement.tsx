@@ -5,7 +5,7 @@ export function Statement() {
   return (
     <section aria-labelledby="statement-title" className="section-y relative bg-abyss">
       <div className="shell">
-        <Eyebrow sheet="02 / 14">Brand statement</Eyebrow>
+        <Eyebrow sheet="02 / 16">Brand statement</Eyebrow>
         <DrawLine className="mt-6" />
         <h2 id="statement-title" className="mt-[clamp(48px,8vw,120px)]">
           <RevealLines

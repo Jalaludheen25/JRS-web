@@ -61,8 +61,13 @@ export function Navbar() {
           style={{ scaleX: scrollYProgress }}
         />
         <nav aria-label="Primary" className="shell flex h-[76px] items-center justify-between gap-6">
-          <Link href="/" className="relative z-10 shrink-0" aria-label="JRS Mechanical Equipment, home">
-            <Image src="/brand/jrs-logo-white.png" alt="JRS — Quality Spares, Reliable Repairs" width={1080} height={537} preload className={`h-11 w-auto transition-[filter] duration-500 ${solid || panel ? "" : "drop-shadow-[0_1px_6px_rgb(3_5_10/0.55)]"}`} />
+          {/* Brand-blue logo on a white tab hanging from the top edge: legible over the film and on the dark bar. */}
+          <Link
+            href="/"
+            className="relative z-10 flex h-[66px] shrink-0 items-center self-start rounded-b-2xl bg-white px-3.5 shadow-[0_12px_32px_-14px_rgb(2_19_67/0.6)] ring-1 ring-heritage/10 sm:h-[70px] sm:px-4"
+            aria-label="JRS Mechanical Equipment, home"
+          >
+            <Image src="/brand/jrs-logo-blue.png" alt="JRS — Quality Spares, Reliable Repairs" width={1080} height={537} preload className="h-11 w-auto sm:h-12" />
           </Link>
 
           <ul className={`hidden items-center gap-9 lg:flex ${solid || panel ? "" : "text-legible-strong"}`}>

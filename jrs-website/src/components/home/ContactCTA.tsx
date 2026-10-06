@@ -4,7 +4,7 @@ import { RevealLines } from "@/components/ui/RevealLines";
 import { Eyebrow } from "@/components/ui/primitives";
 import { site } from "@/lib/site";
 
-export function ContactCTA({ sheet = "14 / 14" }: { sheet?: string } = {}) {
+export function ContactCTA({ sheet = "15 / 16" }: { sheet?: string } = {}) {
   const actions = [
     { href: site.phone.tel, label: "Call JRS", value: site.phone.display, icon: Phone, external: false },
     { href: site.whatsapp, label: "WhatsApp JRS", value: "Message us on WhatsApp", icon: MessageCircle, external: true },

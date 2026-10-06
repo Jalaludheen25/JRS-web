@@ -1,0 +1,38 @@
+{
+  "note": "Originals downloaded from the previous website (https://jrs-me.com/) on 2026-10-06. Processed into public/images/{makes,certifications,parts}/ by jrs-website/scripts/build-logo-assets.mjs. The Interstate-McBee logo is extracted from docs/source-pdf/company-profile.pdf (page 8) by the same script.",
+  "makes": {
+    "section": "Homepage 'Replacement Engine Spare Parts' logo wall (also company profile p.4), shown with the reference-only disclaimer",
+    "caterpillar.png": "https://jrs-me.com/wp-content/uploads/2025/05/CAT-bb6413e4.png",
+    "cummins.png": "https://jrs-me.com/wp-content/uploads/2026/02/Cumins-logo.png",
+    "detroit-diesel.png": "https://jrs-me.com/wp-content/uploads/2025/05/images-4.png",
+    "perkins.png": "https://jrs-me.com/wp-content/uploads/2025/05/Perkins-Logo.svg_.png",
+    "wartsila.png": "https://jrs-me.com/wp-content/uploads/2025/05/images-17-Photoroom-1.png",
+    "doosan.png": "https://jrs-me.com/wp-content/uploads/2025/05/download-8-Photoroom.png",
+    "mak.png": "https://jrs-me.com/wp-content/uploads/2025/05/images-16-Photoroom.png",
+    "man.png": "https://jrs-me.com/wp-content/uploads/2025/05/872b3e20-1b52-4265-9e4d-e55955de33d9-Photoroom-1.png",
+    "deutz.png": "https://jrs-me.com/wp-content/uploads/2025/05/download-7-Photoroom.png",
+    "yanmar.png": "https://jrs-me.com/wp-content/uploads/2025/05/images.png",
+    "mitsubishi.png": "https://jrs-me.com/wp-content/uploads/2025/05/images-1.png"
+  },
+  "certs": {
+    "section": "Homepage and About page 'Accredited & Certified' (also company profile p.8)",
+    "icv.jpg": "https://jrs-me.com/wp-content/uploads/2025/05/Untitled-design-18.jpg",
+    "iso-14001-2015.jpg": "https://jrs-me.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-01-24-at-11.24.51_447186f7.jpg",
+    "iso-45001-2018.jpg": "https://jrs-me.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-01-24-at-11.24.52_b5a6a78c.jpg",
+    "iso-9001-2015.jpg": "https://jrs-me.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-01-24-at-11.24.52_cf8974d3.jpg"
+  },
+  "parts": {
+    "section": "Homepage and Products page 'REPLACEMENT ENGINE SPARE PARTS' tiles (label text was baked into each image)",
+    "pistons.png": "https://jrs-me.com/wp-content/uploads/2025/05/1-1.png",
+    "fuel-injection-systems.png": "https://jrs-me.com/wp-content/uploads/2025/05/2-1.png",
+    "piston-rings.png": "https://jrs-me.com/wp-content/uploads/2025/05/3-1.png",
+    "piston-pins.png": "https://jrs-me.com/wp-content/uploads/2025/05/4-1.png",
+    "bearings.png": "https://jrs-me.com/wp-content/uploads/2025/05/5-1.png",
+    "cylinder-heads.png": "https://jrs-me.com/wp-content/uploads/2025/05/6-1.png",
+    "filter-elements.png": "https://jrs-me.com/wp-content/uploads/2025/05/7-1.png",
+    "separators.png": "https://jrs-me.com/wp-content/uploads/2025/05/8-1.png",
+    "valve-stems.png": "https://jrs-me.com/wp-content/uploads/2025/05/9-1.png",
+    "valve-rotators.png": "https://jrs-me.com/wp-content/uploads/2025/05/10-1.png",
+    "liners.png": "https://jrs-me.com/wp-content/uploads/2025/05/11-1.png"
+  }
+}

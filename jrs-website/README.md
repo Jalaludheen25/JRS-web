@@ -49,7 +49,9 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 | `scripts/prep-images.mjs` | Resize and rename source images from the live site |
 | `scripts/grade-images.mjs` | Monochrome navy grade for scene photography |
 | `scripts/make-logos.mjs` | Derive transparent logo variants |
-| `scripts/make-og.mjs` | Default Open Graph image |
+| `scripts/make-og.mjs` | Default Open Graph image (brand-blue logo on a white plate) |
+| `scripts/make-icons.mjs` | Favicon and Apple touch icon (brand-blue logo on white) |
+| `scripts/build-logo-assets.mjs` | Engine-maker logos, certification badges, Interstate-McBee logo and spare-parts tiles from the previous site (`docs/source-logos/`): background removal, trimming, matched optical sizes |
 | `scripts/build-inventory.mjs` | Regenerate the URL inventory table from the crawl |
 | `scripts/screenshot.mjs` | Section-by-section homepage screenshots for visual QA |
 | `scripts/screenshot-pages.mjs` | Full-page screenshots of any routes |
@@ -68,4 +70,4 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 | `scripts/build-image-library.mjs` | Build `public/images/brochure/` and `public/images/stock/`, graded variants and `docs/05-image-credits.md` |
 | `scripts/search-openverse.mjs` | Search CC0 / public-domain photos (Wikimedia, StockSnap) and build review contact sheets |
 | `scripts/image-dupes.mjs` | Find visually identical images saved under different file names |
-| `scripts/audit-images.mjs` | Browser audit of the running site: every page/section has its own image; card thumbnails match their target page |
+| `scripts/audit-images.mjs` | Browser audit of the running site: every page/section has its own image; card thumbnails match their target page (logos and badges, `data-img-role="logo"`, may repeat) |

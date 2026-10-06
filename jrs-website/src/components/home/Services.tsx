@@ -18,7 +18,7 @@ export function Services() {
       <div className="shell">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <Eyebrow sheet="09 / 14">Technical services</Eyebrow>
+            <Eyebrow sheet="09 / 16">Technical services</Eyebrow>
             <h2 id="services-title" className="mt-8">
               <RevealLines className="display block text-[clamp(2.75rem,7vw,7.5rem)] text-white" lines={["Repair.", "Recondition.", <span key="r" className="accent text-accent">Return to service.</span>]} />
             </h2>

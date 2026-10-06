@@ -1,9 +1,10 @@
 import { MapPin, Mail, Phone, MessageCircle } from "lucide-react";
 import { ContactCTA } from "@/components/home/ContactCTA";
+import { Location } from "@/components/home/Location";
 import { Breadcrumbs } from "@/components/page/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/primitives";
 import { RevealLines } from "@/components/ui/RevealLines";
-import { site } from "@/lib/site";
+import { maps, site } from "@/lib/site";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -12,8 +13,6 @@ export const metadata = pageMetadata({
     "Contact JRS Mechanical Equipment in Abu Dhabi for marine and power-generation spare parts, overhauls and technical services. Call or WhatsApp +971 55 770 4485.",
   path: "/contact/",
 });
-
-const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.address.building}, ${site.address.street}, Abu Dhabi`)}`;
 
 const checklist = [
   "Engine make and model (and the vessel or generator it serves)",
@@ -28,7 +27,7 @@ export default function ContactPage() {
     { icon: Phone, label: "Call us", value: site.phone.display, href: site.phone.tel },
     { icon: MessageCircle, label: "WhatsApp", value: site.phone.display, href: site.whatsapp, external: true },
     { icon: Mail, label: "Email address", value: site.email, href: `mailto:${site.email}` },
-    { icon: MapPin, label: "Visit us", value: `${site.address.building}, ${site.address.floor}, ${site.address.office}, ${site.address.street}, Abu Dhabi, UAE`, href: mapUrl, external: true },
+    { icon: MapPin, label: "Visit us", value: `${site.address.building}, ${site.address.floor}, ${site.address.office}, ${site.address.street}, Abu Dhabi, UAE`, href: maps.open, external: true },
   ];
 
   return (
@@ -87,6 +86,7 @@ export default function ContactPage() {
       </section>
 
       <ContactCTA sheet="" />
+      <Location sheet="" />
     </>
   );
 }

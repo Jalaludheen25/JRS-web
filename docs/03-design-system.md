@@ -31,6 +31,7 @@ What it avoids: neon, glass cards, gradient blobs, rounded "SaaS" cards, stock h
 | `accent-ink` | `#8A6400` | Brass: small accent text (index numbers, category labels) on light surfaces |
 | `plate` | `#EEF1F5` | Light product surface |
 | `plate-deep` | `#E2E6EC` | Product image wells |
+| `mist` / `mist-deep` | `#F5F8FC` / `#E4EBF5` | **Light + blue surface** (`.surface-mist`: mist gradient with soft heritage-blue light): supported companies, spare parts, certification and location sections |
 | `steel-300` | `#B6BFCB` | Secondary text on dark |
 | `steel-500` | `#7A8594` | Metadata |
 | `graphite` | `#1A1F28` | Body text on plate |
@@ -39,7 +40,9 @@ What it avoids: neon, glass cards, gradient blobs, rounded "SaaS" cards, stock h
 
 Contrast: body text on `abyss` uses `#E8ECF2` (≈ 15:1); `steel-300` on `abyss` ≈ 9:1; `graphite` on `plate` ≈ 14:1. On `heritage-deep`: white 17.9:1, `steel-300` 9.6:1, `steel-500` 4.8:1, accent 10.7:1.
 
-Heritage colours are used in only three places (contact/quote bands, footer, hero overlay tint), so the old site's blue reads as continuity, not a second theme.
+Heritage colours carry the old site's blue as continuity: contact/quote bands, footer, hero overlay tint, and the light + blue `mist` sections (blue italic accents, hover bars, the "other makes" / "not listed" tiles).
+
+**Logo:** the brand-blue logo (`/brand/jrs-logo-blue.png`) everywhere. On dark surfaces it sits on white: a tab hanging from the top edge of the header, a rounded plate in the footer and the Open Graph image. Favicon and Apple touch icon: blue logo on white (`scripts/make-icons.mjs`).
 
 ### Accent: signal yellow
 
@@ -100,7 +103,7 @@ All fonts are self-hosted via `next/font` (no layout shift, no third-party reque
 
 | Sheet | Section | Surface | Signature moment |
 |---|---|---|---|
-| 01 | Hero: **ENGINEERED FOR UPTIME.** | Full-bleed cinematic film (26 s loop: sea → port → engine → machining → fabrication) in bright natural colour under a subtle heritage-navy overlay; header turns opaque on scroll so hero text never shows through it | Headline masks in; film-control pill (pause, scene caption, yellow progress line); on scroll the film contracts into a framed "viewport". See [06-hero-film.md](06-hero-film.md) |
+| 01 | Hero: **ENGINEERED FOR UPTIME.** | Full-bleed cinematic film (23 s loop: port → vessel → engine → machining → fabrication; no legible ship, company or maker names) in bright natural colour under a subtle heritage-navy overlay; header turns opaque on scroll so hero text never shows through it | Headline masks in; film-control pill (pause, scene caption, yellow progress line); on scroll the film contracts into a framed "viewport". See [06-hero-film.md](06-hero-film.md) |
 | 02 | Brand statement: **QUALITY SPARES. RELIABLE REPAIRS.** | Abyss | Huge type, lines reveal one at a time, second line in outline |
 | 03 | About JRS | Split: image / copy | Clip reveal image, mission excerpt, "Discover JRS" |
 | 04 | Core capabilities ×6 | Abyss, pinned horizontal track | Oversized index numbers, one panel per capability |
@@ -110,10 +113,12 @@ All fonts are self-hosted via `next/font` (no layout shift, no third-party reque
 | 08 | Engine overhaul: **WHEN PERFORMANCE CANNOT WAIT.** | Abyss, full-bleed rotor image | 12 capabilities as a numbered two-column checklist |
 | 09 | Technical services ×8 | Navy | Sticky list (left), with image and description swapping (right) |
 | 10 | Industries: **BUILT FOR DEMANDING OPERATIONS.** | Full-screen panels | Horizontal panels: Marine / Power Gen / Industrial / Offshore |
-| 11 | Engine makes | Plate | Two-row typographic marquee, plus the reference-only disclaimer |
-| 12 | Certified for confidence | Abyss | ISO 9001 / 14001 / 45001 + ICV + Interstate-McBee distributor |
-| 13 | Mission / vision | Abyss | Editorial two-column statement, set like a magazine pull quote |
-| 14 | Contact: **LET'S KEEP YOUR OPERATIONS MOVING.** | Marine blue | Call / WhatsApp / quote, plus the footer |
+| 11 | Supported companies: **PARTS FOR THE *engines you run.*** | Mist | Logo wall of the 11 makes (previous site), staggered rise-in; Cummins / Wärtsilä / Yanmar tiles link to their pages; "other makes" tile; reconditioning makes; reference-only disclaimer |
+| 12 | **REPLACEMENT *engine spare parts.*** | Mist | The previous site's 11 spare-parts tiles as a catalogue grid, each linked to its product page; "not listed?" quote tile |
+| 13 | Accredited & certified: **CERTIFIED *for confidence.*** | Mist | ISO 9001 / 14001 / 45001 and ICV badge cards + Interstate-McBee distributor card with its logo |
+| 14 | Mission / vision | Abyss | Editorial two-column statement, set like a magazine pull quote |
+| 15 | Contact: **LET'S KEEP YOUR OPERATIONS MOVING.** | Heritage navy | Call / WhatsApp / quote |
+| 16 | Location: **FIND US IN *Abu Dhabi.*** | Mist | Address, call / email, directions; Google Maps embed of the JRS business listing (also on /contact/), plus the footer |
 
 ## Imagery inventory & gaps
 
