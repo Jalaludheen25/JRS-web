@@ -40,6 +40,7 @@ export function ReplacementParts({ sheet = "12 / 15" }: { sheet?: string } = {})
                     alt={p.alt}
                     fill
                     sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 46vw"
+                    quality={90}
                     className="object-contain p-2 transition-transform duration-700 ease-(--ease-expo) group-hover:scale-[1.07] sm:p-4"
                   />
                   <span className="label absolute left-1 top-1 tabular-nums text-steel-500">{String(i + 1).padStart(2, "0")}</span>

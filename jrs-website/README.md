@@ -50,6 +50,7 @@ node scripts/screenshot.mjs <outDir> desktop|mobile   # visual QA against :3100 
 | `scripts/grade-images.mjs` | Monochrome navy grade for scene photography |
 | `scripts/make-logos.mjs` | Derive transparent logo variants |
 | `scripts/make-og.mjs` | Default Open Graph image (brand-blue logo on a white plate) |
+| `scripts/render-parts.mjs` | Renders the 11 replacement spare-parts images (1200×900, transparent) from the procedural three.js models in `scripts/parts-3d/`, in headless Chrome |
 | `scripts/make-icons.mjs` | Favicon and Apple touch icon (brand-blue logo on white) |
 | `scripts/build-logo-assets.mjs` | Engine-maker and turbocharger-make logos, certification badges, Interstate-McBee logo and spare-parts tiles (`docs/source-logos/`): background removal, SVG rasterising, trimming, matched optical sizes |
 | `scripts/build-inventory.mjs` | Regenerate the URL inventory table from the crawl |

@@ -114,7 +114,7 @@ All fonts are self-hosted via `next/font` (no layout shift, no third-party reque
 | 09 | Technical services ×8 | Navy | Sticky list (left), with image and description swapping (right) |
 | 10 | Industries: **BUILT FOR DEMANDING OPERATIONS.** | Full-screen panels | Horizontal panels: Marine / Power Gen / Industrial / Offshore |
 | 11 | Supported companies: **PARTS FOR THE *engines you run.*** | Mist | Logo wall of the 11 makes (previous site), staggered rise-in; Cummins / Wärtsilä / Yanmar tiles link to their pages; "other makes" tile; reconditioning makes; reference-only disclaimer |
-| 12 | **REPLACEMENT *engine spare parts.*** | Mist | The previous site's 11 spare-parts tiles as a catalogue grid, each linked to its product page; "not listed?" quote tile |
+| 12 | **REPLACEMENT *engine spare parts.*** | Mist | The previous site's 11 spare-parts categories as a catalogue grid of matched studio renders (same camera, lighting and blue-tinted reflections; `scripts/render-parts.mjs`), each linked to its product page; "not listed?" quote tile |
 | 13 | Accredited & certified: **CERTIFIED *for confidence.*** | Mist | ISO 9001 / 14001 / 45001 and ICV badge cards + Interstate-McBee distributor card with its logo |
 | 14 | Mission / vision | Abyss | Editorial two-column statement, set like a magazine pull quote |
 | 15 | Contact: **LET'S KEEP YOUR OPERATIONS MOVING.** | Heritage navy | Call / WhatsApp / quote, then the footer |

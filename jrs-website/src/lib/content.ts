@@ -322,23 +322,24 @@ export const makeLogos: MakeLogo[] = partsMakes.map((name) => ({
   href: brandPages.find((b) => b.name === name)?.href,
 }));
 
-// "Replacement engine spare parts" tiles: the previous site's product strip (same order), each linked to the product
+// "Replacement engine spare parts" tiles: the previous site's product list (same order), each linked to the product
 // page that covers it. Separators have no page of their own, so that tile asks for availability instead.
+// Images: studio renders from scripts/render-parts.mjs (1200×900, transparent), illustrative of each part type.
 export type PartTile = { name: string; src: string; alt: string; href?: string };
 const pistonsHref = "/pistons-piston-rings-in-abu-dhabi/";
 const headsHref = "/cylinder-heads-components-in-abu-dhabi/";
 export const replacementParts: PartTile[] = [
-  { name: "Pistons", src: "/images/parts/pistons.png", alt: "Marine diesel engine piston", href: pistonsHref },
-  { name: "Fuel injection systems", src: "/images/parts/fuel-injection-systems.png", alt: "Diesel fuel injection pump", href: "/fuel-injection-systems-components-in-abu-dhabi/" },
-  { name: "Piston rings", src: "/images/parts/piston-rings.png", alt: "Set of piston rings", href: pistonsHref },
-  { name: "Piston pins", src: "/images/parts/piston-pins.png", alt: "Hollow steel piston pin", href: pistonsHref },
-  { name: "Bearings", src: "/images/parts/bearings.png", alt: "Engine bearing shells", href: "/engine-bearings-in-abu-dhabi/" },
-  { name: "Cylinder heads", src: "/images/parts/cylinder-heads.png", alt: "Diesel engine cylinder head", href: headsHref },
-  { name: "Filter elements", src: "/images/parts/filter-elements.png", alt: "Pleated filter element", href: "/filters/" },
-  { name: "Separators", src: "/images/parts/separators.png", alt: "Centrifugal separator" },
-  { name: "Valve stems", src: "/images/parts/valve-stems.png", alt: "Engine valves with long stems", href: headsHref },
-  { name: "Valve rotators", src: "/images/parts/valve-rotators.png", alt: "Valve rotator", href: headsHref },
-  { name: "Liners", src: "/images/parts/liners.png", alt: "Cylinder liners in three sizes", href: "/liners-anti-polishing-rings-in-abu-dhabi/" },
+  { name: "Pistons", src: "/images/spare-parts/pistons.png", alt: "Two diesel engine pistons, aluminium and steel, with ring grooves and pin bores", href: pistonsHref },
+  { name: "Fuel injection systems", src: "/images/spare-parts/fuel-injection-systems.png", alt: "Fuel injector, pump barrel and plunger, and delivery valve holder", href: "/fuel-injection-systems-components-in-abu-dhabi/" },
+  { name: "Piston rings", src: "/images/spare-parts/piston-rings.png", alt: "Compression rings, an oil control ring and a standing piston ring", href: pistonsHref },
+  { name: "Piston pins", src: "/images/spare-parts/piston-pins.png", alt: "Two hollow piston pins with circlips", href: pistonsHref },
+  { name: "Bearings", src: "/images/spare-parts/bearings.png", alt: "Engine bearing shells with bronze running surfaces and a thrust washer", href: "/engine-bearings-in-abu-dhabi/" },
+  { name: "Cylinder heads", src: "/images/spare-parts/cylinder-heads.png", alt: "Engine cylinder head with valve springs, stud nuts and injector", href: headsHref },
+  { name: "Filter elements", src: "/images/spare-parts/filter-elements.png", alt: "Three pleated filter elements in paper and stainless mesh", href: "/filters/" },
+  { name: "Separators", src: "/images/spare-parts/separators.png", alt: "Separator bowl, disc stack and a single separator disc" },
+  { name: "Valve stems", src: "/images/spare-parts/valve-stems.png", alt: "Engine valves standing and lying, with keeper grooves on the stems", href: headsHref },
+  { name: "Valve rotators", src: "/images/spare-parts/valve-rotators.png", alt: "Two valve rotators, one opened to show its balls and springs", href: headsHref },
+  { name: "Liners", src: "/images/spare-parts/liners.png", alt: "Cylinder liners in three sizes with O-ring grooves and anti-polishing rings", href: "/liners-anti-polishing-rings-in-abu-dhabi/" },
 ];
 
 export const referenceDisclaimer =

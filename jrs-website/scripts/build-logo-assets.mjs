@@ -1,12 +1,10 @@
-// Builds the logo and badge assets for the "Supported companies", "Replacement engine spare parts" and
-// "Accredited & certified" sections from the previous website's originals (../docs/source-logos/, see sources.json).
+// Builds the logo and badge assets for the "Supported companies", "Turbocharger makes" and "Accredited & certified"
+// sections (../docs/source-logos/, see sources.json). The spare-parts images are rendered by render-parts.mjs.
 //
 //  makes/  engine-maker logos → public/images/makes/<slug>.png: white backgrounds removed, trimmed, and placed on a
 //          uniform 480×240 transparent canvas at a matched optical size (equal area, per-logo weight), so the grid
 //          reads evenly whatever each logo's proportions.
 //  certs/  certification badges → public/images/certifications/<slug>.png: background removed, trimmed, 300px tall.
-//  parts/  product tiles → public/images/parts/<slug>.png: the label pill baked into each image is cut off (the site
-//          sets the label as real text), background removed, product centred on a 640×480 canvas.
 //  Interstate-McBee logo → public/images/certifications/interstate-mcbee.png, from company-profile.pdf page 8.
 //  turbo/  turbocharger-make logos → public/images/turbo-makes/<slug>.png on the same 480×240 canvas; "ABB – IHI" (one
 //          entry in the company profile) becomes one lockup of both marks. SVG sources are rasterised sharply first.
@@ -134,26 +132,6 @@ for (const slug of ["icv", "iso-9001-2015", "iso-14001-2015", "iso-45001-2018"])
   const img = clearBackground(await load(await s.png().toBuffer()), 18);
   const { data: buf } = await trimmed(img);
   await save(sharp(buf).resize({ height: 160, kernel: "lanczos3" }).png({ compressionLevel: 9 }), path.join(OUT, "certifications", "interstate-mcbee.png"));
-}
-
-// ── replacement spare parts ─────────────────────────────────────────────────────────────────────
-for (const file of fs.readdirSync(path.join(SRC, "parts")).filter((f) => f.endsWith(".png"))) {
-  const img = await load(path.join(SRC, "parts", file));
-  const { data, w } = img;
-  // The label is a royal-blue pill near the bottom: find its first row and cut everything from there down.
-  const isPill = (i) => data[i + 2] > 120 && data[i + 2] - data[i] > 70 && data[i + 1] < 120;
-  let pillTop = img.h;
-  for (let y = Math.floor(img.h * 0.5); y < img.h; y++) {
-    let n = 0;
-    for (let x = 0; x < w; x++) if (isPill((y * w + x) * 4)) n++;
-    if (n > 60) { pillTop = y; break; }
-  }
-  for (let y = Math.max(0, pillTop - 6); y < img.h; y++) for (let x = 0; x < w; x++) data[(y * w + x) * 4 + 3] = 0;
-  clearBackground(img, 14);
-  const { data: buf, info } = await trimmed(img);
-  const W = 640, H = 480;
-  const scale = Math.min(560 / info.width, 400 / info.height, 1.6);
-  await save(await place(buf, info.width * scale, info.height * scale, W, H), path.join(OUT, "parts", file));
 }
 
 // ── turbocharger makes ──────────────────────────────────────────────────────────────────────────
