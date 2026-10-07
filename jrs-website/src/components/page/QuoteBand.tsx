@@ -1,4 +1,5 @@
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { QuoteForm } from "@/components/forms/QuoteForm";
 import { site } from "@/lib/site";
 
@@ -25,7 +26,7 @@ export function QuoteBand({ subject, defaultTopic }: { subject: string; defaultT
               <Phone className="size-4" aria-hidden /> {site.phone.display}
             </a>
             <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex h-12 items-center gap-2 rounded-full border border-white/40 px-5 text-[13px] font-medium uppercase tracking-[0.06em] text-white transition-colors hover:border-accent hover:text-accent">
-              <MessageCircle className="size-4" aria-hidden /> WhatsApp
+              <WhatsAppIcon className="size-4" /> WhatsApp
             </a>
           </div>
         </div>

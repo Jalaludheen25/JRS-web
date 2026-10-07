@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ContactDock } from "@/components/layout/ContactDock";
+import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { JsonLd } from "@/components/ui/primitives";
 import { organizationSchema } from "@/lib/seo";
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <main id="main">{children}</main>
           <Footer />
           <ContactDock />
+          <WhatsAppFloat />
         </SmoothScroll>
         <JsonLd data={organizationSchema()} />
       </body>

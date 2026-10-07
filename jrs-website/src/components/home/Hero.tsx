@@ -95,11 +95,11 @@ export function Hero() {
             <a href={site.phone.tel} className="label text-legible-strong mt-5 inline-flex items-center gap-2 text-white hover:text-accent sm:mt-7">
               <Phone className="size-3.5" aria-hidden /> {site.phone.display}
             </a>
-            <ReelControls className="mt-6 md:hidden" />
+            <ReelControls className="mr-[64px] mt-6 md:hidden" />
           </motion.div>
         </div>
 
-        <div className="mt-10 hidden justify-end md:flex">
+        <div className="mt-10 hidden justify-end md:flex md:pr-[72px] lg:pr-[60px]">
           <ReelControls className="w-[24rem]" />
         </div>
       </motion.div>

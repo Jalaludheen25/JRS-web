@@ -97,7 +97,7 @@ All fonts are self-hosted via `next/font` (no layout shift, no third-party reque
 
 ## Components
 
-`Container` · `Eyebrow` (sheet label) · `DisplayHeading` / `RevealLines` · `SectionHeading` · `Button` / `MagneticButton` · `ArrowLink` · `ImageReveal` · `ParallaxImage` · `Marquee` · `TechnicalSpec` (definition-list spec sheet) · `ProductShowcase` · `ProductCard` (editorial plate row) · `ServiceCard` · `BrandCard` · `HorizontalTrack` · `TurboViewer` (3D) · `Navbar` · `MobileMenu` · `Footer` · `QuoteForm` · `ContactDock` (mobile) · `Breadcrumbs` · `SEOSection` · `JsonLd`.
+`Container` · `Eyebrow` (sheet label) · `DisplayHeading` / `RevealLines` · `SectionHeading` · `Button` / `MagneticButton` · `ArrowLink` · `ImageReveal` · `ParallaxImage` · `Marquee` · `TechnicalSpec` (definition-list spec sheet) · `ProductShowcase` · `ProductCard` (editorial plate row) · `ServiceCard` · `BrandCard` · `HorizontalTrack` · `TurboViewer` (3D) · `Navbar` · `MobileMenu` · `Footer` · `QuoteForm` · `ContactDock` (mobile) · `WhatsAppFloat` (every page: WhatsApp-green round button with the official glyph, bottom right; below 1024px it hands over to the contact dock once that appears, so one WhatsApp control shows at a time) · `Breadcrumbs` · `SEOSection` · `JsonLd`.
 
 ## Homepage narrative
 

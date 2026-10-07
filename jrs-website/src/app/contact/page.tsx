@@ -1,4 +1,5 @@
-import { MapPin, Mail, Phone, MessageCircle } from "lucide-react";
+import { MapPin, Mail, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import { Breadcrumbs } from "@/components/page/Breadcrumbs";
 import { Eyebrow } from "@/components/ui/primitives";
@@ -24,7 +25,7 @@ const checklist = [
 export default function ContactPage() {
   const details = [
     { icon: Phone, label: "Call us", value: site.phone.display, href: site.phone.tel },
-    { icon: MessageCircle, label: "WhatsApp", value: site.phone.display, href: site.whatsapp, external: true },
+    { icon: WhatsAppIcon, label: "WhatsApp", value: site.phone.display, href: site.whatsapp, external: true },
     { icon: Mail, label: "Email address", value: site.email, href: `mailto:${site.email}` },
     { icon: MapPin, label: "Visit us", value: `${site.address.building}, ${site.address.floor}, ${site.address.office}, ${site.address.street}, Abu Dhabi, UAE`, href: maps.open, external: true },
   ];

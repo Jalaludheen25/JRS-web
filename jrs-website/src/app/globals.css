@@ -248,6 +248,22 @@ html.reveal-fallback .mark[data-reveal] {
   background-size: 100% 100% !important;
 }
 
+/* Floating WhatsApp button: a slow, soft ring every few seconds. */
+.wa-pulse {
+  animation: wa-pulse 3.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes wa-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  45%,
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
 @keyframes marquee {
   to {
     transform: translate3d(-50%, 0, 0);

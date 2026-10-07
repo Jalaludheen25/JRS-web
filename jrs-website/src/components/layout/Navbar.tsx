@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useId, useRef, useState } from "react";
-import { ArrowUpRight, MessageCircle, Phone } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { primaryNav, quoteHref, site } from "@/lib/site";
 import { products, services } from "@/lib/content";
 
@@ -189,7 +190,7 @@ export function Navbar() {
                   <Phone className="size-4" aria-hidden /> Call JRS
                 </a>
                 <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="flex h-14 items-center justify-center gap-2 rounded-full bg-accent text-sm font-semibold text-abyss">
-                  <MessageCircle className="size-4" aria-hidden /> WhatsApp
+                  <WhatsAppIcon className="size-[18px]" /> WhatsApp
                 </a>
               </div>
               <p className="label mt-6 text-steel-500">{site.phone.display} · {site.email}</p>

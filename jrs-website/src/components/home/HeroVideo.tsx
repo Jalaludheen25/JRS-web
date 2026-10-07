@@ -244,9 +244,9 @@ export function ReelControls({ className }: { className?: string }) {
       </button>
       <div className="min-w-0 flex-1">
         <p className="label flex items-baseline gap-2 text-steel-300">
-          <span className="tabular-nums text-accent">{String(scene + 1).padStart(2, "0")}</span>
-          <span className="tabular-nums text-white/40">/ {String(reel.scenes.length).padStart(2, "0")}</span>
-          <span className="relative block h-[1.4em] min-w-[11rem] flex-1 overflow-hidden">
+          <span className="shrink-0 tabular-nums text-accent">{String(scene + 1).padStart(2, "0")}</span>
+          <span className="shrink-0 whitespace-nowrap tabular-nums text-white/40">/ {String(reel.scenes.length).padStart(2, "0")}</span>
+          <span className="relative block h-[1.4em] min-w-0 flex-1 overflow-hidden">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.span
                 key={caption}

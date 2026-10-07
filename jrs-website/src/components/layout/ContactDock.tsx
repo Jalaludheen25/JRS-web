@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useState } from "react";
-import { MessageCircle, Phone, FileText } from "lucide-react";
+import { Phone, FileText } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { quoteHref, site } from "@/lib/site";
 
 /** Mobile-only action bar: call, WhatsApp, quote. Appears once the hero is passed. */
@@ -27,7 +28,7 @@ export function ContactDock() {
         <Phone className="size-[18px]" strokeWidth={1.6} aria-hidden /> Call
       </a>
       <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className={`${item} border-x border-white/10`} tabIndex={show ? 0 : -1}>
-        <MessageCircle className="size-[18px]" strokeWidth={1.6} aria-hidden /> WhatsApp
+        <WhatsAppIcon className="size-[18px]" /> WhatsApp
       </a>
       <Link href={quoteHref} className={`${item} bg-accent font-semibold text-abyss`} tabIndex={show ? 0 : -1}>
         <FileText className="size-[18px]" strokeWidth={1.6} aria-hidden /> Quote

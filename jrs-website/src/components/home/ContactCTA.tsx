@@ -1,4 +1,5 @@
-import { MessageCircle, Phone, Mail } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { QuoteForm } from "@/components/forms/QuoteForm";
 import { RevealLines } from "@/components/ui/RevealLines";
 import { Eyebrow } from "@/components/ui/primitives";
@@ -7,7 +8,7 @@ import { site } from "@/lib/site";
 export function ContactCTA({ sheet = "15 / 15" }: { sheet?: string } = {}) {
   const actions = [
     { href: site.phone.tel, label: "Call JRS", value: site.phone.display, icon: Phone, external: false },
-    { href: site.whatsapp, label: "WhatsApp JRS", value: "Message us on WhatsApp", icon: MessageCircle, external: true },
+    { href: site.whatsapp, label: "WhatsApp JRS", value: "Message us on WhatsApp", icon: WhatsAppIcon, external: true },
     { href: `mailto:${site.email}`, label: "Email", value: site.email, icon: Mail, external: false },
   ];
 
