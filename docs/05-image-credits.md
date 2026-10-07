@@ -21,6 +21,12 @@ These photos are dedicated to the public domain (CC0). They may be used commerci
 They are **illustrative**: none of them shows JRS's own premises, staff or customers, and the site never captions them as such.
 Replace them with JRS's own photography when it becomes available.
 
+**Vessel identities removed:** no real ship can be identified on the site. Ship names, IMO numbers, ports of registry and
+operator names have been retouched out of every vessel photograph (`scripts/retouch-vessel-names.mjs`, which must be
+re-run if this script regenerates the images) and out of the hero film (`scripts/build-hero-video.mjs`). The
+cleaned photographs are published under new names (listed in that script, e.g. `tug-towing-container-ship` →
+`harbour-tug-at-terminal`); the generated originals in the table below are not deployed.
+
 | File | Original title | Author | Licence | Source |
 |---|---|---|---|---|
 | `/images/stock/offshore-platform-at-dusk.jpg` | Holstein at Dusk | GuavaTrain | CC0 | [Wikimedia Commons](https://commons.wikimedia.org/w/index.php?curid=144850842) |

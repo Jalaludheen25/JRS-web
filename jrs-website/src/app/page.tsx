@@ -39,7 +39,7 @@ export default function HomePage() {
       <Industries />
       <SupportedCompanies />
       <ReplacementParts />
-      <Certifications />
+      <Certifications distributor={false} />
       <MissionVision />
       <ContactCTA />
     </>

@@ -3,8 +3,11 @@ import { FadeUp, RevealItem, RevealLines } from "@/components/ui/RevealLines";
 import { Eyebrow } from "@/components/ui/primitives";
 import { certifications } from "@/lib/content";
 
-/** Certification and accreditation badges (previous site / company profile p.8) on the light + blue surface. */
-export function Certifications({ sheet = "13 / 15" }: { sheet?: string } = {}) {
+/**
+ * Certification and accreditation badges (previous site / company profile p.8) on the light + blue surface.
+ * `distributor` adds the Interstate-McBee authorized-distributor card (shown on About, not on Home).
+ */
+export function Certifications({ sheet = "13 / 15", distributor = true }: { sheet?: string; distributor?: boolean } = {}) {
   return (
     <section aria-labelledby="certs-title" className="section-y surface-mist relative overflow-hidden">
       <div className="shell">
@@ -48,26 +51,28 @@ export function Certifications({ sheet = "13 / 15" }: { sheet?: string } = {}) {
           ))}
         </ul>
 
-        <FadeUp className="mt-6 grid gap-8 border-l-[3px] border-heritage bg-white p-[clamp(24px,3vw,44px)] shadow-[0_22px_44px_-30px_rgb(2_19_67/0.45)] ring-1 ring-heritage/10 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-4">
-            <p className="label text-marine">Authorized distributor</p>
-            <Image
-              data-img-role="logo"
-              src="/images/certifications/interstate-mcbee.png"
-              alt="Interstate-McBee logo"
-              width={671}
-              height={160}
-              sizes="(min-width: 1024px) 22vw, 70vw"
-              className="mt-5 h-12 w-auto sm:h-14"
-            />
-          </div>
-          <div className="lg:col-span-8">
-            <p className="heading text-[clamp(1.4rem,2.4vw,2.25rem)] text-abyss">Interstate-McBee</p>
-            <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-graphite/75">
-              JRS is an authorized distributor for Interstate-McBee, which offers engine and fuel-injection replacement parts for Cummins®, Caterpillar® and Detroit Diesel engines for the marine, diesel and natural-gas industries.
-            </p>
-          </div>
-        </FadeUp>
+        {distributor && (
+          <FadeUp className="mt-6 grid gap-8 border-l-[3px] border-heritage bg-white p-[clamp(24px,3vw,44px)] shadow-[0_22px_44px_-30px_rgb(2_19_67/0.45)] ring-1 ring-heritage/10 lg:grid-cols-12 lg:items-center">
+            <div className="lg:col-span-4">
+              <p className="label text-marine">Authorized distributor</p>
+              <Image
+                data-img-role="logo"
+                src="/images/certifications/interstate-mcbee.png"
+                alt="Interstate-McBee logo"
+                width={671}
+                height={160}
+                sizes="(min-width: 1024px) 22vw, 70vw"
+                className="mt-5 h-12 w-auto sm:h-14"
+              />
+            </div>
+            <div className="lg:col-span-8">
+              <p className="heading text-[clamp(1.4rem,2.4vw,2.25rem)] text-abyss">Interstate-McBee</p>
+              <p className="mt-3 max-w-3xl text-[15px] leading-relaxed text-graphite/75">
+                JRS is an authorized distributor for Interstate-McBee, which offers engine and fuel-injection replacement parts for Cummins®, Caterpillar® and Detroit Diesel engines for the marine, diesel and natural-gas industries.
+              </p>
+            </div>
+          </FadeUp>
+        )}
       </div>
     </section>
   );

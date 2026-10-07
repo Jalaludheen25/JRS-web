@@ -19,10 +19,12 @@ import reel from "@/content/hero-reel.json";
 
 type Variant = "landscape-1080" | "landscape-720" | "portrait";
 
+// ?v= is the film version (hash of the encode): a new cut is never hidden behind a cached old one.
+const v = `?v=${reel.version}`;
 const SOURCES: Record<Variant, { av1: string; av1Codec: string; h264: string; h264Codec: string }> = {
-  "landscape-1080": { av1: "/video/hero-1080-av1.mp4", av1Codec: "av01.0.08M.08", h264: "/video/hero-1080.mp4", h264Codec: "avc1.640028" },
-  "landscape-720": { av1: "/video/hero-720-av1.mp4", av1Codec: "av01.0.05M.08", h264: "/video/hero-720.mp4", h264Codec: "avc1.64001f" },
-  portrait: { av1: "/video/hero-portrait-av1.mp4", av1Codec: "av01.0.05M.08", h264: "/video/hero-portrait.mp4", h264Codec: "avc1.64001f" },
+  "landscape-1080": { av1: `/video/hero-1080-av1.mp4${v}`, av1Codec: "av01.0.08M.08", h264: `/video/hero-1080.mp4${v}`, h264Codec: "avc1.640028" },
+  "landscape-720": { av1: `/video/hero-720-av1.mp4${v}`, av1Codec: "av01.0.05M.08", h264: `/video/hero-720.mp4${v}`, h264Codec: "avc1.64001f" },
+  portrait: { av1: `/video/hero-portrait-av1.mp4${v}`, av1Codec: "av01.0.05M.08", h264: `/video/hero-portrait.mp4${v}`, h264Codec: "avc1.64001f" },
 };
 
 type Conn = { saveData?: boolean; effectiveType?: string };
@@ -177,10 +179,10 @@ export function HeroMedia({ alt }: { alt: string }) {
   const common = { alt, sizes: "100vw", quality: 80 };
   const {
     props: { srcSet: portrait },
-  } = getImageProps({ ...common, src: "/images/hero/hero-poster-portrait.jpg", width: 900, height: 1600 });
+  } = getImageProps({ ...common, src: `/images/hero/hero-poster-portrait-${reel.version}.jpg`, width: 900, height: 1600 });
   const {
     props: { srcSet: landscape, ...img },
-  } = getImageProps({ ...common, src: "/images/hero/hero-poster.jpg", width: 1920, height: 1080 });
+  } = getImageProps({ ...common, src: `/images/hero/hero-poster-${reel.version}.jpg`, width: 1920, height: 1080 });
 
   // Destructure first: the compiler treats an object as ref-like once any property is passed to `ref`.
   const { variant, ready, attachVideo, tryPlay, onPlaying, onPause, onError } = reelState ?? {};

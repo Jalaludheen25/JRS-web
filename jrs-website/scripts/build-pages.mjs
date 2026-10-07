@@ -24,9 +24,9 @@ const CARD_HEADINGS = new Set(["Products", "Services", "Engine Bearings", "Cylin
 // and by eye). The first post to use a picture keeps it; later ones get a distinct, relevant photo.
 const FEATURED_OVERRIDES = {
   "/cummins-engine-spare-parts-in-uae/": { src: "/images/stock/diesel-generator-engine.jpg", alt: "Diesel generator engine for industrial and backup power" },
-  "/cummins-engine-spare-parts-supplier-saudi-arabia/": { src: "/images/stock/offshore-supply-vessel.jpg", alt: "Offshore supply vessel at sea" },
-  "/cummins-spare-parts-in-kuwait/": { src: "/images/stock/tug-towing-container-ship.jpg", alt: "Tug assisting a container ship in port" },
-  "/yanmar-marine-engine-spare-parts-for-marine-operations/": { src: "/images/stock/offshore-platform-crew-transfer.jpg", alt: "Supply vessel alongside an offshore platform" },
+  "/cummins-engine-spare-parts-supplier-saudi-arabia/": { src: "/images/stock/offshore-supply-vessel-at-sea.jpg", alt: "Offshore supply vessel at sea" },
+  "/cummins-spare-parts-in-kuwait/": { src: "/images/stock/harbour-tug-at-terminal.jpg", alt: "Tug assisting a container ship in port" },
+  "/yanmar-marine-engine-spare-parts-for-marine-operations/": { src: "/images/stock/supply-vessel-at-platform.jpg", alt: "Supply vessel alongside an offshore platform" },
 };
 
 // "contain" for cut-outs and renders on a white background, "cover" for full-frame photographs.

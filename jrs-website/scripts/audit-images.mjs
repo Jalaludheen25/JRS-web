@@ -5,8 +5,8 @@
 //   2. Thumbnails (cards linking to a page) show the image of the page they link to.
 //   3. No picture is shown twice on the same page.
 //   4. No two different files are visually the same picture (perceptual hash).
-// Roles (data-img-role): "thumb" = card image linking to a page; "logo" = brand marks and certification badges, which
-// may repeat across pages (rules 1, 2 and 4 do not apply); "catalogue" = the spare-parts catalogue tiles, which follow
+// Roles (data-img-role): "thumb" = card image linking to a page; "logo" = brand marks, certification badges and icons
+// (WhatsApp), which may repeat across and within pages (rules 1–4 do not apply); "catalogue" = the spare-parts catalogue tiles, which follow
 // rule 1 but are exempt from the thumbnail and look-alike rules (they are small product cut-outs, not page images).
 // Usage: node scripts/audit-images.mjs [baseUrl]
 import { chromium } from "playwright-core";
@@ -48,7 +48,7 @@ for (const [label, viewport] of [["desktop", { width: 1440, height: 900 }], ["mo
     for (const im of imgs) {
       const src = decode(im.src);
       if (!src || src.endsWith(".svg")) continue;
-      if (seen.has(src)) problems.push(`[${label}] shown twice on ${url}: ${src}`);
+      if (seen.has(src) && im.role !== "logo") problems.push(`[${label}] shown twice on ${url}: ${src}`);
       seen.set(src, im);
       if (label === "desktop" || !uses.has(src)) {
         const list = uses.get(src) ?? [];

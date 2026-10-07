@@ -5,14 +5,18 @@
 //  2. Dissolves the shots together and makes the loop seamless (the last shot dissolves back into the first).
 //  3. Encodes landscape 1080p / 720p and portrait 720×1280 in AV1 (smallest) and H.264 (universal fallback),
 //     plus matching poster stills (the reel's first frame) for instant first paint and as the no-video fallback.
-//  4. Writes src/content/hero-reel.json (scene timings for the on-screen caption) and ../docs/06-hero-film.md
+//  4. Writes src/content/hero-reel.json (version, scene timings for the on-screen caption) and ../docs/06-hero-film.md.
+//     The version is a hash of the encoded film: video URLs carry it as ?v= and the posters are named with it, so a new
+//     cut is never hidden behind a cached old one (videos are cached for 7 days, see next.config.ts).
 //     (sources, licences, deliverables).
 //
 // Run from jrs-website/: node scripts/build-hero-video.mjs [--preview | --doc]
 import fs from "fs";
 import path from "path";
 import { execFileSync } from "child_process";
+import { createHash } from "crypto";
 import sharp from "sharp";
+import { heal } from "./lib/heal.mjs";
 
 const SRC = "../docs/source-video";
 // Intermediates (graded shots, lossless masters) are large and reproducible: kept in a git-ignored cache.
@@ -31,10 +35,16 @@ sources["jrs-port"] = { file: "public/video/hero-colour.mp4" };
 // Clean frames: no shot may show a legible ship, company or maker name. The former "Vessel under way" opener
 // (Angela Oulu 20210724, ship name on the stern) was dropped, and the two engine shots are framed below the
 // maker's lettering cast into their frames (zoom + fy, and a later window for the crankshaft shot).
+// retouch: lettering healed out of the source frames before anything else (see cleanSource): poly in source pixels at
+// the in-point, moving with the camera at drift [px/s] until `until` (source seconds, where the montage cuts away).
 // "jrs-port" is the aerial port montage supplied by JRS (public/video/hero-colour.mp4, five 1.5 s shots);
 // its shots are slowed to half speed with motion-compensated interpolation to match the reel's pace.
 const shots = [
-  { id: "jrs-port", in: 1.55, dur: 2.8, speed: 0.5, interp: true, fx: 0.55, caption: "Container terminal" },
+  // The berthed ship's stern shows its name, port of registry and IMO number: healed out frame by frame.
+  {
+    id: "jrs-port", in: 1.55, dur: 2.8, speed: 0.5, interp: true, fx: 0.55, caption: "Container terminal",
+    retouch: { poly: [[994, 647], [1071, 607], [1071, 644], [994, 683]], drift: [-11.1, -30], grow: 3, until: 3.0 },
+  },
   { id: "jrs-port", in: 3.05, dur: 2.8, speed: 0.5, interp: true, fx: 0.42, caption: "Port & harbour" },
   { id: "jrs-port", in: 4.55, dur: 2.8, speed: 0.5, interp: true, fx: 0.5, caption: "Port logistics" },
   { id: "lpg-carrier", in: 60.0, dur: 3.8, speed: 1, fx: 0.45, caption: "Deck machinery" },
@@ -58,8 +68,38 @@ const GRADE = [
 
 const run = (args) => execFileSync("ffmpeg", ["-hide_banner", "-loglevel", "error", "-y", ...args], { stdio: ["ignore", "inherit", "inherit"] });
 
+// Heals the lettering described by s.retouch out of every source frame of the shot (scripts/lib/heal.mjs) and
+// returns a lossless clip that starts at the shot's in-point. Cached in TMP, keyed on the shot definition.
+async function cleanSource(s, i) {
+  const out = path.join(TMP, `clean-${String(i).padStart(2, "0")}.mkv`);
+  const key = JSON.stringify({ in: s.in, dur: s.dur, speed: s.speed, retouch: s.retouch });
+  if (fs.existsSync(out) && fs.existsSync(out + ".key") && fs.readFileSync(out + ".key", "utf8") === key) return out;
+  const dir = path.join(TMP, `clean-${String(i).padStart(2, "0")}`);
+  fs.rmSync(dir, { recursive: true, force: true });
+  fs.mkdirSync(dir, { recursive: true });
+  const srcDur = s.dur * s.speed + 0.1;
+  run(["-ss", String(s.in), "-t", srcDur.toFixed(2), "-i", sources[s.id].file, "-an", "-fps_mode", "passthrough", path.join(dir, "%04d.png")]);
+  const { poly, drift, grow, until } = s.retouch;
+  const frames = fs.readdirSync(dir).filter((f) => f.endsWith(".png")).sort();
+  for (const [n, f] of frames.entries()) {
+    const dt = n / FPS;
+    if (s.in + dt >= until) break;
+    const file = path.join(dir, f);
+    const { data, info } = await sharp(file).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    const moved = poly.map(([x, y]) => [x + drift[0] * dt, y + drift[1] * dt]);
+    // Same seed every frame: the added grain stays attached to the hull as it moves, so it does not shimmer.
+    heal({ data, w: info.width, h: info.height, c: info.channels }, { poly: moved, grow }, 7);
+    await sharp(data, { raw: { width: info.width, height: info.height, channels: info.channels } }).png({ compressionLevel: 1 }).toFile(file);
+  }
+  run(["-framerate", String(FPS), "-i", path.join(dir, "%04d.png"), "-c:v", "ffv1", out]);
+  fs.writeFileSync(out + ".key", key);
+  fs.rmSync(dir, { recursive: true, force: true });
+  return out;
+}
+
 function cutShot(s, i, orientation) {
-  const src = sources[s.id];
+  const src = s.clean ? { file: s.clean } : sources[s.id];
+  const start = s.clean ? 0 : s.in;
   const out = path.join(TMP, `${orientation}-${String(i).padStart(2, "0")}.mkv`);
   const srcDur = s.dur * s.speed + 0.1;
   // Optional zoom crop first (even dimensions for yuv420p), then the orientation framing.
@@ -71,7 +111,7 @@ function cutShot(s, i, orientation) {
       : // 9:16 window from the 16:9 frame, positioned on the shot's subject, then scaled to 1080×1920 master.
         `scale=-2:1920:flags=lanczos,crop=1080:1920:'max(0,min(iw-1080,iw*${s.fx}-540))':0`);
   run([
-    "-ss", String(s.in), "-t", srcDur.toFixed(2), "-i", src.file, "-an",
+    "-ss", String(start), "-t", srcDur.toFixed(2), "-i", src.file, "-an",
     // Interpolated shots are framed first (cheaper), then motion-interpolated to keep slow motion smooth.
     "-vf", s.interp
       ? `${frame},minterpolate=fps=${FPS / s.speed}:mi_mode=mci:mc_mode=aobmc:vsbmc=1,setpts=${(1 / s.speed).toFixed(4)}*PTS,fps=${FPS},${s.fix ? s.fix + "," : ""}${GRADE},setsar=1,format=yuv420p,trim=duration=${s.dur}`
@@ -122,6 +162,7 @@ async function poster(master, name, width) {
 }
 
 function writeDoc() {
+  const posterVersion = JSON.parse(fs.readFileSync("src/content/hero-reel.json", "utf8")).version ?? "";
   const used = [...new Set(shots.map((s) => s.id))];
   const rows = used
     .map((id) => {
@@ -142,7 +183,8 @@ Generated by \`jrs-website/scripts/build-hero-video.mjs\`. Component: \`src/comp
 
 A ${shots.length}-scene, ${(shots.reduce((t, s) => t + s.dur, 0) - shots.length * XF).toFixed(1)}-second seamless loop. The story runs port → container yard → deck machinery → marine
 engine → crankshaft → precision machining → CNC milling → fabrication, then dissolves back to the port. No shot shows a
-legible ship, company or maker name (the engine shots are framed below the lettering cast into their frames). Every shot gets the
+legible ship name or IMO number: the opening shot's berthed ship has its stern name, port and IMO number healed out frame by
+frame, and the engine shots are framed below the maker's lettering cast into their frames. Every shot gets the
 same bright, natural-colour grade (slightly lifted contrast, saturation and midtones, light sharpening). No audio.
 
 ## Readability: subtle overlay, no darkening
@@ -173,8 +215,10 @@ ${rows}
 | File | Size |
 |---|---|
 ${files}
-| \`/images/hero/hero-poster.jpg\` (landscape poster, first frame) | — |
-| \`/images/hero/hero-poster-portrait.jpg\` (portrait poster, first frame) | — |
+| \`/images/hero/hero-poster-${posterVersion}.jpg\` (landscape poster, first frame) | — |
+| \`/images/hero/hero-poster-portrait-${posterVersion}.jpg\` (portrait poster, first frame) | — |
+
+Video URLs carry the same version (\`?v=${posterVersion}\`), so browsers never keep playing a previous cut.
 
 ## Loading and playback
 
@@ -196,6 +240,8 @@ if (process.argv.includes("--doc")) {
   console.log("wrote ../docs/06-hero-film.md");
   process.exit(0);
 }
+
+for (const [i, s] of shots.entries()) if (s.retouch) s.clean = await cleanSource(s, i);
 
 if (process.argv.includes("--preview")) {
   // Graded mid-frame of every shot in both orientations, for checking crops and grade before a full build.
@@ -224,8 +270,10 @@ const P = reel("portrait");
 encode(L.master, "hero-1080", "1920:1080");
 encode(L.master, "hero-720", "1280:720");
 encode(P.master, "hero-portrait", "720:1280");
-await poster(L.master, "hero-poster", 1920);
-await poster(P.master, "hero-poster-portrait", 900);
+const version = createHash("sha1").update(fs.readFileSync(path.join(OUT, "hero-1080.mp4"))).digest("hex").slice(0, 8);
+for (const f of fs.readdirSync(POSTERS)) if (f.startsWith("hero-poster")) fs.rmSync(path.join(POSTERS, f));
+await poster(L.master, `hero-poster-${version}`, 1920);
+await poster(P.master, `hero-poster-portrait-${version}`, 900);
 
 // Scene timings for the caption ticker (start time of each shot within the looped reel).
 let t = -XF;
@@ -234,7 +282,7 @@ const scenes = shots.map((s, i) => {
   t += s.dur - XF;
   return { start: Number(Math.max(0, start + (i === 0 ? 0 : XF / 2)).toFixed(2)), caption: s.caption };
 });
-fs.writeFileSync("src/content/hero-reel.json", JSON.stringify({ duration: Number(L.loopLen.toFixed(3)), scenes }, null, 1) + "\n");
+fs.writeFileSync("src/content/hero-reel.json", JSON.stringify({ version, duration: Number(L.loopLen.toFixed(3)), scenes }, null, 1) + "\n");
 
 for (const f of fs.readdirSync(OUT)) console.log(f.padEnd(26), (fs.statSync(path.join(OUT, f)).size / 1e6).toFixed(2), "MB");
 for (const f of fs.readdirSync(POSTERS)) console.log(f.padEnd(26), (fs.statSync(path.join(POSTERS, f)).size / 1e3).toFixed(0), "KB");

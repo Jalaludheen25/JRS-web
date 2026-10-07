@@ -21,7 +21,7 @@ async function open(viewport, opts = {}) {
 }
 const waitPlaying = (page) =>
   page.waitForFunction(() => { const v = document.querySelector("video"); return v && !v.paused && v.currentTime > 0.3 && getComputedStyle(v).opacity === "1"; }, null, { timeout: 20000 }).then(() => true, () => false);
-const state = (page) => page.evaluate(() => { const v = document.querySelector("video"); return v ? { src: v.currentSrc.split("/").pop(), paused: v.paused, t: +v.currentTime.toFixed(2), w: v.videoWidth, h: v.videoHeight } : null; });
+const state = (page) => page.evaluate(() => { const v = document.querySelector("video"); return v ? { src: v.currentSrc.split("/").pop().split("?")[0], v: new URL(v.currentSrc).searchParams.get("v"), paused: v.paused, t: +v.currentTime.toFixed(2), w: v.videoWidth, h: v.videoHeight } : null; });
 
 // 1. Desktop 1440×900 → 1080p (AV1 in Chrome), plays, screenshots across the reel.
 {

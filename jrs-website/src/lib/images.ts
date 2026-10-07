@@ -9,6 +9,8 @@
 // Sources and licences: docs/05-image-credits.md. Stock photos are illustrative only and are never
 // captioned as JRS premises, staff or customers.
 
+import reel from "@/content/hero-reel.json";
+
 export type Img = {
   src: string;
   alt: string;
@@ -57,18 +59,18 @@ export const images = {
 
   // ── Brands (illustrative, reference only) ────────────────────────────────────
   cummins: scene("/images/stock/cummins-generator-set-graded.jpg", "Cummins generator set in a plant room"),
-  wartsila: scene("/images/stock/car-carrier-with-tug-graded.jpg", "Ocean-going car carrier escorted by a tug"),
-  yanmar: scene("/images/stock/tugboats-under-way-graded.jpg", "Two harbour tugboats under way"),
+  wartsila: scene("/images/stock/car-carrier-and-tug-graded.jpg", "Ocean-going car carrier escorted by a tug"),
+  yanmar: scene("/images/stock/harbour-tugs-under-way-graded.jpg", "Two harbour tugboats under way"),
 
   // ── Hubs ─────────────────────────────────────────────────────────────────────
   aboutHero: scene("/images/brochure/container-ship-with-tug-aerial-graded.jpg", "Container ship with a tug alongside, seen from above"),
   aboutStory: scene("/images/scenes/port-vessel-aerial-graded.jpg", "Container vessel leaving a busy port"),
-  servicesHub: scene("/images/stock/vessel-in-dry-dock-graded.jpg", "Vessel in dry dock for maintenance"),
-  industriesHub: scene("/images/brochure/container-ship-at-berth-dusk-graded.jpg", "Container ship at berth under gantry cranes at dusk"),
+  servicesHub: scene("/images/stock/vessel-bow-in-dry-dock-graded.jpg", "Vessel in dry dock for maintenance"),
+  industriesHub: scene("/images/brochure/container-ship-under-cranes-dusk-graded.jpg", "Container ship at berth under gantry cranes at dusk"),
 
   // ── Homepage sections ────────────────────────────────────────────────────────
   // Poster of the hero film (scripts/build-hero-video.mjs): first frame of the reel, art-directed in HeroMedia.
-  homeHero: scene("/images/hero/hero-poster.jpg", "Aerial view of a container terminal, with ship-to-shore cranes working a vessel"),
+  homeHero: scene(`/images/hero/hero-poster-${reel.version}.jpg`, "Aerial view of a container terminal, with ship-to-shore cranes working a vessel"),
   homeAbout: scene("/images/scenes/vessel-aerial-2-graded.jpg", "Container vessel berthed under ship-to-shore cranes"),
   // The large 1536px render carries the homepage feature; the smaller brochure shot is the product page identity.
   homeBearings: plate("/images/products/engine-bearings.jpg", "Marine engine bearings: main, thrust and connecting rod bearing shells"),
